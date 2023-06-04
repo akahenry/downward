@@ -37,7 +37,6 @@ class Heuristic : public Evaluator {
       methods it calls (compute_heuristic() directly, further methods
       indirectly), and we could e.g. change this by having
       compute_heuristic return an EvaluationResult object.
-
       If we do this, we should be mindful of the cost incurred by not
       being able to reuse the data structure from one iteration to the
       next, but this seems to be the only potential downside.

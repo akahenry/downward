@@ -49,8 +49,14 @@ static void compute_union_pattern(
 
 PatternCollectionGeneratorSystematic::PatternCollectionGeneratorSystematic(
     const Options &opts)
-    : max_pattern_size(opts.get<int>("pattern_max_size")),
-      only_interesting_patterns(opts.get<bool>("only_interesting_patterns")) {
+    : max_memory(opts.get<int>("max_memory") * 1048576),
+    percentage_memory( opts.get<double>("memory_percentage")),
+    limit_memory(max_memory * percentage_memory),
+    reduce_patterns(opts.get<bool>("reduce_patterns")),
+    max_pattern_size(opts.get<int>("pattern_max_size")),
+    only_interesting_patterns(opts.get<bool>("only_interesting_patterns")) {
+
+    utils::g_log << "Memory usage limit: " << limit_memory << "KB" << endl;
 }
 
 void PatternCollectionGeneratorSystematic::compute_eff_pre_neighbors(
@@ -169,6 +175,9 @@ void PatternCollectionGeneratorSystematic::build_sga_patterns(
 
             enqueue_pattern_if_new(new_pattern);
         }
+        
+        if (utils::get_current_memory_in_kb() > limit_memory)
+            break;
     }
 
     pattern_set.clear();
@@ -182,6 +191,7 @@ void PatternCollectionGeneratorSystematic::build_patterns(
     // Generate SGA (single-goal-ancestor) patterns.
     // They are generated into the patterns variable,
     // so we swap them from there.
+    
     build_sga_patterns(task_proxy, cg);
     PatternCollection sga_patterns;
     patterns->swap(sga_patterns);
@@ -202,10 +212,8 @@ void PatternCollectionGeneratorSystematic::build_patterns(
     // Enqueue the SGA patterns.
     for (const Pattern &pattern : sga_patterns)
         enqueue_pattern_if_new(pattern);
-
-
+    
     utils::g_log << "Found " << sga_patterns.size() << " SGA patterns." << endl;
-
     /*
       Combine patterns in the queue with SGA patterns until all
       patterns are processed. Note that the patterns vectors grows
@@ -231,6 +239,9 @@ void PatternCollectionGeneratorSystematic::build_patterns(
                 }
             }
         }
+
+        if (utils::get_current_memory_in_kb() > limit_memory)
+            break;
     }
 
     pattern_set.clear();
@@ -273,7 +284,47 @@ PatternCollectionInformation PatternCollectionGeneratorSystematic::generate(
     } else {
         build_patterns_naive(task_proxy);
     }
-    PatternCollectionInformation pci(task_proxy, patterns);
+
+    // reduce only pdbs with size greater than 2
+    if (max_pattern_size > 2 && reduce_patterns) {
+        vector<size_t> count(max_pattern_size, 0);
+
+        // count patterns by size
+        for (Pattern pattern : *patterns)
+            count[pattern.size() - 1]++;
+
+        utils::g_log << count << endl;
+        
+        // sys4 size = 3 * (sys1 + sys2)
+        size_t size = count[0] + count[1];
+
+        // reserve memory to patterns
+        vector<PatternCollection> sys(max_pattern_size);
+        for (size_t i = 0; i < max_pattern_size; i++)
+            sys[i].reserve(count[i]);
+
+        // separate patterns in n different vetor
+        for (Pattern pattern : *patterns)
+            sys[pattern.size() - 1].push_back(pattern); 
+        
+        // randomise the patterns
+        for (size_t i = 2; i < sys.size(); i++)
+            for (size_t j = 0; j < sys.size(); j++)
+                random_shuffle(sys[i].begin(), sys[i].end());
+
+        // magic?
+        patterns = make_shared<PatternCollection>();
+        
+        // get all sys[1, 2] and sized sys [3, ...]
+        for (size_t i = 0; i < sys.size(); i++) {
+            if (i < 2 || size > count[i])
+                patterns->insert(patterns->end(), sys[i].begin(), sys[i].end());
+            else
+                patterns->insert(patterns->end(), sys[i].begin(), sys[i].begin() + size);
+        }
+    }
+
+    PatternCollectionInformation pci(task_proxy, patterns, max_memory, percentage_memory);
     /* Do not dump the collection since it can be very large for
        pattern_max_size >= 3. */
     dump_pattern_collection_generation_statistics(
@@ -305,6 +356,21 @@ static shared_ptr<PatternCollectionGenerator> _parse(OptionParser &parser) {
         "only_interesting_patterns",
         "Only consider the union of two disjoint patterns if the union has "
         "more information than the individual patterns.",
+        "true");
+    parser.add_option<int>(
+        "max_memory", 
+        "", 
+        "4",  
+        Bounds("1", "64"));
+    parser.add_option<double>(
+        "memory_percentage", 
+        "", 
+        "0.8",  
+        Bounds("0", "1"));
+
+    parser.add_option<bool>(
+        "reduce_patterns",
+        "",
         "true");
 
     Options opts = parser.parse();

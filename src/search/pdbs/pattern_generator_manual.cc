@@ -19,6 +19,12 @@ PatternGeneratorManual::PatternGeneratorManual(const Options &opts)
 
 PatternInformation PatternGeneratorManual::generate(
     const shared_ptr<AbstractTask> &task) {
+    pattern.clear();
+    TaskProxy task_proxy = TaskProxy(*task);
+    for (VariableProxy var : task_proxy.get_variables()) {
+        pattern.push_back(var.get_id());
+    }
+
     PatternInformation pattern_info(TaskProxy(*task), move(pattern));
     utils::g_log << "Manual pattern: " << pattern_info.get_pattern() << endl;
     return pattern_info;

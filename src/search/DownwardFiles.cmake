@@ -723,6 +723,7 @@ fast_downward_plugin(
         pdbs/cegar
         pdbs/dominance_pruning
         pdbs/incremental_canonical_pdbs
+        pdbs/local_search
         pdbs/match_tree
         pdbs/max_cliques
         pdbs/pattern_cliques
@@ -746,7 +747,7 @@ fast_downward_plugin(
         pdbs/validation
         pdbs/zero_one_pdbs
         pdbs/zero_one_pdbs_heuristic
-    DEPENDS CAUSAL_GRAPH MAX_CLIQUES PRIORITY_QUEUES SAMPLING SUCCESSOR_GENERATOR TASK_PROPERTIES VARIABLE_ORDER_FINDER
+    DEPENDS CAUSAL_GRAPH MAX_CLIQUES PRIORITY_QUEUES SAMPLING SUCCESSOR_GENERATOR TASK_PROPERTIES VARIABLE_ORDER_FINDER LANDMARK_CUT_HEURISTIC
 )
 
 fast_downward_plugin(
@@ -772,6 +773,22 @@ fast_downward_plugin(
     SOURCES
         algorithms/sccs
     DEPENDENCY_ONLY
+)
+
+fast_downward_plugin(
+    NAME RED_BLACK
+    HELP "Plugin containing the code for Red-Black Planning heuristics"
+    SOURCES
+		graph_algorithms/scc
+		graph_algorithms/topological_sort
+		graph_algorithms/transitive_closure
+		red_black/red_black_operator
+ 		red_black/red_black_task_core
+		red_black/coloring_strategy
+		red_black/red_black_task
+		red_black/red_black_heuristic
+		red_black/dtg_operators
+	DEPENDS FF_HEURISTIC	
 )
 
 fast_downward_add_plugin_sources(PLANNER_SOURCES)

@@ -86,6 +86,10 @@ class PatternDatabase {
     // size of the PDB
     int num_states;
 
+    int max_memory;
+    double percentage_memory;
+    bool dirty_pdb;
+
     /*
       final h-values for abstract-states.
       dead-ends are represented by numeric_limits<int>::max()
@@ -181,7 +185,9 @@ public:
         const std::vector<int> &operator_costs = std::vector<int>(),
         bool compute_plan = false,
         const std::shared_ptr<utils::RandomNumberGenerator> &rng = nullptr,
-        bool compute_wildcard_plan = false);
+        bool compute_wildcard_plan = false,
+        const int _max_memory = INT32_MAX,
+        const double _percentage_memory = 1);
     ~PatternDatabase() = default;
 
     int get_value(const std::vector<int> &state) const;
@@ -194,6 +200,10 @@ public:
     // Returns the size (number of abstract states) of the PDB
     int get_size() const {
         return num_states;
+    }
+
+    bool is_dirty() const {
+        return dirty_pdb;
     }
 
     std::vector<std::vector<OperatorID>> && extract_wildcard_plan() {

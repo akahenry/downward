@@ -26,6 +26,9 @@ class PatternCollectionInformation {
     std::shared_ptr<PDBCollection> pdbs;
     std::shared_ptr<std::vector<PatternClique>> pattern_cliques;
 
+    int max_memory;
+    double percentage_memory;
+
     void create_pdbs_if_missing();
     void create_pattern_cliques_if_missing();
 
@@ -33,7 +36,9 @@ class PatternCollectionInformation {
 public:
     PatternCollectionInformation(
         const TaskProxy &task_proxy,
-        const std::shared_ptr<PatternCollection> &patterns);
+        const std::shared_ptr<PatternCollection> &patterns,
+        const int _max_memory = INT32_MAX,
+        const double _percentage_memory = 1);
     ~PatternCollectionInformation() = default;
 
     void set_pdbs(const std::shared_ptr<PDBCollection> &pdbs);

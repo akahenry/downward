@@ -28,6 +28,12 @@ class CanonicalPDBsHeuristic;
 class PatternCollectionGeneratorSystematic : public PatternCollectionGenerator {
     using PatternSet = utils::HashSet<Pattern>;
 
+    const int max_memory;
+    const double percentage_memory;
+    const int limit_memory;
+    
+    const bool reduce_patterns;
+
     const size_t max_pattern_size;
     const bool only_interesting_patterns;
     std::shared_ptr<PatternCollection> patterns;

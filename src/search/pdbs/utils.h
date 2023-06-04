@@ -21,6 +21,7 @@ class PatternInformation;
 extern int compute_pdb_size(const TaskProxy &task_proxy, const Pattern &pattern);
 extern int compute_total_pdb_size(
     const TaskProxy &task_proxy, const PatternCollection &pattern_collection);
+extern int compute_pdb_size_in_kb(const TaskProxy &task_proxy, const Pattern &pattern);
 
 extern std::vector<FactPair> get_goals_in_random_order(
     const TaskProxy &task_proxy, utils::RandomNumberGenerator &rng);

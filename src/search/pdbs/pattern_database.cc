@@ -76,8 +76,11 @@ PatternDatabase::PatternDatabase(
     const vector<int> &operator_costs,
     bool compute_plan,
     const shared_ptr<utils::RandomNumberGenerator> &rng,
-    bool compute_wildcard_plan)
-    : pattern(pattern) {
+    bool compute_wildcard_plan,
+    const int _max_memory,
+    const double _percentage_memory)
+    : pattern(pattern), max_memory(_max_memory), 
+    percentage_memory(_percentage_memory), dirty_pdb(false) {
     task_properties::verify_no_axioms(task_proxy);
     task_properties::verify_no_conditional_effects(task_proxy);
     assert(operator_costs.empty() ||
@@ -99,9 +102,34 @@ PatternDatabase::PatternDatabase(
             utils::exit_with(utils::ExitCode::SEARCH_CRITICAL_ERROR);
         }
     }
-    create_pdb(task_proxy, operator_costs, compute_plan, rng, compute_wildcard_plan);
-    if (dump)
+
+    // limite total em kb para a construção dos pdbs
+    const int limit_memory = max_memory * percentage_memory;
+    const int current_memory = utils::get_current_memory_in_kb();
+
+    // tamanho total do pdb
+    const int pdb_size = (num_states * sizeof(int)) / 1024;
+
+    // folga em relação a memoria total do processo
+    const int folga = max_memory - current_memory - pdb_size;
+
+    // memoria atual maior que o limite ou folga menor que o tamanho maximo da open
+    if (current_memory > limit_memory || folga < (2 * pdb_size)) {
+        dirty_pdb = true;
+    } else {
+        create_pdb(task_proxy, operator_costs, compute_plan, rng, compute_wildcard_plan);
+    }
+
+    if (dump) {
+        /*
+        utils::g_log << "max:" << max_memory 
+                    << "\tcurr: " << current_memory 
+                    << "\tsize: " << num_states 
+                    << "\tpq: " << max_queue_size
+                    << "\t%: " << ((double)max_queue_size / num_states) << endl;
+        */
         utils::g_log << "PDB construction time: " << timer << endl;
+    }
 }
 
 void PatternDatabase::multiply_out(

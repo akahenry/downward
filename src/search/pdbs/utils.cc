@@ -42,6 +42,10 @@ int compute_total_pdb_size(
     return size;
 }
 
+int compute_pdb_size_in_kb(const TaskProxy &task_proxy, const Pattern &pattern) {
+    return (compute_pdb_size(task_proxy, pattern) * sizeof(int)) / 1024;
+}
+
 vector<FactPair> get_goals_in_random_order(
     const TaskProxy &task_proxy, utils::RandomNumberGenerator &rng) {
     vector<FactPair> goals = task_properties::get_fact_pairs(task_proxy.get_goals());

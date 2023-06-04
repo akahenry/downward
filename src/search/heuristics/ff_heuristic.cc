@@ -68,6 +68,28 @@ int FFHeuristic::compute_heuristic(const State &ancestor_state) {
     return h_ff;
 }
 
+vector<int> FFHeuristic::get_preferred_operators(const State &state) {
+    
+    int h_add = compute_add_and_ff(state);
+    if (h_add == DEAD_END)
+        return vector<int>();
+
+    // Collecting the relaxed plan also sets the preferred operators.
+    for (PropID goal_id : goal_propositions)
+        mark_preferred_operators_and_relaxed_plan(state, goal_id);
+
+    
+    vector<int> preferred_operators;
+    for (size_t op_no = 0; op_no < relaxed_plan.size(); ++op_no) {
+        if (relaxed_plan[op_no]) {
+            relaxed_plan[op_no] = false; // Clean up for next computation.
+            
+            preferred_operators.push_back(op_no);
+        }
+    }
+    return preferred_operators;
+}
+
 
 static shared_ptr<Heuristic> _parse(OptionParser &parser) {
     parser.document_synopsis("FF heuristic", "");

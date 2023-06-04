@@ -17,11 +17,16 @@ using namespace std;
 namespace pdbs {
 PatternCollectionInformation::PatternCollectionInformation(
     const TaskProxy &task_proxy,
-    const shared_ptr<PatternCollection> &patterns)
+    const shared_ptr<PatternCollection> &patterns,
+    const int _max_memory,
+    const double _percentage_memory)
     : task_proxy(task_proxy),
       patterns(patterns),
       pdbs(nullptr),
-      pattern_cliques(nullptr) {
+      pattern_cliques(nullptr),
+      max_memory(_max_memory),
+      percentage_memory(_percentage_memory) {
+    
     assert(patterns);
     validate_and_normalize_patterns(task_proxy, *patterns);
 }
@@ -61,9 +66,19 @@ void PatternCollectionInformation::create_pdbs_if_missing() {
         pdbs = make_shared<PDBCollection>();
         for (const Pattern &pattern : *patterns) {
             shared_ptr<PatternDatabase> pdb =
-                make_shared<PatternDatabase>(task_proxy, pattern);
+                make_shared<PatternDatabase>(task_proxy, pattern, false, 
+                    vector<int>(), false, nullptr, false, max_memory, percentage_memory);
+            
+            if (pdb->is_dirty()){
+                utils::g_log << "break process, patterns computed: " 
+                    << pdbs->size() << " of " << patterns->size() << endl;  
+                
+                break;
+            }
+
             pdbs->push_back(pdb);
         }
+
         utils::g_log << "Done computing PDBs for pattern collection: " << timer << endl;
     }
 }
