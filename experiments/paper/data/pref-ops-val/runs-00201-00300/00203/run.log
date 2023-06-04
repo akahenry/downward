@@ -1,0 +1,185 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799.99s
+INFO     translator memory limit: 4096 MB
+INFO     translator command line string: /usr/bin/python3 /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.010s CPU, 0.005s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.015s wall-clock]
+Preparing model... [0.010s CPU, 0.005s wall-clock]
+Generated 400 rules.
+Computing model... [0.380s CPU, 0.397s wall-clock]
+30397 relevant atoms
+31998 auxiliary atoms
+62395 final queue length
+160558 total queue pushes
+Completing instantiation... [1.430s CPU, 1.428s wall-clock]
+Instantiating: [1.840s CPU, 1.856s wall-clock]
+Computing fact groups...
+Finding invariants...
+41 initial candidates
+Finding invariants: [0.040s CPU, 0.037s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+371 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [0.040s CPU, 0.039s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.080s CPU, 0.072s wall-clock]
+Translating task: [1.830s CPU, 1.833s wall-clock]
+80827 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+2 propositions removed
+Detecting unreachable propositions: [1.110s CPU, 1.101s wall-clock]
+Reordering and filtering variables...
+373 of 373 variables necessary.
+1 of 3 mutex groups necessary.
+29842 of 29842 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.410s CPU, 0.407s wall-clock]
+Translator variables: 373
+Translator derived variables: 0
+Translator facts: 749
+Translator goal facts: 4
+Translator mutex groups: 1
+Translator total mutex groups size: 2
+Translator operators: 29842
+Translator axioms: 0
+Translator task size: 360042
+Translator peak memory: 223292 KB
+Writing output... [0.230s CPU, 0.231s wall-clock]
+Done! [5.530s CPU, 5.542s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1794.41s
+INFO     search memory limit: 4096 MB
+INFO     search command line string: /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/downward --evaluator 'eval=ff()' --search 'eager_greedy([lsh(patterns=systematic(4), op_order=default, res_order=default, transform=adapt_costs(cost_type=ONE))],  preferred=[eval])' --internal-plan-file sas_plan < output.sas
+[t=0s, 46116 KB] reading input...
+[t=0.146274s, 59600 KB] done reading input!
+[t=0.162267s, 74500 KB] Simplifying 178609 unary operators... done! [177937 unary operators]
+[t=0.638106s, 89388 KB] time to simplify: 0.475839s
+[t=0.642106s, 96012 KB] Initializing additive heuristic...
+[t=0.642106s, 96012 KB] Initializing FF heuristic...
+[t=0.642106s, 96012 KB] stop search of patterns: 3355443KB
+[t=0.64611s, 96012 KB] Generating patterns using the systematic generator...
+[t=0.64611s, 96012 KB] building causal graph...done! [t=0.0679801s]
+[t=0.738078s, 96012 KB] Found 35949 SGA patterns.
+[t=1.51247s, 96012 KB] Found 35949 interesting patterns.
+[t=1.51647s, 96012 KB] [4, 7, 225, 35713]
+[t=1.52049s, 96012 KB] Systematic generator number of patterns: 33
+[t=1.52049s, 96012 KB] Systematic generator total PDB size: 300
+[t=1.52049s, 96012 KB] Systematic generator computation time: 0.87438s
+[t=1.52049s, 96012 KB] Computing PDBs for pattern collection...
+[t=1.66833s, 96012 KB] Done computing PDBs for pattern collection: 0.147839s
+[t=1.70433s, 96012 KB] Operators: 29842
+[t=1.70433s, 96012 KB] Restrictions: 33
+[t=1.70433s, 96012 KB] Mean mentions: 0
+[t=1.70433s, 96012 KB] Mean operators: 590
+[t=1.70433s, 96012 KB] Building successor generator...done!
+[t=1.71633s, 96012 KB] peak memory difference for successor generator creation: 0 KB
+[t=1.71633s, 96012 KB] time for successor generation creation: 0.0119982s
+[t=1.71633s, 96012 KB] Variables: 373
+[t=1.71633s, 96012 KB] FactPairs: 749
+[t=1.71633s, 96012 KB] Bytes per state: 48
+[t=1.71633s, 96012 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=1.71633s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 5
+[t=1.71633s, 96012 KB] g=0, 1 evaluated, 0 expanded
+[t=1.71633s, 96012 KB] Initial heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 5
+[t=1.71633s, 96012 KB] pruning method: none
+[t=3.48025s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 4
+[t=3.48025s, 96012 KB] g=12, 1507 evaluated, 857 expanded
+[t=3.51225s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 3
+[t=3.51225s, 96012 KB] g=17, 1548 evaluated, 877 expanded
+[t=3.51225s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 2
+[t=3.51225s, 96012 KB] g=18, 1552 evaluated, 878 expanded
+[t=3.56024s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 1
+[t=3.56024s, 96012 KB] g=24, 1615 evaluated, 909 expanded
+[t=3.57224s, 96012 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 0
+[t=3.57224s, 96012 KB] g=31, 1632 evaluated, 919 expanded
+[t=3.57224s, 96012 KB] Solution found!
+[t=3.57624s, 96012 KB] Actual search time: 1.85992s
+unpark pr2 xrel0 yrel0 (1)
+base-right pr2 x0 x1 y0 (1)
+base-right pr2 x1 x2 y0 (1)
+base-down pr2 x2 y0 y1 (1)
+base-down pr2 x2 y1 y2 (1)
+base-right pr2 x2 x3 y2 (1)
+base-down pr2 x3 y2 y3 (1)
+park pr2 (1)
+get-down pr2 x3 y3 xrel0 x3 yrel0 y3 object1 y4 (1)
+gripper-down pr2 x3 y3 xrel0 x3 yrel0 yrel1 y3 y4 (1)
+put-down pr2 x3 y3 xrel0 x3 yrel1 y4 object1 y5 (1)
+finish-object object1 x3 y5 (1)
+gripper-up pr2 x3 y3 xrel0 x3 yrel1 yrel0 y4 y3 (1)
+gripper-up pr2 x3 y3 xrel0 x3 yrel0 yrel-1 y3 y2 (1)
+get-up pr2 x3 y3 xrel0 x3 yrel-1 y2 object0 y1 (1)
+gripper-down pr2 x3 y3 xrel0 x3 yrel-1 yrel0 y2 y3 (1)
+put-down pr2 x3 y3 xrel0 x3 yrel0 y3 object0 y4 (1)
+finish-object object0 x3 y4 (1)
+gripper-right pr2 x3 y3 xrel0 xrel1 x3 x4 yrel0 y3 (1)
+get-down pr2 x3 y3 xrel1 x4 yrel0 y3 object3 y4 (1)
+gripper-up pr2 x3 y3 xrel1 x4 yrel0 yrel-1 y3 y2 (1)
+gripper-left pr2 x3 y3 xrel1 xrel0 x4 x3 yrel-1 y2 (1)
+put-up pr2 x3 y3 xrel0 x3 yrel-1 y2 object3 y1 (1)
+finish-object object3 x3 y1 (1)
+gripper-right pr2 x3 y3 xrel0 xrel1 x3 x4 yrel-1 y2 (1)
+gripper-down pr2 x3 y3 xrel1 x4 yrel-1 yrel0 y2 y3 (1)
+gripper-down pr2 x3 y3 xrel1 x4 yrel0 yrel1 y3 y4 (1)
+get-down pr2 x3 y3 xrel1 x4 yrel1 y4 object2 y5 (1)
+gripper-up pr2 x3 y3 xrel1 x4 yrel1 yrel0 y4 y3 (1)
+put-down pr2 x3 y3 xrel1 x4 yrel0 y3 object2 y4 (1)
+finish-object object2 x4 y4 (1)
+[t=3.57624s, 96012 KB] Plan length: 31 step(s).
+[t=3.57624s, 96012 KB] Plan cost: 31
+[t=3.57624s, 96012 KB] Expanded 920 state(s).
+[t=3.57624s, 96012 KB] Reopened 0 state(s).
+[t=3.57624s, 96012 KB] Evaluated 1632 state(s).
+[t=3.57624s, 96012 KB] Evaluations: 2551
+[t=3.57624s, 96012 KB] Generated 3032 state(s).
+[t=3.57624s, 96012 KB] Dead ends: 0 state(s).
+[t=3.57624s, 96012 KB] Number of registered states: 1632
+[t=3.57624s, 96012 KB] Int hash set load factor: 1632/2048 = 0.796875
+[t=3.57624s, 96012 KB] Int hash set resizes: 11
+[t=3.57624s, 96012 KB] Search time: 1.85992s
+[t=3.57624s, 96012 KB] Total time: 3.57624s
+Solution found.
+Peak memory: 96012 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 31 
+
+Successful plans:
+Value: 31
+ sas_plan 31 
+
+validate exit code: 0
+

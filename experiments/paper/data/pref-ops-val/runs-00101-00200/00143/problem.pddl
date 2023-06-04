@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/pegsol-sat11-strips/p03.pddl

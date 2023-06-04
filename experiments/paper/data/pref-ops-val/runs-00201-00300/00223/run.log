@@ -1,0 +1,119 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799.98s
+INFO     translator memory limit: 4096 MB
+INFO     translator command line string: /usr/bin/python3 /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.010s CPU, 0.003s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 26 rules.
+Computing model... [0.280s CPU, 0.276s wall-clock]
+33824 relevant atoms
+25340 auxiliary atoms
+59164 final queue length
+121054 total queue pushes
+Completing instantiation... [0.990s CPU, 0.998s wall-clock]
+Instantiating: [1.280s CPU, 1.286s wall-clock]
+Computing fact groups...
+Finding invariants...
+9 initial candidates
+Finding invariants: [0.010s CPU, 0.012s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.010s CPU, 0.003s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.001s wall-clock]
+Building translation key... [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [0.030s CPU, 0.022s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.050s CPU, 0.044s wall-clock]
+Translating task: [0.780s CPU, 0.780s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+26 propositions removed
+Detecting unreachable propositions: [0.460s CPU, 0.466s wall-clock]
+Reordering and filtering variables...
+26 of 26 variables necessary.
+0 of 26 mutex groups necessary.
+32040 of 32040 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.100s CPU, 0.104s wall-clock]
+Translator variables: 26
+Translator derived variables: 0
+Translator facts: 1280
+Translator goal facts: 18
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 32040
+Translator axioms: 0
+Translator task size: 190756
+Translator peak memory: 156848 KB
+Writing output... [0.120s CPU, 0.125s wall-clock]
+Done! [2.830s CPU, 2.831s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1797.11s
+INFO     search memory limit: 4096 MB
+INFO     search command line string: /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/downward --evaluator 'eval=ff()' --search 'eager_greedy([lsh(patterns=systematic(4), op_order=default, res_order=default, transform=adapt_costs(cost_type=ONE))],  preferred=[eval])' --internal-plan-file sas_plan < output.sas
+[t=0s, 46116 KB] reading input...
+[t=0.0903589s, 56504 KB] done reading input!
+[t=0.0983596s, 60096 KB] Simplifying 63144 unary operators... done! [63144 unary operators]
+[t=0.126358s, 65920 KB] time to simplify: 0.0279989s
+[t=0.130358s, 65920 KB] Initializing additive heuristic...
+[t=0.130358s, 65920 KB] Initializing FF heuristic...
+[t=0.130358s, 65920 KB] stop search of patterns: 3355443KB
+[t=0.130358s, 65920 KB] Generating patterns using the systematic generator...
+[t=0.130358s, 65920 KB] building causal graph...done! [t=0.00400068s]
+[t=0.150358s, 65920 KB] Found 8916 SGA patterns.
+[t=0.266059s, 65920 KB] Found 13710 interesting patterns.
+[t=0.266059s, 65920 KB] [18, 144, 1728, 11820]
+[t=0.266059s, 65920 KB] Systematic generator number of patterns: 486
+[t=0.266059s, 65920 KB] Systematic generator total PDB size: 645246114
+[t=0.266059s, 65920 KB] Systematic generator computation time: 0.135701s
+[t=0.266059s, 65920 KB] Computing PDBs for pattern collection...
+[t=477.637s, 2658396 KB] Done computing PDBs for pattern collection: 477.371s
+[t=477.873s, 2658396 KB] Operators: 32040
+[t=477.873s, 2658396 KB] Restrictions: 486
+[t=477.873s, 2658396 KB] Mean mentions: 115
+[t=477.873s, 2658396 KB] Mean operators: 7589
+[t=477.873s, 2658396 KB] Building successor generator...done!
+[t=477.885s, 2658396 KB] peak memory difference for successor generator creation: 0 KB
+[t=477.885s, 2658396 KB] time for successor generation creation: 0.0119991s
+[t=477.885s, 2658396 KB] Variables: 26
+[t=477.885s, 2658396 KB] FactPairs: 1280
+[t=477.885s, 2658396 KB] Bytes per state: 20
+[t=477.885s, 2658396 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=477.885s, 2658396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 36
+[t=477.885s, 2658396 KB] g=0, 1 evaluated, 0 expanded
+[t=477.885s, 2658396 KB] Initial heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 36
+[t=477.885s, 2658396 KB] pruning method: none
+[t=477.949s, 2658396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 35
+[t=477.949s, 2658396 KB] g=33, 430 evaluated, 53 expanded
+[t=477.949s, 2658396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 34
+[t=477.949s, 2658396 KB] g=34, 446 evaluated, 54 expanded
+Peak memory: 2910608 KB
+caught signal 24 -- exiting
+Time limit has been reached.
+Remove intermediate file output.sas
+search exit code: 23
+
+Driver aborting after search

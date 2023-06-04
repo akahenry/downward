@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/parking-sat11-strips/pfile12-047.pddl

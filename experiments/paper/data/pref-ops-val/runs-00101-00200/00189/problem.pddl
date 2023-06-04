@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/sokoban-sat11-strips/p09.pddl

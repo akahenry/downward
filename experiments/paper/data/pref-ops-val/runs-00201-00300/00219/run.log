@@ -1,0 +1,374 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799.98s
+INFO     translator memory limit: 4096 MB
+INFO     translator command line string: /usr/bin/python3 /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.005s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.010s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.014s wall-clock]
+Preparing model... [0.000s CPU, 0.005s wall-clock]
+Generated 400 rules.
+Computing model... [1.730s CPU, 1.730s wall-clock]
+117069 relevant atoms
+115451 auxiliary atoms
+232520 final queue length
+589621 total queue pushes
+Completing instantiation... [6.440s CPU, 6.446s wall-clock]
+Instantiating: [8.260s CPU, 8.257s wall-clock]
+Computing fact groups...
+Finding invariants...
+41 initial candidates
+Finding invariants: [0.120s CPU, 0.121s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+815 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.002s wall-clock]
+Computing fact groups: [0.130s CPU, 0.127s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.280s CPU, 0.285s wall-clock]
+Translating task: [7.320s CPU, 7.327s wall-clock]
+279393 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+2 propositions removed
+Detecting unreachable propositions: [3.680s CPU, 3.682s wall-clock]
+Reordering and filtering variables...
+817 of 817 variables necessary.
+1 of 3 mutex groups necessary.
+115978 of 115978 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [1.570s CPU, 1.565s wall-clock]
+Translator variables: 817
+Translator derived variables: 0
+Translator facts: 1645
+Translator goal facts: 12
+Translator mutex groups: 1
+Translator total mutex groups size: 2
+Translator operators: 115978
+Translator axioms: 0
+Translator task size: 1350616
+Translator peak memory: 754472 KB
+Writing output... [0.900s CPU, 0.936s wall-clock]
+Done! [22.150s CPU, 22.195s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1777.69s
+INFO     search memory limit: 4096 MB
+INFO     search command line string: /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/downward --evaluator 'eval=ff()' --search 'eager_greedy([lsh(patterns=systematic(4), op_order=default, res_order=default, transform=adapt_costs(cost_type=ONE))],  preferred=[eval])' --internal-plan-file sas_plan < output.sas
+[t=0s, 46116 KB] reading input...
+[t=0.551375s, 96848 KB] done reading input!
+[t=0.607373s, 133776 KB] Simplifying 635267 unary operators... done! [630371 unary operators]
+[t=4.32721s, 192048 KB] time to simplify: 3.71983s
+[t=4.34721s, 216020 KB] Initializing additive heuristic...
+[t=4.34721s, 216020 KB] Initializing FF heuristic...
+[t=4.34721s, 216020 KB] stop search of patterns: 3355443KB
+[t=4.35121s, 216020 KB] Generating patterns using the systematic generator...
+[t=4.35121s, 216020 KB] building causal graph...done! [t=0.395988s]
+[t=4.91915s, 216020 KB] Found 139897 SGA patterns.
+[t=9.79817s, 216020 KB] Found 139897 interesting patterns.
+[t=9.82212s, 216020 KB] [12, 15, 492, 139378]
+[t=9.86612s, 219320 KB] Systematic generator number of patterns: 81
+[t=9.86612s, 219320 KB] Systematic generator total PDB size: 864
+[t=9.86612s, 219320 KB] Systematic generator computation time: 5.51491s
+[t=9.86612s, 219320 KB] Computing PDBs for pattern collection...
+[t=11.4981s, 219320 KB] Done computing PDBs for pattern collection: 1.63194s
+[t=11.886s, 219320 KB] Operators: 115978
+[t=11.886s, 219320 KB] Restrictions: 81
+[t=11.886s, 219320 KB] Mean mentions: 1
+[t=11.886s, 219320 KB] Mean operators: 2006
+[t=11.886s, 219320 KB] Building successor generator...done!
+[t=11.934s, 219320 KB] peak memory difference for successor generator creation: 0 KB
+[t=11.934s, 219320 KB] time for successor generation creation: 0.0479948s
+[t=11.938s, 219320 KB] Variables: 817
+[t=11.938s, 219320 KB] FactPairs: 1645
+[t=11.938s, 219320 KB] Bytes per state: 104
+[t=11.938s, 219320 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=11.938s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 23
+[t=11.938s, 219320 KB] g=0, 1 evaluated, 0 expanded
+[t=11.938s, 219320 KB] Initial heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 23
+[t=11.938s, 219320 KB] pruning method: none
+[t=11.95s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 22
+[t=11.95s, 219320 KB] g=1, 5 evaluated, 1 expanded
+[t=602.897s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 21
+[t=602.901s, 219320 KB] g=14, 76523 evaluated, 51341 expanded
+[t=602.909s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 20
+[t=602.909s, 219320 KB] g=15, 76528 evaluated, 51342 expanded
+[t=611.921s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 19
+[t=611.921s, 219320 KB] g=25, 77763 evaluated, 52190 expanded
+[t=611.933s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 18
+[t=611.933s, 219320 KB] g=26, 77766 evaluated, 52191 expanded
+[t=614.917s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 17
+[t=614.917s, 219320 KB] g=37, 78238 evaluated, 52465 expanded
+[t=620.444s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 16
+[t=620.444s, 219320 KB] g=40, 79164 evaluated, 52973 expanded
+[t=656.123s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 15
+[t=656.123s, 219320 KB] g=55, 84095 evaluated, 56339 expanded
+[t=656.135s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 14
+[t=656.135s, 219320 KB] g=56, 84098 evaluated, 56340 expanded
+[t=676.451s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 13
+[t=676.451s, 219320 KB] g=71, 87419 evaluated, 58218 expanded
+[t=676.463s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 12
+[t=676.463s, 219320 KB] g=72, 87422 evaluated, 58219 expanded
+[t=679.715s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 11
+[t=679.715s, 219320 KB] g=85, 87966 evaluated, 58530 expanded
+[t=679.727s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 10
+[t=679.727s, 219320 KB] g=86, 87970 evaluated, 58531 expanded
+[t=680.223s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 9
+[t=680.223s, 219320 KB] g=92, 88052 evaluated, 58579 expanded
+[t=680.235s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 8
+[t=680.235s, 219320 KB] g=93, 88054 evaluated, 58580 expanded
+[t=744.773s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 7
+[t=744.773s, 219320 KB] g=113, 98535 evaluated, 64827 expanded
+[t=854.653s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 6
+[t=854.653s, 219320 KB] g=131, 116138 evaluated, 75208 expanded
+[t=854.661s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 5
+[t=854.661s, 219320 KB] g=132, 116142 evaluated, 75209 expanded
+[t=865.969s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 4
+[t=865.969s, 219320 KB] g=144, 117854 evaluated, 76194 expanded
+[t=914.208s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 3
+[t=914.208s, 219320 KB] g=162, 125326 evaluated, 80608 expanded
+[t=914.22s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 2
+[t=914.22s, 219320 KB] g=163, 125329 evaluated, 80609 expanded
+[t=950.499s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 1
+[t=950.499s, 219320 KB] g=183, 131523 evaluated, 84141 expanded
+[t=950.507s, 219320 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 0
+[t=950.507s, 219320 KB] g=184, 131526 evaluated, 84142 expanded
+[t=950.507s, 219320 KB] Solution found!
+[t=950.507s, 219320 KB] Actual search time: 938.569s
+finish-object object3 x7 y3 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-right pr2 x0 x1 y0 (1)
+base-down pr2 x1 y0 y1 (1)
+base-down pr2 x1 y1 y2 (1)
+base-right pr2 x1 x2 y2 (1)
+base-down pr2 x2 y2 y3 (1)
+base-down pr2 x2 y3 y4 (1)
+base-down pr2 x2 y4 y5 (1)
+base-down pr2 x2 y5 y6 (1)
+base-down pr2 x2 y6 y7 (1)
+park pr2 (1)
+get-right pr2 x2 y7 xrel0 x2 yrel0 y7 object9 x3 (1)
+put-down pr2 x2 y7 xrel0 x2 yrel0 y7 object9 y8 (1)
+finish-object object9 x2 y8 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x2 y7 y6 (1)
+base-up pr2 x2 y6 y5 (1)
+park pr2 (1)
+gripper-left pr2 x2 y5 xrel0 xrel-1 x2 x1 yrel0 y5 (1)
+get-up pr2 x2 y5 xrel-1 x1 yrel0 y5 object10 y4 (1)
+gripper-right pr2 x2 y5 xrel-1 xrel0 x1 x2 yrel0 y5 (1)
+gripper-right pr2 x2 y5 xrel0 xrel1 x2 x3 yrel0 y5 (1)
+gripper-down pr2 x2 y5 xrel1 x3 yrel0 yrel1 y5 y6 (1)
+put-down pr2 x2 y5 xrel1 x3 yrel1 y6 object10 y7 (1)
+finish-object object10 x3 y7 (1)
+gripper-left pr2 x2 y5 xrel1 xrel0 x3 x2 yrel1 y6 (1)
+gripper-up pr2 x2 y5 xrel0 x2 yrel1 yrel0 y6 y5 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-right pr2 x2 x3 y5 (1)
+base-right pr2 x3 x4 y5 (1)
+base-right pr2 x4 x5 y5 (1)
+base-down pr2 x5 y5 y6 (1)
+base-down pr2 x5 y6 y7 (1)
+base-right pr2 x5 x6 y7 (1)
+base-right pr2 x6 x7 y7 (1)
+park pr2 (1)
+get-right pr2 x7 y7 xrel0 x7 yrel0 y7 object0 x8 (1)
+gripper-left pr2 x7 y7 xrel0 xrel-1 x7 x6 yrel0 y7 (1)
+put-right pr2 x7 y7 xrel-1 x6 yrel0 y7 object0 x7 (1)
+get-right pr2 x7 y7 xrel-1 x6 yrel0 y7 object8 x7 (1)
+gripper-right pr2 x7 y7 xrel-1 xrel0 x6 x7 yrel0 y7 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-left pr2 x7 x6 y7 (1)
+base-left pr2 x6 x5 y7 (1)
+base-up pr2 x5 y7 y6 (1)
+base-up pr2 x5 y6 y5 (1)
+base-left pr2 x5 x4 y5 (1)
+base-left pr2 x4 x3 y5 (1)
+base-left pr2 x3 x2 y5 (1)
+base-down pr2 x2 y5 y6 (1)
+base-down pr2 x2 y6 y7 (1)
+park pr2 (1)
+gripper-up pr2 x2 y7 xrel0 x2 yrel0 yrel-1 y7 y6 (1)
+put-down pr2 x2 y7 xrel0 x2 yrel-1 y6 object8 y7 (1)
+finish-object object8 x2 y7 (1)
+get-down pr2 x2 y7 xrel0 x2 yrel-1 y6 object4 y7 (1)
+gripper-down pr2 x2 y7 xrel0 x2 yrel-1 yrel0 y6 y7 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x2 y7 y6 (1)
+base-up pr2 x2 y6 y5 (1)
+base-right pr2 x2 x3 y5 (1)
+base-right pr2 x3 x4 y5 (1)
+base-right pr2 x4 x5 y5 (1)
+base-down pr2 x5 y5 y6 (1)
+base-down pr2 x5 y6 y7 (1)
+base-right pr2 x5 x6 y7 (1)
+base-right pr2 x6 x7 y7 (1)
+park pr2 (1)
+gripper-left pr2 x7 y7 xrel0 xrel-1 x7 x6 yrel0 y7 (1)
+put-right pr2 x7 y7 xrel-1 x6 yrel0 y7 object4 x7 (1)
+finish-object object4 x7 y7 (1)
+get-right pr2 x7 y7 xrel-1 x6 yrel0 y7 object0 x7 (1)
+gripper-right pr2 x7 y7 xrel-1 xrel0 x6 x7 yrel0 y7 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-down pr2 x7 y7 y8 (1)
+park pr2 (1)
+gripper-left pr2 x7 y8 xrel0 xrel-1 x7 x6 yrel0 y8 (1)
+put-right pr2 x7 y8 xrel-1 x6 yrel0 y8 object0 x7 (1)
+get-right pr2 x7 y8 xrel-1 x6 yrel0 y8 object6 x7 (1)
+gripper-right pr2 x7 y8 xrel-1 xrel0 x6 x7 yrel0 y8 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x7 y8 y7 (1)
+park pr2 (1)
+put-right pr2 x7 y7 xrel0 x7 yrel0 y7 object6 x8 (1)
+finish-object object6 x8 y7 (1)
+get-down pr2 x7 y7 xrel0 x7 yrel0 y7 object0 y8 (1)
+gripper-down pr2 x7 y7 xrel0 x7 yrel0 yrel1 y7 y8 (1)
+put-up pr2 x7 y7 xrel0 x7 yrel1 y8 object0 y7 (1)
+get-right pr2 x7 y7 xrel0 x7 yrel1 y8 object5 x8 (1)
+gripper-left pr2 x7 y7 xrel0 xrel-1 x7 x6 yrel1 y8 (1)
+put-right pr2 x7 y7 xrel-1 x6 yrel1 y8 object5 x7 (1)
+finish-object object5 x7 y8 (1)
+gripper-up pr2 x7 y7 xrel-1 x6 yrel1 yrel0 y8 y7 (1)
+get-right pr2 x7 y7 xrel-1 x6 yrel0 y7 object0 x7 (1)
+gripper-right pr2 x7 y7 xrel-1 xrel0 x6 x7 yrel0 y7 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-left pr2 x7 x6 y7 (1)
+base-left pr2 x6 x5 y7 (1)
+base-up pr2 x5 y7 y6 (1)
+base-up pr2 x5 y6 y5 (1)
+base-left pr2 x5 x4 y5 (1)
+base-up pr2 x4 y5 y4 (1)
+base-up pr2 x4 y4 y3 (1)
+base-up pr2 x4 y3 y2 (1)
+base-up pr2 x4 y2 y1 (1)
+base-up pr2 x4 y1 y0 (1)
+base-right pr2 x4 x5 y0 (1)
+park pr2 (1)
+gripper-right pr2 x5 y0 xrel0 xrel1 x5 x6 yrel0 y0 (1)
+gripper-down pr2 x5 y0 xrel1 x6 yrel0 yrel1 y0 y1 (1)
+put-down pr2 x5 y0 xrel1 x6 yrel1 y1 object0 y2 (1)
+finish-object object0 x6 y2 (1)
+gripper-up pr2 x5 y0 xrel1 x6 yrel1 yrel0 y1 y0 (1)
+gripper-left pr2 x5 y0 xrel1 xrel0 x6 x5 yrel0 y0 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-right pr2 x5 x6 y0 (1)
+base-down pr2 x6 y0 y1 (1)
+base-down pr2 x6 y1 y2 (1)
+park pr2 (1)
+get-down pr2 x6 y2 xrel0 x6 yrel0 y2 object7 y3 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x6 y2 y1 (1)
+base-up pr2 x6 y1 y0 (1)
+base-left pr2 x6 x5 y0 (1)
+base-left pr2 x5 x4 y0 (1)
+base-left pr2 x4 x3 y0 (1)
+base-down pr2 x3 y0 y1 (1)
+park pr2 (1)
+gripper-down pr2 x3 y1 xrel0 x3 yrel0 yrel1 y1 y2 (1)
+put-down pr2 x3 y1 xrel0 x3 yrel1 y2 object7 y3 (1)
+finish-object object7 x3 y3 (1)
+gripper-up pr2 x3 y1 xrel0 x3 yrel1 yrel0 y2 y1 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x3 y1 y0 (1)
+base-right pr2 x3 x4 y0 (1)
+base-right pr2 x4 x5 y0 (1)
+base-right pr2 x5 x6 y0 (1)
+base-down pr2 x6 y0 y1 (1)
+base-down pr2 x6 y1 y2 (1)
+park pr2 (1)
+get-right pr2 x6 y2 xrel0 x6 yrel0 y2 object1 x7 (1)
+put-down pr2 x6 y2 xrel0 x6 yrel0 y2 object1 y3 (1)
+finish-object object1 x6 y3 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-up pr2 x6 y2 y1 (1)
+base-up pr2 x6 y1 y0 (1)
+base-left pr2 x6 x5 y0 (1)
+base-left pr2 x5 x4 y0 (1)
+base-left pr2 x4 x3 y0 (1)
+park pr2 (1)
+gripper-left pr2 x3 y0 xrel0 xrel-1 x3 x2 yrel0 y0 (1)
+get-down pr2 x3 y0 xrel-1 x2 yrel0 y0 object2 y1 (1)
+gripper-right pr2 x3 y0 xrel-1 xrel0 x2 x3 yrel0 y0 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-right pr2 x3 x4 y0 (1)
+base-right pr2 x4 x5 y0 (1)
+base-right pr2 x5 x6 y0 (1)
+park pr2 (1)
+gripper-right pr2 x6 y0 xrel0 xrel1 x6 x7 yrel0 y0 (1)
+gripper-down pr2 x6 y0 xrel1 x7 yrel0 yrel1 y0 y1 (1)
+put-down pr2 x6 y0 xrel1 x7 yrel1 y1 object2 y2 (1)
+finish-object object2 x7 y2 (1)
+gripper-up pr2 x6 y0 xrel1 x7 yrel1 yrel0 y1 y0 (1)
+gripper-left pr2 x6 y0 xrel1 xrel0 x7 x6 yrel0 y0 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-left pr2 x6 x5 y0 (1)
+base-left pr2 x5 x4 y0 (1)
+base-down pr2 x4 y0 y1 (1)
+base-left pr2 x4 x3 y1 (1)
+base-down pr2 x3 y1 y2 (1)
+base-left pr2 x3 x2 y2 (1)
+base-down pr2 x2 y2 y3 (1)
+park pr2 (1)
+get-left pr2 x2 y3 xrel0 x2 yrel0 y3 object11 x1 (1)
+unpark pr2 xrel0 yrel0 (1)
+base-down pr2 x2 y3 y4 (1)
+base-down pr2 x2 y4 y5 (1)
+base-down pr2 x2 y5 y6 (1)
+base-down pr2 x2 y6 y7 (1)
+base-right pr2 x2 x3 y7 (1)
+park pr2 (1)
+put-down pr2 x3 y7 xrel0 x3 yrel0 y7 object11 y8 (1)
+finish-object object11 x3 y8 (1)
+[t=950.507s, 219320 KB] Plan length: 184 step(s).
+[t=950.507s, 219320 KB] Plan cost: 184
+[t=950.507s, 219320 KB] Expanded 84143 state(s).
+[t=950.507s, 219320 KB] Reopened 0 state(s).
+[t=950.507s, 219320 KB] Evaluated 131526 state(s).
+[t=950.507s, 219320 KB] Evaluations: 215668
+[t=950.507s, 219320 KB] Generated 256256 state(s).
+[t=950.507s, 219320 KB] Dead ends: 0 state(s).
+[t=950.507s, 219320 KB] Number of registered states: 131526
+[t=950.507s, 219320 KB] Int hash set load factor: 131526/262144 = 0.501732
+[t=950.507s, 219320 KB] Int hash set resizes: 18
+[t=950.507s, 219320 KB] Search time: 938.569s
+[t=950.507s, 219320 KB] Total time: 950.507s
+Solution found.
+Peak memory: 219320 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 184 
+
+Successful plans:
+Value: 184
+ sas_plan 184 
+
+validate exit code: 0
+

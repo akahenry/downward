@@ -1,0 +1,521 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799.99s
+INFO     translator memory limit: 4096 MB
+INFO     translator command line string: /usr/bin/python3 /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.010s CPU, 0.005s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.002s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.002s wall-clock]
+Preparing model... [0.000s CPU, 0.005s wall-clock]
+Generated 46 rules.
+Computing model... [0.340s CPU, 0.334s wall-clock]
+52152 relevant atoms
+20764 auxiliary atoms
+72916 final queue length
+164732 total queue pushes
+Completing instantiation... [1.550s CPU, 1.548s wall-clock]
+Instantiating: [1.890s CPU, 1.901s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.020s CPU, 0.015s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.001s wall-clock]
+Instantiating groups... [0.010s CPU, 0.010s wall-clock]
+Collecting mutex groups... [0.010s CPU, 0.001s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.003s wall-clock]
+Building translation key... [0.010s CPU, 0.002s wall-clock]
+Computing fact groups: [0.050s CPU, 0.041s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.001s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.001s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.060s CPU, 0.065s wall-clock]
+Translating task: [1.200s CPU, 1.206s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+76 propositions removed
+Detecting unreachable propositions: [0.730s CPU, 0.724s wall-clock]
+Reordering and filtering variables...
+76 of 76 variables necessary.
+0 of 76 mutex groups necessary.
+47768 of 47768 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.150s CPU, 0.156s wall-clock]
+Translator variables: 76
+Translator derived variables: 0
+Translator facts: 3068
+Translator goal facts: 60
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 47768
+Translator axioms: 0
+Translator task size: 287628
+Translator peak memory: 220704 KB
+Writing output... [0.190s CPU, 0.187s wall-clock]
+Done! [4.290s CPU, 4.288s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1795.66s
+INFO     search memory limit: 4096 MB
+INFO     search command line string: /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/downward --evaluator 'eval=ff()' --search 'eager_greedy([lsh(patterns=systematic(4), op_order=default, res_order=default, transform=adapt_costs(cost_type=ONE))],  preferred=[eval])' --internal-plan-file sas_plan < output.sas
+[t=0s, 46116 KB] reading input...
+[t=0.115997s, 59036 KB] done reading input!
+[t=0.123997s, 64420 KB] Simplifying 94808 unary operators... done! [94808 unary operators]
+[t=0.171996s, 73272 KB] time to simplify: 0.0479986s
+[t=0.175996s, 73272 KB] Initializing additive heuristic...
+[t=0.175996s, 73272 KB] Initializing FF heuristic...
+[t=0.175996s, 73272 KB] stop search of patterns: 3355443KB
+[t=0.175996s, 73272 KB] Generating patterns using the systematic generator...
+[t=0.175996s, 73272 KB] building causal graph...done! [t=0.00400089s]
+[t=1.05027s, 191664 KB] Found 492580 SGA patterns.
+[t=10.638s, 246668 KB] Found 830060 interesting patterns.
+[t=10.8099s, 246668 KB] [60, 960, 35520, 793520]
+[t=11.2059s, 253900 KB] Systematic generator number of patterns: 3060
+[t=11.2059s, 253900 KB] Systematic generator total PDB size: 739314548
+[t=11.2059s, 253900 KB] Systematic generator computation time: 11.0299s
+[t=11.2059s, 253900 KB] Computing PDBs for pattern collection...
+[t=681.237s, 2982292 KB] Done computing PDBs for pattern collection: 670.031s
+[t=683.605s, 3140600 KB] Operators: 47768
+[t=683.605s, 3140600 KB] Restrictions: 3060
+[t=683.605s, 3140600 KB] Mean mentions: 307
+[t=683.605s, 3140600 KB] Mean operators: 4792
+[t=683.609s, 3140600 KB] Building successor generator...done!
+[t=683.625s, 3140600 KB] peak memory difference for successor generator creation: 0 KB
+[t=683.625s, 3140600 KB] time for successor generation creation: 0.0159993s
+[t=683.625s, 3140600 KB] Variables: 76
+[t=683.625s, 3140600 KB] FactPairs: 3068
+[t=683.625s, 3140600 KB] Bytes per state: 56
+[t=683.625s, 3140600 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=683.625s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 331
+[t=683.625s, 3140600 KB] g=0, 1 evaluated, 0 expanded
+[t=683.625s, 3140600 KB] Initial heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 331
+[t=683.625s, 3140600 KB] pruning method: none
+[t=683.625s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 327
+[t=683.625s, 3140600 KB] g=11, 2 evaluated, 1 expanded
+[t=683.637s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 326
+[t=683.637s, 3140600 KB] g=19, 89 evaluated, 2 expanded
+[t=683.637s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 324
+[t=683.637s, 3140600 KB] g=17, 102 evaluated, 2 expanded
+[t=683.649s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 323
+[t=683.649s, 3140600 KB] g=17, 182 evaluated, 3 expanded
+[t=683.657s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 321
+[t=683.657s, 3140600 KB] g=25, 248 evaluated, 4 expanded
+[t=683.669s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 320
+[t=683.669s, 3140600 KB] g=25, 332 evaluated, 5 expanded
+[t=683.681s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 319
+[t=683.681s, 3140600 KB] g=25, 418 evaluated, 6 expanded
+[t=683.693s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 318
+[t=683.693s, 3140600 KB] g=25, 512 evaluated, 7 expanded
+[t=683.701s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 317
+[t=683.701s, 3140600 KB] g=25, 597 evaluated, 8 expanded
+[t=683.713s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 316
+[t=683.713s, 3140600 KB] g=25, 682 evaluated, 9 expanded
+[t=683.721s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 315
+[t=683.721s, 3140600 KB] g=31, 756 evaluated, 10 expanded
+[t=683.733s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 314
+[t=683.733s, 3140600 KB] g=31, 840 evaluated, 11 expanded
+[t=683.745s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 313
+[t=683.745s, 3140600 KB] g=31, 930 evaluated, 12 expanded
+[t=683.757s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 312
+[t=683.757s, 3140600 KB] g=31, 1033 evaluated, 13 expanded
+[t=683.765s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 311
+[t=683.765s, 3140600 KB] g=43, 1113 evaluated, 14 expanded
+[t=683.777s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 310
+[t=683.777s, 3140600 KB] g=43, 1199 evaluated, 15 expanded
+[t=683.789s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 309
+[t=683.789s, 3140600 KB] g=50, 1279 evaluated, 16 expanded
+[t=683.789s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 308
+[t=683.789s, 3140600 KB] g=56, 1281 evaluated, 16 expanded
+[t=683.797s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 307
+[t=683.797s, 3140600 KB] g=68, 1357 evaluated, 17 expanded
+[t=683.809s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 306
+[t=683.809s, 3140600 KB] g=68, 1449 evaluated, 18 expanded
+[t=683.821s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 305
+[t=683.821s, 3140600 KB] g=68, 1542 evaluated, 19 expanded
+[t=683.833s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 304
+[t=683.833s, 3140600 KB] g=68, 1644 evaluated, 20 expanded
+[t=683.845s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 303
+[t=683.845s, 3140600 KB] g=68, 1750 evaluated, 21 expanded
+[t=683.857s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 302
+[t=683.857s, 3140600 KB] g=68, 1839 evaluated, 22 expanded
+[t=683.869s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 301
+[t=683.869s, 3140600 KB] g=68, 1936 evaluated, 23 expanded
+[t=683.889s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 300
+[t=683.889s, 3140600 KB] g=68, 2104 evaluated, 25 expanded
+[t=683.909s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 299
+[t=683.909s, 3140600 KB] g=68, 2270 evaluated, 27 expanded
+[t=683.929s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 298
+[t=683.929s, 3140600 KB] g=77, 2443 evaluated, 30 expanded
+[t=683.941s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 297
+[t=683.941s, 3140600 KB] g=86, 2520 evaluated, 31 expanded
+[t=683.961s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 296
+[t=683.961s, 3140600 KB] g=84, 2687 evaluated, 33 expanded
+[t=683.969s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 295
+[t=683.969s, 3140600 KB] g=91, 2766 evaluated, 34 expanded
+[t=683.993s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 294
+[t=683.993s, 3140600 KB] g=91, 2935 evaluated, 36 expanded
+[t=684.001s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 293
+[t=684.001s, 3140600 KB] g=100, 3014 evaluated, 37 expanded
+[t=684.021s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 292
+[t=684.021s, 3140600 KB] g=102, 3181 evaluated, 39 expanded
+[t=684.029s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 291
+[t=684.029s, 3140600 KB] g=102, 3259 evaluated, 40 expanded
+[t=684.041s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 290
+[t=684.041s, 3140600 KB] g=102, 3357 evaluated, 41 expanded
+[t=684.053s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 289
+[t=684.053s, 3140600 KB] g=102, 3434 evaluated, 42 expanded
+[t=684.073s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 288
+[t=684.073s, 3140600 KB] g=112, 3601 evaluated, 44 expanded
+[t=684.093s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 287
+[t=684.093s, 3140600 KB] g=122, 3769 evaluated, 46 expanded
+[t=684.113s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 286
+[t=684.113s, 3140600 KB] g=122, 3868 evaluated, 47 expanded
+[t=684.161s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 285
+[t=684.161s, 3140600 KB] g=136, 4267 evaluated, 52 expanded
+[t=684.169s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 283
+[t=684.169s, 3140600 KB] g=142, 4347 evaluated, 53 expanded
+[t=684.181s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 282
+[t=684.181s, 3140600 KB] g=142, 4436 evaluated, 54 expanded
+[t=684.221s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 281
+[t=684.221s, 3140600 KB] g=149, 4766 evaluated, 58 expanded
+[t=684.229s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 280
+[t=684.229s, 3140600 KB] g=156, 4846 evaluated, 59 expanded
+[t=684.249s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 279
+[t=684.249s, 3140600 KB] g=155, 5019 evaluated, 61 expanded
+[t=684.261s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 278
+[t=684.261s, 3140600 KB] g=163, 5100 evaluated, 62 expanded
+[t=684.301s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 277
+[t=684.301s, 3140600 KB] g=165, 5441 evaluated, 66 expanded
+[t=684.309s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 276
+[t=684.309s, 3140600 KB] g=178, 5523 evaluated, 67 expanded
+[t=684.345s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 275
+[t=684.345s, 3140600 KB] g=174, 5699 evaluated, 69 expanded
+[t=684.353s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 274
+[t=684.353s, 3140600 KB] g=183, 5779 evaluated, 70 expanded
+[t=684.373s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 273
+[t=684.373s, 3140600 KB] g=180, 5958 evaluated, 72 expanded
+[t=684.385s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 272
+[t=684.385s, 3140600 KB] g=190, 6038 evaluated, 73 expanded
+[t=684.421s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 271
+[t=684.421s, 3140600 KB] g=187, 6213 evaluated, 75 expanded
+[t=684.429s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 270
+[t=684.429s, 3140600 KB] g=199, 6295 evaluated, 76 expanded
+[t=684.449s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 269
+[t=684.449s, 3140600 KB] g=198, 6469 evaluated, 78 expanded
+[t=684.461s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 268
+[t=684.461s, 3140600 KB] g=204, 6551 evaluated, 79 expanded
+[t=684.481s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 267
+[t=684.481s, 3140600 KB] g=211, 6724 evaluated, 81 expanded
+[t=684.501s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 266
+[t=684.501s, 3140600 KB] g=225, 6899 evaluated, 83 expanded
+[t=684.521s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 265
+[t=684.521s, 3140600 KB] g=217, 7073 evaluated, 85 expanded
+[t=684.529s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 264
+[t=684.529s, 3140600 KB] g=217, 7155 evaluated, 86 expanded
+[t=684.541s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 263
+[t=684.541s, 3140600 KB] g=217, 7257 evaluated, 87 expanded
+[t=684.553s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 262
+[t=684.553s, 3140600 KB] g=217, 7349 evaluated, 88 expanded
+[t=684.613s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 261
+[t=684.613s, 3140600 KB] g=224, 7882 evaluated, 94 expanded
+[t=684.701s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 260
+[t=684.701s, 3140600 KB] g=240, 8500 evaluated, 101 expanded
+[t=684.785s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 259
+[t=684.785s, 3140600 KB] g=286, 9195 evaluated, 109 expanded
+[t=684.793s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 258
+[t=684.793s, 3140600 KB] g=286, 9286 evaluated, 110 expanded
+[t=684.805s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 257
+[t=684.805s, 3140600 KB] g=286, 9381 evaluated, 111 expanded
+[t=684.813s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 256
+[t=684.813s, 3140600 KB] g=286, 9466 evaluated, 112 expanded
+[t=684.901s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 255
+[t=684.901s, 3140600 KB] g=302, 10126 evaluated, 119 expanded
+[t=684.977s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 254
+[t=684.977s, 3140600 KB] g=318, 10749 evaluated, 126 expanded
+[t=685.045s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 253
+[t=685.045s, 3140600 KB] g=318, 11265 evaluated, 132 expanded
+[t=685.105s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 252
+[t=685.105s, 3140600 KB] g=326, 11808 evaluated, 138 expanded
+[t=685.117s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 251
+[t=685.117s, 3140600 KB] g=334, 11901 evaluated, 139 expanded
+[t=685.137s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 250
+[t=685.137s, 3140600 KB] g=337, 12077 evaluated, 141 expanded
+[t=685.137s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 249
+[t=685.137s, 3140600 KB] g=334, 12083 evaluated, 141 expanded
+[t=685.384s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 248
+[t=685.384s, 3140600 KB] g=395, 14256 evaluated, 166 expanded
+[t=685.856s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 247
+[t=685.856s, 3140600 KB] g=406, 18414 evaluated, 215 expanded
+[t=685.864s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 245
+[t=685.864s, 3140600 KB] g=406, 18506 evaluated, 216 expanded
+[t=685.888s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 244
+[t=685.888s, 3140600 KB] g=414, 18695 evaluated, 218 expanded
+[t=685.9s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 243
+[t=685.9s, 3140600 KB] g=414, 18808 evaluated, 219 expanded
+[t=685.908s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 242
+[t=685.908s, 3140600 KB] g=428, 18897 evaluated, 220 expanded
+[t=685.908s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 241
+[t=685.912s, 3140600 KB] g=420, 18905 evaluated, 220 expanded
+[t=685.92s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 240
+[t=685.92s, 3140600 KB] g=420, 18994 evaluated, 221 expanded
+[t=685.932s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 239
+[t=685.932s, 3140600 KB] g=420, 19092 evaluated, 222 expanded
+[t=685.94s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 238
+[t=685.94s, 3140600 KB] g=434, 19179 evaluated, 223 expanded
+[t=685.952s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 237
+[t=685.952s, 3140600 KB] g=434, 19275 evaluated, 224 expanded
+[t=685.96s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 236
+[t=685.96s, 3140600 KB] g=440, 19362 evaluated, 225 expanded
+[t=685.972s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 235
+[t=685.972s, 3140600 KB] g=440, 19459 evaluated, 226 expanded
+[t=685.98s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 234
+[t=685.98s, 3140600 KB] g=446, 19549 evaluated, 227 expanded
+[t=685.992s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 233
+[t=685.992s, 3140600 KB] g=446, 19646 evaluated, 228 expanded
+[t=686.004s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 232
+[t=686.004s, 3140600 KB] g=452, 19736 evaluated, 229 expanded
+[t=686.032s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 231
+[t=686.032s, 3140600 KB] g=460, 19997 evaluated, 232 expanded
+[t=686.04s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 229
+[t=686.04s, 3140600 KB] g=468, 20086 evaluated, 233 expanded
+[t=686.052s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 228
+[t=686.052s, 3140600 KB] g=468, 20187 evaluated, 234 expanded
+[t=686.084s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 227
+[t=686.084s, 3140600 KB] g=478, 20473 evaluated, 237 expanded
+[t=686.092s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 226
+[t=686.092s, 3140600 KB] g=488, 20562 evaluated, 238 expanded
+[t=686.112s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 225
+[t=686.112s, 3140600 KB] g=484, 20751 evaluated, 240 expanded
+[t=686.124s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 224
+[t=686.124s, 3140600 KB] g=495, 20841 evaluated, 241 expanded
+[t=686.136s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 223
+[t=686.136s, 3140600 KB] g=495, 20943 evaluated, 242 expanded
+[t=686.152s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 222
+[t=686.152s, 3140600 KB] g=495, 21103 evaluated, 243 expanded
+[t=686.188s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 221
+[t=686.188s, 3140600 KB] g=502, 21435 evaluated, 247 expanded
+[t=686.2s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 219
+[t=686.2s, 3140600 KB] g=502, 21537 evaluated, 248 expanded
+[t=686.208s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 218
+[t=686.208s, 3140600 KB] g=514, 21634 evaluated, 249 expanded
+[t=686.24s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 217
+[t=686.24s, 3140600 KB] g=527, 21914 evaluated, 252 expanded
+[t=686.252s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 215
+[t=686.252s, 3140600 KB] g=527, 22015 evaluated, 253 expanded
+[t=686.26s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 214
+[t=686.26s, 3140600 KB] g=527, 22117 evaluated, 254 expanded
+[t=686.276s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 213
+[t=686.276s, 3140600 KB] g=527, 22242 evaluated, 255 expanded
+[t=686.312s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 212
+[t=686.312s, 3140600 KB] g=542, 22607 evaluated, 259 expanded
+[t=686.324s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 211
+[t=686.324s, 3140600 KB] g=542, 22696 evaluated, 260 expanded
+[t=686.332s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 210
+[t=686.332s, 3140600 KB] g=551, 22792 evaluated, 261 expanded
+[t=686.344s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 209
+[t=686.344s, 3140600 KB] g=551, 22893 evaluated, 262 expanded
+[t=686.356s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 208
+[t=686.356s, 3140600 KB] g=559, 22991 evaluated, 263 expanded
+[t=686.364s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 207
+[t=686.364s, 3140600 KB] g=559, 23086 evaluated, 264 expanded
+[t=686.376s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 206
+[t=686.376s, 3140600 KB] g=565, 23186 evaluated, 265 expanded
+[t=686.384s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 205
+[t=686.384s, 3140600 KB] g=565, 23281 evaluated, 266 expanded
+[t=686.396s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 204
+[t=686.396s, 3140600 KB] g=571, 23383 evaluated, 267 expanded
+[t=686.488s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 203
+[t=686.488s, 3140600 KB] g=585, 24261 evaluated, 276 expanded
+[t=686.5s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 201
+[t=686.5s, 3140600 KB] g=585, 24363 evaluated, 277 expanded
+[t=686.508s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 200
+[t=686.508s, 3140600 KB] g=585, 24470 evaluated, 278 expanded
+[t=686.52s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 199
+[t=686.52s, 3140600 KB] g=585, 24578 evaluated, 279 expanded
+[t=686.532s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 198
+[t=686.532s, 3140600 KB] g=585, 24704 evaluated, 280 expanded
+[t=686.544s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 197
+[t=686.544s, 3140600 KB] g=592, 24809 evaluated, 281 expanded
+[t=686.556s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 196
+[t=686.556s, 3140600 KB] g=592, 24911 evaluated, 282 expanded
+[t=686.568s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 195
+[t=686.568s, 3140600 KB] g=653, 25054 evaluated, 283 expanded
+[t=686.58s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 194
+[t=686.58s, 3140600 KB] g=653, 25154 evaluated, 284 expanded
+[t=686.592s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 193
+[t=686.592s, 3140600 KB] g=653, 25261 evaluated, 285 expanded
+[t=686.6s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 192
+[t=686.6s, 3140600 KB] g=653, 25371 evaluated, 286 expanded
+[t=686.612s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 191
+[t=686.612s, 3140600 KB] g=653, 25483 evaluated, 287 expanded
+[t=686.624s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 190
+[t=686.624s, 3140600 KB] g=653, 25600 evaluated, 288 expanded
+[t=686.696s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 189
+[t=686.696s, 3140600 KB] g=659, 26287 evaluated, 295 expanded
+[t=686.708s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 188
+[t=686.708s, 3140600 KB] g=665, 26391 evaluated, 296 expanded
+[t=686.708s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 187
+[t=686.708s, 3140600 KB] g=669, 26396 evaluated, 296 expanded
+[t=686.716s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 186
+[t=686.716s, 3140600 KB] g=669, 26505 evaluated, 297 expanded
+[t=686.728s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 185
+[t=686.728s, 3140600 KB] g=669, 26621 evaluated, 298 expanded
+[t=686.74s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 184
+[t=686.74s, 3140600 KB] g=680, 26726 evaluated, 299 expanded
+[t=686.74s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 183
+[t=686.74s, 3140600 KB] g=676, 26730 evaluated, 299 expanded
+[t=686.752s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 182
+[t=686.752s, 3140600 KB] g=676, 26841 evaluated, 300 expanded
+[t=686.764s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 181
+[t=686.764s, 3140600 KB] g=676, 26957 evaluated, 301 expanded
+[t=686.772s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 180
+[t=686.776s, 3140600 KB] g=685, 27061 evaluated, 302 expanded
+[t=686.796s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 179
+[t=686.796s, 3140600 KB] g=683, 27283 evaluated, 304 expanded
+[t=686.808s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 178
+[t=686.808s, 3140600 KB] g=690, 27388 evaluated, 305 expanded
+[t=686.82s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 177
+[t=686.82s, 3140600 KB] g=690, 27507 evaluated, 306 expanded
+[t=686.892s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 176
+[t=686.892s, 3140600 KB] g=698, 28260 evaluated, 313 expanded
+[t=686.904s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 175
+[t=686.904s, 3140600 KB] g=706, 28364 evaluated, 314 expanded
+[t=686.916s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 174
+[t=686.916s, 3140600 KB] g=706, 28484 evaluated, 315 expanded
+[t=687.032s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 173
+[t=687.032s, 3140600 KB] g=715, 29667 evaluated, 326 expanded
+[t=687.372s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 172
+[t=687.372s, 3140600 KB] g=776, 33087 evaluated, 360 expanded
+[t=687.396s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 171
+[t=687.396s, 3140600 KB] g=776, 33307 evaluated, 362 expanded
+[t=687.584s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 170
+[t=687.584s, 3140600 KB] g=792, 35206 evaluated, 381 expanded
+[t=687.596s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 169
+[t=687.596s, 3140600 KB] g=792, 35318 evaluated, 382 expanded
+[t=687.992s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 168
+[t=687.992s, 3140600 KB] g=868, 39285 evaluated, 425 expanded
+[t=688.004s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 167
+[t=688.004s, 3140600 KB] g=868, 39409 evaluated, 426 expanded
+[t=688.608s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 166
+[t=688.608s, 3140600 KB] g=959, 45513 evaluated, 487 expanded
+[t=689.388s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 165
+[t=689.388s, 3140600 KB] g=1050, 53428 evaluated, 560 expanded
+[t=689.396s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 164
+[t=689.396s, 3140600 KB] g=1050, 53507 evaluated, 561 expanded
+[t=689.408s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 163
+[t=689.408s, 3140600 KB] g=1056, 53633 evaluated, 562 expanded
+[t=689.42s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 162
+[t=689.42s, 3140600 KB] g=1056, 53772 evaluated, 563 expanded
+[t=689.54s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 161
+[t=689.54s, 3140600 KB] g=1062, 54988 evaluated, 573 expanded
+[t=689.644s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 160
+[t=689.644s, 3140600 KB] g=1089, 56070 evaluated, 582 expanded
+[t=689.656s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 159
+[t=689.656s, 3140600 KB] g=1089, 56186 evaluated, 583 expanded
+[t=689.668s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 158
+[t=689.668s, 3140600 KB] g=1089, 56314 evaluated, 584 expanded
+[t=689.68s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 157
+[t=689.68s, 3140600 KB] g=1100, 56446 evaluated, 585 expanded
+[t=689.692s, 3140600 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 156
+[t=689.692s, 3140600 KB] g=1107, 56564 evaluated, 586 expanded
+[t=689.924s, 3141624 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 155
+[t=689.924s, 3141624 KB] g=1113, 58962 evaluated, 607 expanded
+[t=690.704s, 3141624 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 154
+[t=690.704s, 3141624 KB] g=1174, 67072 evaluated, 682 expanded
+[t=690.728s, 3141624 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 153
+[t=690.728s, 3141624 KB] g=1174, 67323 evaluated, 684 expanded
+[t=709.159s, 3159496 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 152
+[t=709.159s, 3159496 KB] g=1326, 257077 evaluated, 2627 expanded
+[t=709.183s, 3159496 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 151
+[t=709.183s, 3159496 KB] g=1326, 257321 evaluated, 2629 expanded
+[t=726.735s, 3174616 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 150
+[t=726.735s, 3174616 KB] g=1493, 437913 evaluated, 4572 expanded
+[t=726.759s, 3174616 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 149
+[t=726.759s, 3174616 KB] g=1493, 438135 evaluated, 4574 expanded
+[t=727.239s, 3175024 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 148
+[t=727.239s, 3175024 KB] g=1524, 443209 evaluated, 4618 expanded
+[t=727.263s, 3175024 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 147
+[t=727.263s, 3175024 KB] g=1524, 443463 evaluated, 4620 expanded
+[t=729.63s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 146
+[t=729.63s, 3184396 KB] g=1537, 468100 evaluated, 4851 expanded
+[t=729.638s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 145
+[t=729.638s, 3184396 KB] g=1550, 468198 evaluated, 4852 expanded
+[t=729.654s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 144
+[t=729.654s, 3184396 KB] g=1550, 468344 evaluated, 4853 expanded
+[t=730.258s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 142
+[t=730.258s, 3184396 KB] g=1563, 474745 evaluated, 4908 expanded
+[t=730.27s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 141
+[t=730.27s, 3184396 KB] g=1563, 474885 evaluated, 4909 expanded
+[t=730.282s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 140
+[t=730.282s, 3184396 KB] g=1563, 475033 evaluated, 4910 expanded
+[t=730.294s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 139
+[t=730.294s, 3184396 KB] g=1577, 475162 evaluated, 4911 expanded
+[t=730.31s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 138
+[t=730.31s, 3184396 KB] g=1577, 475299 evaluated, 4912 expanded
+[t=730.322s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 137
+[t=730.322s, 3184396 KB] g=1577, 475435 evaluated, 4913 expanded
+[t=730.334s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 136
+[t=730.334s, 3184396 KB] g=1591, 475561 evaluated, 4914 expanded
+[t=730.346s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 135
+[t=730.346s, 3184396 KB] g=1591, 475697 evaluated, 4915 expanded
+[t=730.358s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 134
+[t=730.358s, 3184396 KB] g=1597, 475829 evaluated, 4916 expanded
+[t=730.37s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 133
+[t=730.37s, 3184396 KB] g=1597, 475956 evaluated, 4917 expanded
+[t=730.498s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 132
+[t=730.498s, 3184396 KB] g=1612, 477361 evaluated, 4929 expanded
+[t=730.51s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 131
+[t=730.51s, 3184396 KB] g=1612, 477481 evaluated, 4930 expanded
+[t=730.522s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 130
+[t=730.522s, 3184396 KB] g=1612, 477626 evaluated, 4931 expanded
+[t=730.534s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 129
+[t=730.534s, 3184396 KB] g=1612, 477746 evaluated, 4932 expanded
+[t=730.546s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 128
+[t=730.546s, 3184396 KB] g=1618, 477866 evaluated, 4933 expanded
+[t=730.558s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 127
+[t=730.558s, 3184396 KB] g=1618, 477998 evaluated, 4934 expanded
+[t=730.57s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 126
+[t=730.57s, 3184396 KB] g=1628, 478125 evaluated, 4935 expanded
+[t=730.578s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 125
+[t=730.578s, 3184396 KB] g=1628, 478251 evaluated, 4936 expanded
+[t=730.59s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 124
+[t=730.59s, 3184396 KB] g=1636, 478379 evaluated, 4937 expanded
+[t=730.602s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 123
+[t=730.602s, 3184396 KB] g=1636, 478500 evaluated, 4938 expanded
+[t=730.614s, 3184396 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 122
+[t=730.614s, 3184396 KB] g=1642, 478629 evaluated, 4939 expanded
+[t=739.782s, 3190472 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 121
+[t=739.782s, 3190472 KB] g=1665, 579184 evaluated, 5904 expanded
+[t=739.794s, 3190472 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 120
+[t=739.794s, 3190472 KB] g=1665, 579329 evaluated, 5905 expanded
+[t=739.806s, 3190472 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 119
+[t=739.806s, 3190472 KB] g=1676, 579464 evaluated, 5906 expanded
+[t=739.822s, 3190472 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 118
+[t=739.822s, 3190472 KB] g=1676, 579601 evaluated, 5907 expanded
+[t=759.609s, 3208564 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 117
+[t=759.609s, 3208564 KB] g=1777, 796524 evaluated, 8092 expanded
+[t=759.621s, 3208564 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 116
+[t=759.621s, 3208564 KB] g=1777, 796659 evaluated, 8093 expanded
+Failed to allocate memory.
+Memory limit has been reached.
+Peak memory: 4194216 KB
+Remove intermediate file output.sas
+search exit code: 22
+
+Driver aborting after search

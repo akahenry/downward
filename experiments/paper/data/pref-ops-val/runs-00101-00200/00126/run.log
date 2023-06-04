@@ -1,0 +1,298 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799.99s
+INFO     translator memory limit: 4096 MB
+INFO     translator command line string: /usr/bin/python3 /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 32 rules.
+Computing model... [0.200s CPU, 0.187s wall-clock]
+33917 relevant atoms
+3770 auxiliary atoms
+37687 final queue length
+109988 total queue pushes
+Completing instantiation... [1.030s CPU, 1.041s wall-clock]
+Instantiating: [1.240s CPU, 1.234s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.000s CPU, 0.004s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.003s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+61 uncovered facts
+Choosing groups: [0.000s CPU, 0.002s wall-clock]
+Building translation key... [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [0.010s CPU, 0.013s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.001s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.001s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.050s CPU, 0.044s wall-clock]
+Translating task: [1.260s CPU, 1.254s wall-clock]
+38592 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+24 propositions removed
+Detecting unreachable propositions: [0.640s CPU, 0.644s wall-clock]
+Reordering and filtering variables...
+85 of 85 variables necessary.
+37 of 61 mutex groups necessary.
+31104 of 31104 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.190s CPU, 0.187s wall-clock]
+Translator variables: 85
+Translator derived variables: 0
+Translator facts: 1010
+Translator goal facts: 24
+Translator mutex groups: 37
+Translator total mutex groups size: 925
+Translator operators: 31104
+Translator axioms: 0
+Translator task size: 253756
+Translator peak memory: 180716 KB
+Writing output... [0.180s CPU, 0.175s wall-clock]
+Done! [3.570s CPU, 3.563s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1796.4s
+INFO     search memory limit: 4096 MB
+INFO     search command line string: /home/dmdoebber/downward-projects/downward/experiments/paper/data/pref-ops-val/code-11d6cc7f374e3fd7216f4422aa97b8db8c68d3c3_e5e41175/builds/release/bin/downward --evaluator 'eval=ff()' --search 'eager_greedy([lsh(patterns=systematic(4), op_order=default, res_order=default, transform=adapt_costs(cost_type=ONE))],  preferred=[eval])' --internal-plan-file sas_plan < output.sas
+[t=0s, 46116 KB] reading input...
+[t=0.110399s, 57872 KB] done reading input!
+[t=0.1184s, 64348 KB] Simplifying 107976 unary operators... done! [107976 unary operators]
+[t=0.210391s, 74264 KB] time to simplify: 0.0919915s
+[t=0.210391s, 74264 KB] Initializing additive heuristic...
+[t=0.210391s, 74264 KB] Initializing FF heuristic...
+[t=0.210391s, 74264 KB] stop search of patterns: 3355443KB
+[t=0.210391s, 74264 KB] Generating patterns using the systematic generator...
+[t=0.210391s, 74264 KB] building causal graph...done! [t=0.0159985s]
+[t=3.02892s, 443728 KB] Found 1436144 SGA patterns.
+[t=23.8469s, 461456 KB] Found 1554548 interesting patterns.
+[t=24.2108s, 461456 KB] [24, 1464, 60756, 1492304]
+[t=25.1227s, 461456 KB] Systematic generator number of patterns: 4464
+[t=25.1227s, 461456 KB] Systematic generator total PDB size: 16239966
+[t=25.1227s, 461456 KB] Systematic generator computation time: 24.9124s
+[t=25.1227s, 461456 KB] Computing PDBs for pattern collection...
+[t=70.7366s, 461456 KB] Done computing PDBs for pattern collection: 45.6139s
+[t=73.6834s, 461456 KB] Operators: 31104
+[t=73.6834s, 461456 KB] Restrictions: 4464
+[t=73.6834s, 461456 KB] Mean mentions: 527
+[t=73.6834s, 461456 KB] Mean operators: 3674
+[t=73.6874s, 461456 KB] Building successor generator...done!
+[t=73.6954s, 461456 KB] peak memory difference for successor generator creation: 0 KB
+[t=73.6954s, 461456 KB] time for successor generation creation: 0.00799391s
+[t=73.6954s, 461456 KB] Variables: 85
+[t=73.6954s, 461456 KB] FactPairs: 1010
+[t=73.6954s, 461456 KB] Bytes per state: 28
+[t=73.6954s, 461456 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=73.6954s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 45
+[t=73.6954s, 461456 KB] g=0, 1 evaluated, 0 expanded
+[t=73.6954s, 461456 KB] Initial heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 45
+[t=73.6954s, 461456 KB] pruning method: none
+[t=73.6994s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 44
+[t=73.6994s, 461456 KB] g=1, 13 evaluated, 1 expanded
+[t=73.7034s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 43
+[t=73.7034s, 461456 KB] g=2, 34 evaluated, 2 expanded
+[t=73.7034s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 42
+[t=73.7034s, 461456 KB] g=3, 52 evaluated, 3 expanded
+[t=73.7074s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 41
+[t=73.7074s, 461456 KB] g=4, 82 evaluated, 4 expanded
+[t=73.7114s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 40
+[t=73.7114s, 461456 KB] g=5, 100 evaluated, 5 expanded
+[t=73.7114s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 39
+[t=73.7114s, 461456 KB] g=5, 101 evaluated, 5 expanded
+[t=73.7154s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 38
+[t=73.7154s, 461456 KB] g=6, 144 evaluated, 7 expanded
+[t=73.7194s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 37
+[t=73.7194s, 461456 KB] g=7, 162 evaluated, 8 expanded
+[t=73.7394s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 36
+[t=73.7394s, 461456 KB] g=9, 305 evaluated, 14 expanded
+[t=73.7434s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 35
+[t=73.7434s, 461456 KB] g=10, 322 evaluated, 15 expanded
+[t=73.7434s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 34
+[t=73.7434s, 461456 KB] g=11, 341 evaluated, 16 expanded
+[t=73.7514s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 33
+[t=73.7514s, 461456 KB] g=12, 389 evaluated, 18 expanded
+[t=73.7594s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 31
+[t=73.7594s, 461456 KB] g=14, 436 evaluated, 20 expanded
+[t=73.7594s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 29
+[t=73.7594s, 461456 KB] g=15, 449 evaluated, 21 expanded
+[t=73.7674s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 27
+[t=73.7674s, 461456 KB] g=17, 501 evaluated, 23 expanded
+[t=73.7714s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 25
+[t=73.7714s, 461456 KB] g=18, 519 evaluated, 24 expanded
+[t=73.7714s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 23
+[t=73.7714s, 461456 KB] g=19, 535 evaluated, 25 expanded
+[t=73.7754s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 22
+[t=73.7754s, 461456 KB] g=20, 563 evaluated, 26 expanded
+[t=73.7794s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 21
+[t=73.7794s, 461456 KB] g=22, 599 evaluated, 28 expanded
+[t=73.9753s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 20
+[t=73.9753s, 461456 KB] g=27, 1970 evaluated, 93 expanded
+[t=73.9913s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 19
+[t=73.9913s, 461456 KB] g=29, 2054 evaluated, 97 expanded
+[t=74.851s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 18
+[t=74.851s, 461456 KB] g=37, 7930 evaluated, 382 expanded
+[t=74.851s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 17
+[t=74.851s, 461456 KB] g=38, 7948 evaluated, 383 expanded
+[t=75.5467s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 16
+[t=75.5467s, 461456 KB] g=38, 12493 evaluated, 622 expanded
+[t=75.5467s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 15
+[t=75.5467s, 461456 KB] g=39, 12511 evaluated, 623 expanded
+[t=76.8302s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 14
+[t=76.8302s, 461456 KB] g=43, 20926 evaluated, 1064 expanded
+[t=76.8422s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 13
+[t=76.8422s, 461456 KB] g=45, 21019 evaluated, 1068 expanded
+[t=76.8462s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 12
+[t=76.8462s, 461456 KB] g=46, 21038 evaluated, 1069 expanded
+[t=78.9414s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 11
+[t=78.9414s, 461456 KB] g=51, 34488 evaluated, 1806 expanded
+[t=78.9454s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 10
+[t=78.9454s, 461456 KB] g=52, 34509 evaluated, 1807 expanded
+[t=80.2289s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 9
+[t=80.2289s, 461456 KB] g=57, 43119 evaluated, 2245 expanded
+[t=80.2329s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 8
+[t=80.2329s, 461456 KB] g=58, 43135 evaluated, 2246 expanded
+[t=80.8806s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 7
+[t=80.8806s, 461456 KB] g=63, 47464 evaluated, 2470 expanded
+[t=80.8846s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 6
+[t=80.8846s, 461456 KB] g=64, 47478 evaluated, 2471 expanded
+[t=81.1805s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 5
+[t=81.1805s, 461456 KB] g=69, 49522 evaluated, 2575 expanded
+[t=81.1845s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 4
+[t=81.1845s, 461456 KB] g=70, 49535 evaluated, 2576 expanded
+[t=81.2964s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 3
+[t=81.2964s, 461456 KB] g=74, 50350 evaluated, 2617 expanded
+[t=81.3004s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 1
+[t=81.3004s, 461456 KB] g=75, 50389 evaluated, 2619 expanded
+[t=81.3044s, 461456 KB] New best heuristic value for lsh(patterns = systematic(4), op_order = default, res_order = default, transform = adapt_costs(cost_type = one)): 0
+[t=81.3044s, 461456 KB] g=76, 50409 evaluated, 2620 expanded
+[t=81.3044s, 461456 KB] Solution found!
+[t=81.3044s, 461456 KB] Actual search time: 7.60898s
+move-car-to-car car_23 car_02 car_10 (1)
+move-car-to-car car_15 car_12 car_02 (1)
+move-car-to-car car_03 car_04 car_12 (1)
+move-curb-to-car car_17 curb_12 car_04 (1)
+move-car-to-curb car_06 car_18 curb_12 (1)
+move-car-to-car car_19 car_01 car_06 (1)
+move-car-to-car car_05 car_16 car_01 (1)
+move-curb-to-car car_16 curb_10 car_18 (1)
+move-car-to-curb car_07 car_21 curb_10 (1)
+move-car-to-car car_20 car_00 car_07 (1)
+move-car-to-car car_13 car_11 car_00 (1)
+move-car-to-car car_08 car_14 car_11 (1)
+move-curb-to-car car_14 curb_05 car_21 (1)
+move-car-to-curb car_05 car_01 curb_05 (1)
+move-car-to-car car_14 car_21 car_01 (1)
+move-car-to-car car_16 car_18 car_21 (1)
+move-curb-to-car car_18 curb_03 car_05 (1)
+move-car-to-curb car_03 car_12 curb_03 (1)
+move-car-to-car car_16 car_21 car_03 (1)
+move-curb-to-car car_21 curb_01 car_12 (1)
+move-car-to-curb car_08 car_11 curb_01 (1)
+move-car-to-car car_21 car_12 car_08 (1)
+move-curb-to-car car_11 curb_06 car_12 (1)
+move-car-to-curb car_23 car_10 curb_06 (1)
+move-curb-to-car car_10 curb_11 car_23 (1)
+move-car-to-curb car_11 car_12 curb_11 (1)
+move-car-to-car car_10 car_23 car_12 (1)
+move-curb-to-car car_23 curb_06 car_11 (1)
+move-car-to-curb car_10 car_12 curb_06 (1)
+move-car-to-car car_23 car_11 car_10 (1)
+move-curb-to-car car_12 curb_08 car_11 (1)
+move-car-to-curb car_19 car_06 curb_08 (1)
+move-curb-to-car car_06 curb_12 car_19 (1)
+move-car-to-curb car_12 car_11 curb_12 (1)
+move-car-to-car car_23 car_10 car_12 (1)
+move-curb-to-car car_10 curb_06 car_11 (1)
+move-car-to-curb car_06 car_19 curb_06 (1)
+move-curb-to-car car_19 curb_08 car_06 (1)
+move-car-to-curb car_20 car_07 curb_08 (1)
+move-curb-to-car car_07 curb_10 car_20 (1)
+move-car-to-curb car_10 car_11 curb_10 (1)
+move-car-to-car car_23 car_12 car_10 (1)
+move-car-to-car car_07 car_20 car_11 (1)
+move-curb-to-car car_20 curb_08 car_12 (1)
+move-car-to-curb car_22 car_09 curb_08 (1)
+move-curb-to-car car_09 curb_07 car_22 (1)
+move-car-to-curb car_07 car_11 curb_07 (1)
+move-car-to-car car_20 car_12 car_07 (1)
+move-car-to-car car_09 car_22 car_11 (1)
+move-curb-to-car car_22 curb_08 car_12 (1)
+move-car-to-curb car_17 car_04 curb_08 (1)
+move-curb-to-car car_04 curb_09 car_17 (1)
+move-car-to-curb car_09 car_11 curb_09 (1)
+move-car-to-car car_22 car_12 car_09 (1)
+move-car-to-car car_04 car_17 car_11 (1)
+move-curb-to-car car_17 curb_08 car_12 (1)
+move-car-to-curb car_15 car_02 curb_08 (1)
+move-curb-to-car car_02 curb_04 car_15 (1)
+move-car-to-curb car_04 car_11 curb_04 (1)
+move-car-to-car car_17 car_12 car_04 (1)
+move-car-to-car car_02 car_15 car_12 (1)
+move-curb-to-car car_15 curb_08 car_11 (1)
+move-car-to-curb car_14 car_01 curb_08 (1)
+move-curb-to-car car_01 curb_02 car_14 (1)
+move-car-to-curb car_02 car_12 curb_02 (1)
+move-car-to-car car_15 car_11 car_02 (1)
+move-car-to-car car_01 car_14 car_12 (1)
+move-curb-to-car car_14 curb_08 car_11 (1)
+move-car-to-curb car_21 car_08 curb_08 (1)
+move-curb-to-car car_08 curb_01 car_21 (1)
+move-car-to-curb car_01 car_12 curb_01 (1)
+move-car-to-car car_14 car_11 car_01 (1)
+move-car-to-car car_08 car_21 car_11 (1)
+move-curb-to-car car_21 curb_08 car_12 (1)
+move-car-to-curb car_08 car_11 curb_08 (1)
+move-car-to-car car_21 car_12 car_08 (1)
+[t=81.3044s, 461456 KB] Plan length: 76 step(s).
+[t=81.3044s, 461456 KB] Plan cost: 76
+[t=81.3044s, 461456 KB] Expanded 2621 state(s).
+[t=81.3044s, 461456 KB] Reopened 0 state(s).
+[t=81.3044s, 461456 KB] Evaluated 50424 state(s).
+[t=81.3044s, 461456 KB] Evaluations: 53044
+[t=81.3044s, 461456 KB] Generated 62702 state(s).
+[t=81.3044s, 461456 KB] Dead ends: 4466 state(s).
+[t=81.3044s, 461456 KB] Number of registered states: 50424
+[t=81.3044s, 461456 KB] Int hash set load factor: 50424/65536 = 0.769409
+[t=81.3044s, 461456 KB] Int hash set resizes: 16
+[t=81.3044s, 461456 KB] Search time: 7.60898s
+[t=81.3044s, 461456 KB] Total time: 81.3044s
+Solution found.
+Peak memory: 461456 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 76 
+
+Successful plans:
+Value: 76
+ sas_plan 76 
+
+validate exit code: 0
+

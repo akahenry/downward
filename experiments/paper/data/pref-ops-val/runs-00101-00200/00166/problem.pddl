@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/scanalyzer-sat11-strips/p06.pddl
