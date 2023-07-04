@@ -24,6 +24,10 @@ of special suites such as "suite_alternative_formulations" and
 
 _PREFIX = "suite_"
 
+def suite_ff_or_rb_can_solve_and_lsh_not_or_the_opposite():
+    return [
+        'agricola-sat18-strips', 'airport', 'barman-sat11-strips', 'barman-sat14-strips', 'childsnack-sat14-strips', 'data-network-sat18-strips', 'depot', 'driverlog', 'elevators-sat08-strips', 'elevators-sat11-strips', 'floortile-sat11-strips', 'freecell', 'grid', 'logistics98', 'mprime', 'mystery', 'nomystery-sat11-strips', 'openstacks-sat11-strips', 'openstacks-sat14-strips', 'openstacks-strips', 'organic-synthesis-sat18-strips', 'organic-synthesis-split-sat18-strips', 'parcprinter-08-strips', 'parcprinter-sat11-strips', 'parking-sat14-strips', 'pathways', 'pipesworld-notankage', 'pipesworld-tankage', 'rovers', 'satellite', 'scanalyzer-08-strips', 'scanalyzer-sat11-strips', 'snake-sat18-strips', 'sokoban-sat08-strips', 'sokoban-sat11-strips', 'spider-sat18-strips', 'storage', 'termes-sat18-strips', 'tetris-sat14-strips', 'thoughtful-sat14-strips', 'tidybot-sat11-strips', 'tpp', 'transport-sat08-strips', 'transport-sat11-strips', 'trucks-strips', 'visitall-sat11-strips', 'visitall-sat14-strips', 'woodworking-sat08-strips', 'woodworking-sat11-strips'
+    ]
 
 def suite_alternative_formulations():
     return ['airport-adl']

@@ -10,7 +10,7 @@ from qualityfiters import QualityFilters
 REPO = project.get_repo_base()
 BENCHMARKS_DIR = os.environ["DOWNWARD_BENCHMARKS"]
 
-SUITE = suites.suite_ipc18_sat_strips()
+SUITE = suites.suite_ff_or_rb_can_solve_and_lsh_not_or_the_opposite()
 
 ENV = project.LocalEnvironment(processes=7)
 
@@ -19,31 +19,8 @@ CONFIGS = [
     for index, (h_nick, h) in enumerate(
         [
         	("ff-normal", "ff(transform=adapt_costs(cost_type=NORMAL))"),
-            ("ff-one", "ff(transform=adapt_costs(cost_type=ONE))"),
 
-            ("red-black-normal", "RB(dag=from_coloring, extract_plan=true, transform=adapt_costs(cost_type=NORMAL))"),
-            ("red-black-one", "RB(dag=from_coloring, extract_plan=true, transform=adapt_costs(cost_type=ONE))"),
-            
             ("lsh-sys2-normal", "lsh(patterns=systematic(2), transform=adapt_costs(cost_type=NORMAL))"),
-            ("lsh-sys2-normal", "lsh(patterns=systematic(2), transform=adapt_costs(cost_type=ONE))"),
-
-            ("lsh-sys4-normal", "lsh(patterns=systematic(pattern_max_size=4, reduce_patterns=false, memory_percentage=1.0), transform=adapt_costs(cost_type=NORMAL))"),
-            ("lsh-sys4-one", "lsh(patterns=systematic(pattern_max_size=4, reduce_patterns=false, memory_percentage=1.0), transform=adapt_costs(cost_type=ONE))"),
-
-            ("lsh-sys4-limited-normal", "lsh(patterns=systematic(4), transform=adapt_costs(cost_type=NORMAL))"),
-            ("lsh-sys4-limited-one", "lsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))"),
-
-            ("pho2-lp-normal", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=NORMAL))"),
-            ("pho2-lp-one", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=ONE))"),
-
-            ("pho2-ip-normal", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))"),
-            ("pho2-ip-one", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))"),
-
-            ("pho4-lp-normal", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=NORMAL))"),
-            ("pho4-lp-one", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=ONE))"),
-
-            ("pho4-ip-normal", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))"),
-            ("pho4-ip-one", "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))"),
         ],
         start=1,
     )
