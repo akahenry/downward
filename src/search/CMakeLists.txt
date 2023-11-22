@@ -874,6 +874,7 @@ create_fast_downward_library(
         pdbs/cegar
         pdbs/dominance_pruning
         pdbs/incremental_canonical_pdbs
+        pdbs/local_search
         pdbs/match_tree
         pdbs/max_cliques
         pdbs/pattern_cliques
