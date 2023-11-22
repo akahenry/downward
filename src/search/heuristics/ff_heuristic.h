@@ -33,6 +33,7 @@ protected:
     virtual int compute_heuristic(const State &ancestor_state) override;
 public:
     explicit FFHeuristic(const plugins::Options &opts);
+    std::vector<int> get_preferred_operators(const State &state);
 };
 }
 
