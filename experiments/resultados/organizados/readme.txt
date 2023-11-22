@@ -1,1 +1,0 @@
-todas as variações de lsh
