@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C++: build release",
+            "type": "shell",
+            "command": "${config:python.pythonPath}/python",
+            "args": [
+                "${workspaceFolder}/build.py"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "C++: build debug",
+            "type": "shell",
+            "command": "${config:python.pythonPath}/python",
+            "args": [
+                "${workspaceFolder}/build.py",
+                "--debug"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "Lab: Clean build cache",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/experiments/data/revision-cache"
+        },
+        {
+            "label": "Downward: Translate problem",
+            "type": "shell",
+            "args": [
+                "${workspaceFolder}/src/translate/translate.py",
+                "${input:problem-domain}",
+                "${input:problem-instance}",
+                "--sas-file",
+                "${config:downward.translateOutputFile}"
+            ],
+            "command": "${config:python.pythonPath}/python",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "problem-domain",
+            "default": "${config:downward.benchmarksPath}/blocks/domain.pddl",
+            "type": "promptString",
+            "description": "Domain file of the problem (e.g. domain.pddl)"
+        },
+        {
+            "id": "problem-instance",
+            "default": "${config:downward.benchmarksPath}/blocks/probBLOCKS-10-0.pddl",
+            "type": "promptString",
+            "description": "Instance file of the problem (e.g. problem.pddl)"
+        }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "inputs": [
+        {
+            "id": "search-algorithm",
+            "type": "pickString",
+            "options": [
+                "eager_greedy",
+                "astar"
+            ],
+            "default": "eager_greedy",
+            "description": "Search algorithm to be used with Downward"
+        },
+        {
+            "id": "search-heuristic",
+            "type": "pickString",
+            "options": [
+                "lsh",
+                "ilsh",
+                "ff"
+            ],
+            "default": "ilsh",
+            "description": "Search heuristic to be used with the algorithm"
+        },
+        {
+            "id": "search-heuristic-parameters",
+            "type": "promptString",
+            "default": "",
+            "description": "Parameters to be used with the heuristic"
+        }
+    ],
+    "configurations": [
+        {
+            "name": "C++: Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/builds/debug/bin/downward",
+            "args": [
+                "--search",
+                "${input:search-algorithm}([${input:search-heuristic}(${input:search-heuristic-parameters})])",
+                "<",
+                "${config:downward.translateOutputFile}"
+            ],
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                }
+            ],
+            "preLaunchTask": "C++: build debug",
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
