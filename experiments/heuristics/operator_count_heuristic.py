@@ -12,12 +12,25 @@ class OperatorCountHeuristic:
     def __init__(
         self, operators_costs: Dict[str, int], constraints_values: Dict[str, int]
     ):
-        self.operators = operators_costs.keys()
-        self.operators_costs = operators_costs
+        self.__init_operators(operators_costs)
+        self.__init_constraints(constraints_values)
+        self.operators_constraints = self.__compute_operators_constraints()
+
+    def __init_constraints(self, constraints_values: Dict[str, int]):
         self.constraints = constraints_values.keys()
         self.constraints_values = constraints_values
-        self.operators_count = {operator: 0 for operator in self.operators}
-        self.operators_constraints = self.__compute_operators_constraints()
+
+    def __init_operators(self, operators_costs: Dict[str, int]):
+        # Operators with no cost doesn't sum to satisfy a constraint which means that they must be ignored
+        # If not ignored, the heuristic algorithm will enter in an endless loop
+        relevant_operators = [
+            operator for operator, cost in operators_costs.items() if cost > 0
+        ]
+        self.operators = relevant_operators
+        self.operators_costs = {
+            operator: operators_costs[operator] for operator in relevant_operators
+        }
+        self.operators_count = {operator: 0 for operator in relevant_operators}
 
     def __compute_operators_constraints(self) -> Dict[str, List[str]]:
         # key: operator, value: list of mentioned constraints
