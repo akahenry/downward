@@ -30,6 +30,18 @@
             "type": "promptString",
             "default": "",
             "description": "Parameters to be used with the heuristic"
+        },
+        {
+            "id": "experiment-option",
+            "type": "pickString",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ],
+            "default": "1",
+            "description": "Option to pass to lab experiment"
         }
     ],
     "configurations": [
@@ -60,12 +72,14 @@
             "preLaunchTask": "C++: build debug",
         },
         {
-            "name": "Python: Current File",
+            "name": "Python: Launch experiment",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/experiments/main.py",
+            "args": [
+                "${input:experiment-option}"
+            ],
             "console": "integratedTerminal",
-            "justMyCode": true
         }
     ]
 }
