@@ -873,6 +873,7 @@ create_fast_downward_library(
         pdbs/canonical_pdbs_heuristic
         pdbs/cegar
         pdbs/dominance_pruning
+        pdbs/improved_local_search
         pdbs/incremental_canonical_pdbs
         pdbs/local_search
         pdbs/match_tree
