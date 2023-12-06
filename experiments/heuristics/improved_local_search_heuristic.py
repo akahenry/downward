@@ -1,9 +1,9 @@
 from typing import Tuple
 
-from operator_count_heuristic import OperatorCountHeuristic
+from experiments.heuristics.post_hoc_heuristic import PostHocHeuristic
 
 
-class ImprovedLocalSearchHeuristic(OperatorCountHeuristic):
+class ImprovedLocalSearchHeuristic(PostHocHeuristic):
     def __compute_operator_performance(self, operator: str) -> float:
         return sum(
             [

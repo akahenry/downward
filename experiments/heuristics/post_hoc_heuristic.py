@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 
-class OperatorCountHeuristic:
+class PostHocHeuristic:
     constraints: List[str]
     constraints_values: Dict[str, int]
     operators: List[str]

@@ -1,7 +1,7 @@
-from operator_count_heuristic import OperatorCountHeuristic
+from experiments.heuristics.post_hoc_heuristic import PostHocHeuristic
 
 
-class LocalSearchHeuristic(OperatorCountHeuristic):
+class LocalSearchHeuristic(PostHocHeuristic):
     def _compute_operator_count(self):
         for constraint in self.constraints_values.keys():
             var = 0
