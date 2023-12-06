@@ -41,7 +41,7 @@ class PostHocHeuristic:
             for operator in self.operators
         }
 
-    def _compute_operator_count(self):
+    def _compute_post_hoc(self):
         raise NotImplementedError()
 
     def _update_constraints_with_selected_operator(self, operator: str, times: int = 1):
@@ -52,7 +52,7 @@ class PostHocHeuristic:
                 )
 
     def compute(self) -> int:
-        self._compute_operator_count()
+        self._compute_post_hoc()
 
         response = 0
         for operator in self.operators:

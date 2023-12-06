@@ -38,7 +38,7 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
     def __compute_times_to_increment(self, operator: str, performance: float) -> int:
         return max(1, performance // self.operators_costs[operator])
 
-    def _compute_operator_count(self):
+    def _compute_post_hoc(self):
         while any([value > 0 for value in self.constraints_values.values()]):
             best_operator, best_operator_performance = self.__get_best_operator()
 

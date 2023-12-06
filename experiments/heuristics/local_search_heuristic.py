@@ -2,7 +2,7 @@ from experiments.heuristics.post_hoc_heuristic import PostHocHeuristic
 
 
 class LocalSearchHeuristic(PostHocHeuristic):
-    def _compute_operator_count(self):
+    def _compute_post_hoc(self):
         for constraint in self.constraints_values.keys():
             var = 0
             while self.constraints_values[constraint] > 0:
