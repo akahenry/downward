@@ -18,7 +18,7 @@ using namespace std;
 namespace pdbs
 {
 
-    LocalSearch::LocalSearch(const plugins::Options &opts) : Heuristic(opts),
+    LocalSearch::LocalSearch(const plugins::Options &opts) : PostHoc(opts),
                                                              iterations(opts.get<int>("n")),
                                                              op_order(opts.get<Order>("op_order")),
                                                              res_order(opts.get<Order>("res_order")),
@@ -27,59 +27,15 @@ namespace pdbs
                                                              use_ff(opts.get<bool>("ff")),
                                                              use_preferred(opts.get<bool>("preferred"))
     {
-        std::srand(seed);
-
-        shared_ptr<PatternCollectionGenerator> pattern_generator =
-            opts.get<shared_ptr<PatternCollectionGenerator>>("patterns");
-        PatternCollectionInformation pci = pattern_generator->generate(task);
-
-        pdbs = pci.get_pdbs();
-
-        get_restrictions();
-
         if (use_ff)
         {
             hff = make_shared<ff_heuristic::FFHeuristic>(opts);
         }
 
-        print_info();
+        setup_restriction_ordering();
     }
-
-    void LocalSearch::get_restrictions()
+    void LocalSearch::setup_restriction_ordering()
     {
-        TaskProxy task_proxy = TaskProxy(*task);
-
-        // operators and costs
-        for (OperatorProxy op : task_proxy.get_operators())
-        {
-            operators.push_back(op.get_id());
-            operator_cost.push_back(op.get_cost());
-        }
-
-        // restrictions from pdbs
-        for (const shared_ptr<pdbs::PatternDatabase> &pdb : *pdbs)
-        {
-            restrictions.emplace_back();
-            vector<int> &curr = restrictions.back();
-            for (OperatorProxy op : task_proxy.get_operators())
-            {
-                if (is_operator_relevant(pdb->get_pattern(), op))
-                {
-                    curr.push_back(op.get_id());
-                }
-            }
-        }
-
-        // relevant restrictions for each operator
-        restriction_operator.resize(operators.size());
-        for (size_t i = 0; i < restrictions.size(); i++)
-        {
-            for (size_t j = 0; j < restrictions[i].size(); j++)
-            {
-                restriction_operator[restrictions[i][j]].push_back(i);
-            }
-        }
-
         // restriction ordering index
         restriction_order.resize(restrictions.size());
         for (size_t i = 0; i < restrictions.size(); i++)
@@ -107,50 +63,21 @@ namespace pdbs
                                  });
             }
         }
-
-        // auxiliary vectors to heuristic computation
-        value_pdbs.resize(pdbs->size());
-        lower_bounds.resize(pdbs->size());
-        operator_count.resize(operators.size());
-
-        // for debug
-        if (false /*utils::Verbosity*/)
-        {
-            for (int k : restriction_order)
-            {
-                for (int i : restrictions[k])
-                    cout << restriction_operator[i].size() << " ";
-                cout << endl;
-            }
-        }
     }
 
     int LocalSearch::compute_heuristic(const State &ancestor_state)
     {
-        State state = convert_ancestor_state(ancestor_state);
-
-        if (set_value_pdbs(state))
-        {
-            return DEAD_END;
-        }
-
         int best = numeric_limits<int>::max();
         for (size_t i = 0; i < iterations; i++)
         {
-            best = min(best, generate_solution(state));
+            best = min(best, PostHoc::compute_heuristic(ancestor_state));
         }
 
         return best;
     }
 
-    int LocalSearch::generate_solution(const State &state)
+    void LocalSearch::compute_post_hoc()
     {
-        for (size_t j = 0; j < operator_count.size(); j++)
-            operator_count[j] = 0;
-
-        for (size_t j = 0; j < value_pdbs.size(); j++)
-            lower_bounds[j] = value_pdbs[j];
-
         if (res_order == Order::RANDOM)
         {
             std::random_shuffle(restriction_order.begin(), restriction_order.end());
@@ -158,7 +85,7 @@ namespace pdbs
 
         if (use_ff)
         {
-            for (const int id_op : hff->get_preferred_operators(state))
+            for (const int id_op : hff->get_preferred_operators(*state))
             {
                 operator_count[id_op]++;
                 for (size_t i = 0; i < restriction_operator[id_op].size(); i++)
@@ -204,13 +131,6 @@ namespace pdbs
             }
         }
 
-        int h_value = 0;
-
-        for (size_t i = 0; i < operator_count.size(); i++)
-        {
-            h_value += operator_cost[i] * operator_count[i];
-        }
-
         if (use_preferred)
         {
             for (const OperatorProxy &op : task_proxy.get_operators())
@@ -219,101 +139,40 @@ namespace pdbs
                     set_preferred(op);
             }
         }
-
-        return h_value;
     }
 
-    int LocalSearch::set_value_pdbs(const State &state)
-    {
-        for (size_t i = 0; i < pdbs->size(); ++i)
-        {
-            int h = (*pdbs)[i]->get_value(state.get_unpacked_values());
-
-            if (h == numeric_limits<int>::max())
-                return DEAD_END;
-
-            value_pdbs[i] = h;
-        }
-
-        return 0;
-    }
-
-    void LocalSearch::print_info()
-    {
-        utils::g_log << "Operators: " << operators.size() << endl;
-        utils::g_log << "Restrictions: " << restrictions.size() << endl;
-
-        if (restriction_operator.size() > 0)
-        {
-            int mean_mentions = 0;
-            for (size_t i = 0; i < restriction_operator.size(); i++)
-                mean_mentions += restriction_operator[i].size();
-            utils::g_log << "Mean mentions: " << (mean_mentions / restriction_operator.size()) << endl;
-        }
-
-        if (restrictions.size() > 0)
-        {
-            int mean_operators = 0;
-            for (size_t i = 0; i < restrictions.size(); i++)
-                mean_operators += restrictions[i].size();
-            utils::g_log << "Mean operators: " << (mean_operators / restrictions.size()) << endl;
-        }
-    }
-
-    class LocalSearchFeature : public plugins::TypedFeature<Evaluator, pdbs::LocalSearch>
+    class LocalSearchFeature : public PostHocFeature<LocalSearch>
     {
     public:
-        LocalSearchFeature() : TypedFeature("lsh")
+        LocalSearchFeature() : PostHocFeature<LocalSearch>("lsh", "LocalSearch heuristic")
         {
-            document_title("LocalSearch heuristic");
-
-            add_option<shared_ptr<pdbs::PatternCollectionGenerator>>(
-                "patterns",
-                "pattern generation method",
-                "systematic(4)");
-            add_option<int>(
+            Feature::add_option<int>(
                 "n",
                 "number of iterations of randomized order",
                 "1",
                 plugins::Bounds("1", "1000"));
 
-            vector<string> order_opts;
-            order_opts.push_back("sort");
-            order_opts.push_back("random");
-            order_opts.push_back("default");
+            Feature::add_option<Order>("res_order",
+                                       "Restriction order",
+                                       "default");
 
-            add_option<Order>("res_order",
-                              "Restriction order",
-                              "default");
+            Feature::add_option<Order>("op_order",
+                                       "Operator order",
+                                       "default");
 
-            add_option<Order>("op_order",
-                              "Operator order",
-                              "default");
+            Feature::add_option<Decrement>("decrement",
+                                           "Decrement mode",
+                                           "iterative");
 
-            vector<string> dec_opts;
-            dec_opts.push_back("before");
-            dec_opts.push_back("iterative");
-
-            add_option<Decrement>("decrement",
-                                  "Decrement mode",
-                                  "iterative");
-
-            add_option<int>("seed",
-                            "random seed",
-                            "0",
-                            plugins::Bounds("0", "2147483646"));
-
-            add_option<bool>(
+            Feature::add_option<bool>(
                 "ff",
                 "",
                 "false");
 
-            add_option<bool>(
+            Feature::add_option<bool>(
                 "preferred",
                 "set preferred opeartors",
                 "false");
-
-            Heuristic::add_options_to_feature(*this);
 
             document_language_support("action costs", "supported");
             document_language_support("conditional effects", "not supported");

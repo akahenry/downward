@@ -898,6 +898,7 @@ create_fast_downward_library(
         pdbs/pattern_generator
         pdbs/pattern_information
         pdbs/pdb_heuristic
+        pdbs/post_hoc
         pdbs/random_pattern
         pdbs/subcategory
         pdbs/types

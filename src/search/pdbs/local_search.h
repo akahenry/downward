@@ -5,6 +5,8 @@
 
 #include "../heuristic.h"
 
+#include "post_hoc.h"
+
 #include "../heuristics/ff_heuristic.h"
 
 #include "types.h"
@@ -26,7 +28,7 @@ enum class Decrement
 namespace pdbs
 {
 
-    class LocalSearch : public Heuristic
+    class LocalSearch : public PostHoc
     {
         const size_t iterations;
 
@@ -40,39 +42,16 @@ namespace pdbs
         bool use_ff;
         bool use_preferred;
 
-        std::shared_ptr<PDBCollection> pdbs;
-
-        // operadores
-        std::vector<int> operators;
-        std::vector<int> operator_cost;
-        std::vector<int> operator_count;
-
-        // restrições
-        std::vector<std::vector<int>> restrictions;
-        std::vector<std::vector<int>> restriction_operator;
-        std::vector<std::vector<int>> restrictions_landmarks;
-
-        // vetores auxiliares de memória
-        std::vector<int> solution;
-        std::vector<int> value_pdbs;
-        std::vector<int> lower_bounds;
         std::vector<int> restriction_order;
 
         std::shared_ptr<ff_heuristic::FFHeuristic> hff;
         std::shared_ptr<std::vector<bool>> hff_prefops;
 
+        void setup_restriction_ordering();
+
     protected:
-        virtual int compute_heuristic(const State &ancestor_state) override;
-
-        int local_search();
-        int generate_solution(const State &state);
-
-        int set_value_pdbs(const State &state);
-        int set_landmarks(const State &state);
-
-        void get_restrictions();
-
-        void print_info();
+        int compute_heuristic(const State &ancestorState) override;
+        void compute_post_hoc() override;
 
     public:
         explicit LocalSearch(const plugins::Options &opts);

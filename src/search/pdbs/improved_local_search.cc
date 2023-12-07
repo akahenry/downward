@@ -1,9 +1,7 @@
 #include "improved_local_search.h"
 
-#include "pattern_generator.h"
 #include "utils.h"
 
-#include "../plugins/options.h"
 #include "../plugins/plugin.h"
 
 #include "../utils/logging.h"
@@ -18,169 +16,86 @@ using namespace std;
 namespace pdbs
 {
 
-    ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : Heuristic(opts),
-                                                                             seed(opts.get<int>("seed"))
+    ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : PostHoc(opts)
     {
-        std::srand(seed);
-
-        shared_ptr<PatternCollectionGenerator> pattern_generator =
-            opts.get<shared_ptr<PatternCollectionGenerator>>("patterns");
-        PatternCollectionInformation pci = pattern_generator->generate(task);
-
-        pdbs = pci.get_pdbs();
-
-        get_restrictions();
-
-        print_info();
     }
 
-    void ImprovedLocalSearch::get_restrictions()
+    void ImprovedLocalSearch::compute_post_hoc()
     {
-        TaskProxy task_proxy = TaskProxy(*task);
-
-        // operators and costs
-        for (OperatorProxy op : task_proxy.get_operators())
+        while (is_any_restriction_lower_bound_greater_than_zero())
         {
-            operators.push_back(op.get_id());
-            operator_cost.push_back(op.get_cost());
+            int operator_id;
+            float operator_performance;
+            std::tuple<int, float> tuple = get_best_operator();
+            operator_id = std::get<0>(tuple);
+            operator_performance = std::get<1>(tuple);
+
+            int times_to_increment = compute_times_to_increment(operator_id, operator_performance);
+            operator_count[operator_id] += times_to_increment;
+
+            for (const int restriction_id : restriction_operator[operator_id])
+                lower_bounds[restriction_id] -= operator_cost[operator_id];
+        }
+    }
+
+    float ImprovedLocalSearch::compute_operator_performance(const int operator_id)
+    {
+        float sum = 0;
+        const int operator_cost = this->operator_cost[operator_id];
+
+        for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
+        {
+            sum += this->lower_bounds[i];
         }
 
-        // restrictions from pdbs
-        for (const shared_ptr<pdbs::PatternDatabase> &pdb : *pdbs)
+        return sum / operator_cost;
+    }
+
+    std::tuple<int, float> ImprovedLocalSearch::get_best_operator()
+    {
+        int best_operator_id = -1;
+        float best_operator_performance = -1;
+
+        for (size_t i = 0; i < this->operators.size(); i++)
         {
-            restrictions.emplace_back();
-            vector<int> &curr = restrictions.back();
-            for (OperatorProxy op : task_proxy.get_operators())
+            int operator_id = this->operators[i];
+            float operator_performance = this->compute_operator_performance(operator_id);
+
+            if (best_operator_id == -1 || best_operator_performance < operator_performance)
             {
-                if (is_operator_relevant(pdb->get_pattern(), op))
-                {
-                    curr.push_back(op.get_id());
-                }
+                best_operator_id = operator_id;
+                best_operator_performance = operator_performance;
+
+                continue;
             }
         }
 
-        // relevant restrictions for each operator
-        restriction_operator.resize(operators.size());
-        for (size_t i = 0; i < restrictions.size(); i++)
-        {
-            for (size_t j = 0; j < restrictions[i].size(); j++)
-            {
-                restriction_operator[restrictions[i][j]].push_back(i);
-            }
-        }
-
-        // restriction ordering index
-        restriction_order.resize(restrictions.size());
-        for (size_t i = 0; i < restrictions.size(); i++)
-            restriction_order[i] = i;
-
-        // auxiliary vectors to heuristic computation
-        value_pdbs.resize(pdbs->size());
-        lower_bounds.resize(pdbs->size());
-        operator_count.resize(operators.size());
+        return std::tuple<int, float>(best_operator_id, best_operator_performance);
     }
 
-    int ImprovedLocalSearch::compute_heuristic(const State &ancestor_state)
+    int ImprovedLocalSearch::compute_times_to_increment(const int operator_id, float performance)
     {
-        State state = convert_ancestor_state(ancestor_state);
+        float operator_cost = this->operator_cost[operator_id];
 
-        if (set_value_pdbs(state))
-        {
-            return DEAD_END;
-        }
-
-        return generate_solution(state);
+        return std::max(1, static_cast<int>(performance / operator_cost));
     }
 
-    int ImprovedLocalSearch::generate_solution(const State &state)
+    bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
     {
-        for (size_t j = 0; j < operator_count.size(); j++)
-            operator_count[j] = 0;
-
-        for (size_t j = 0; j < value_pdbs.size(); j++)
-            lower_bounds[j] = value_pdbs[j];
-
-        for (const int id_res : restriction_order)
+        for (int lower_bound : lower_bounds)
         {
-            int var = 0;
-            while (lower_bounds[id_res] > 0)
-            {
-                const int id_op = restrictions[id_res][var];
-                operator_count[id_op]++;
-
-                for (size_t i = 0; i < restriction_operator[id_op].size(); i++)
-                    lower_bounds[restriction_operator[id_op][i]] -= operator_cost[id_op];
-
-                var = (var + 1) % restrictions[id_res].size();
-            }
+            if (lower_bound > 0)
+                return true;
         }
 
-        int h_value = 0;
-
-        for (size_t i = 0; i < operator_count.size(); i++)
-        {
-            h_value += operator_cost[i] * operator_count[i];
-        }
-
-        return h_value;
+        return false;
     }
 
-    int ImprovedLocalSearch::set_value_pdbs(const State &state)
-    {
-        for (size_t i = 0; i < pdbs->size(); ++i)
-        {
-            int h = (*pdbs)[i]->get_value(state.get_unpacked_values());
-
-            if (h == numeric_limits<int>::max())
-                return DEAD_END;
-
-            value_pdbs[i] = h;
-        }
-
-        return 0;
-    }
-
-    void ImprovedLocalSearch::print_info()
-    {
-        utils::g_log << "Operators: " << operators.size() << endl;
-        utils::g_log << "Restrictions: " << restrictions.size() << endl;
-
-        if (restriction_operator.size() > 0)
-        {
-            int mean_mentions = 0;
-            for (size_t i = 0; i < restriction_operator.size(); i++)
-                mean_mentions += restriction_operator[i].size();
-            utils::g_log << "Mean mentions: " << (mean_mentions / restriction_operator.size()) << endl;
-        }
-
-        if (restrictions.size() > 0)
-        {
-            int mean_operators = 0;
-            for (size_t i = 0; i < restrictions.size(); i++)
-                mean_operators += restrictions[i].size();
-            utils::g_log << "Mean operators: " << (mean_operators / restrictions.size()) << endl;
-        }
-    }
-
-    class ImprovedLocalSearchFeature : public plugins::TypedFeature<Evaluator, pdbs::ImprovedLocalSearch>
+    class ImprovedLocalSearchFeature : public PostHocFeature<ImprovedLocalSearch>
     {
     public:
-        ImprovedLocalSearchFeature() : TypedFeature("ilsh")
+        ImprovedLocalSearchFeature() : PostHocFeature<ImprovedLocalSearch>("ilsh", "ImprovedLocalSearch heuristic")
         {
-            document_title("ImprovedLocalSearch heuristic");
-
-            add_option<shared_ptr<pdbs::PatternCollectionGenerator>>(
-                "patterns",
-                "pattern generation method",
-                "systematic(4)");
-
-            add_option<int>("seed",
-                            "random seed",
-                            "0",
-                            plugins::Bounds("0", "2147483646"));
-
-            Heuristic::add_options_to_feature(*this);
-
             document_language_support("action costs", "supported");
             document_language_support("conditional effects", "not supported");
             document_language_support("axioms", "not supported");

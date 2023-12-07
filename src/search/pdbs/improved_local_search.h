@@ -1,48 +1,25 @@
-#ifndef LOCAL_SEARCH_HEURISTIC_H
-#define LOCAL_SEARCH_HEURISTIC_H
+#ifndef IMPROVED_LOCAL_SEARCH_HEURISTIC_H
+#define IMPROVED_LOCAL_SEARCH_HEURISTIC_H
 
 #include "pattern_database.h"
 
 #include "../heuristic.h"
+#include "post_hoc.h"
 
 #include "types.h"
 #include "../plugins/options.h"
 
 namespace pdbs
 {
-
-    class ImprovedLocalSearch : public Heuristic
+    class ImprovedLocalSearch : public PostHoc
     {
-        int seed;
-
-        std::shared_ptr<PDBCollection> pdbs;
-
-        // operadores
-        std::vector<int> operators;
-        std::vector<int> operator_cost;
-        std::vector<int> operator_count;
-
-        // restrições
-        std::vector<std::vector<int>> restrictions;
-        std::vector<std::vector<int>> restriction_operator;
-        std::vector<std::vector<int>> restrictions_landmarks;
-
-        // vetores auxiliares de memória
-        std::vector<int> solution;
-        std::vector<int> value_pdbs;
-        std::vector<int> lower_bounds;
-        std::vector<int> restriction_order;
+        float compute_operator_performance(const int operator_id);
+        std::tuple<int, float> get_best_operator();
+        int compute_times_to_increment(const int operator_id, float performance);
+        bool is_any_restriction_lower_bound_greater_than_zero();
 
     protected:
-        virtual int compute_heuristic(const State &ancestor_state) override;
-
-        int generate_solution(const State &state);
-
-        int set_value_pdbs(const State &state);
-
-        void get_restrictions();
-
-        void print_info();
+        void compute_post_hoc() override;
 
     public:
         explicit ImprovedLocalSearch(const plugins::Options &opts);
