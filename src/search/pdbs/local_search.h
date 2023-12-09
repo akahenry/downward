@@ -49,6 +49,16 @@ namespace pdbs
 
         void setup_restriction_ordering();
 
+        template <typename T>
+        static void random_shuffle(std::vector<T> vec)
+        {
+            // Solution found in https://stackoverflow.com/a/45014073
+            std::random_device rd;
+            std::mt19937 g(rd());
+
+            std::shuffle(vec.begin(), vec.end(), g);
+        }
+
     protected:
         int compute_heuristic(const State &ancestorState) override;
         void compute_post_hoc() override;

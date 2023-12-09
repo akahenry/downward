@@ -80,7 +80,7 @@ namespace pdbs
     {
         if (res_order == Order::RANDOM)
         {
-            std::random_shuffle(restriction_order.begin(), restriction_order.end());
+            LocalSearch::random_shuffle(restriction_order);
         }
 
         if (use_ff)
@@ -107,7 +107,7 @@ namespace pdbs
 
             if (op_order == Order::RANDOM)
             {
-                std::random_shuffle(restrictions[id_res].begin(), restrictions[id_res].end());
+                LocalSearch::random_shuffle(restriction_order);
             }
 
             int var = 0;
