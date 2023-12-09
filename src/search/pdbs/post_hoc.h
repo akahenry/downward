@@ -25,7 +25,6 @@ namespace pdbs
 
         std::vector<std::vector<int>> restrictions;
         std::vector<std::vector<int>> restriction_operator;
-        std::vector<std::vector<int>> restrictions_landmarks;
 
         std::vector<int> value_pdbs;
         std::vector<int> lower_bounds;
