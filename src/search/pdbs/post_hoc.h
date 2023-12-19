@@ -41,6 +41,7 @@ namespace pdbs
 
     private:
         int seed;
+        bool verbose;
 
     public:
         explicit PostHoc(const plugins::Options &opts);
@@ -65,6 +66,10 @@ namespace pdbs
                                            "random seed",
                                            "0",
                                            plugins::Bounds("0", "2147483646"));
+
+            this->template add_option<bool>("verbose",
+                                            "verbose logging",
+                                            "false");
 
             Heuristic::add_options_to_feature(*this);
         }

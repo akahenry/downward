@@ -16,7 +16,8 @@ namespace pdbs
 {
 
     PostHoc::PostHoc(const plugins::Options &opts) : Heuristic(opts),
-                                                     seed(opts.get<int>("seed"))
+                                                     seed(opts.get<int>("seed")),
+                                                     verbose(opts.get<bool>("verbose"))
     {
         std::srand(seed);
         shared_ptr<PatternCollectionGenerator> pattern_generator =
@@ -27,6 +28,11 @@ namespace pdbs
         state = nullptr;
 
         get_restrictions();
+
+        if (verbose)
+        {
+            this->print_info();
+        }
     }
 
     void PostHoc::get_restrictions()
