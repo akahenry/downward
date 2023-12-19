@@ -1,4 +1,4 @@
-from experiments.heuristics.post_hoc_heuristic import PostHocHeuristic
+from post_hoc_heuristic import PostHocHeuristic
 
 
 class LocalSearchHeuristic(PostHocHeuristic):
