@@ -46,10 +46,9 @@ class PostHocHeuristic:
 
     def _update_constraints_with_selected_operator(self, operator: str, times: int = 1):
         for constraint in self.operators_constraints[operator]:
-            if self.constraints_values[constraint] > 0:
-                self.constraints_values[constraint] -= (
-                    self.operators_costs[operator] * times
-                )
+            self.constraints_values[constraint] -= (
+                self.operators_costs[operator] * times
+            )
 
     def compute(self) -> int:
         self._compute_post_hoc()
