@@ -22,6 +22,8 @@ namespace pdbs
 
     void ImprovedLocalSearch::compute_post_hoc()
     {
+        this->update_operators_with_simple_restrictions();
+
         while (is_any_restriction_lower_bound_greater_than_zero())
         {
             int operator_id = get_best_operator();
@@ -29,9 +31,14 @@ namespace pdbs
             int times_to_increment = compute_times_to_increment(operator_id);
             operator_count[operator_id] += times_to_increment;
 
-            for (const int restriction_id : restriction_operator[operator_id])
-                lower_bounds[restriction_id] -= operator_cost[operator_id];
+            update_lower_bounds_with_selected_operator(operator_id, times_to_increment);
         }
+    }
+
+    void ImprovedLocalSearch::update_lower_bounds_with_selected_operator(int operator_id, int times_to_increment)
+    {
+        for (const int restriction_id : restriction_operator[operator_id])
+            lower_bounds[restriction_id] -= times_to_increment * operator_cost[operator_id];
     }
 
     float ImprovedLocalSearch::compute_operator_performance(const int operator_id)
@@ -83,6 +90,24 @@ namespace pdbs
         }
 
         return std::max(1, minimum_lower_bound / operator_cost);
+    }
+
+    void ImprovedLocalSearch::update_operators_with_simple_restrictions()
+    {
+        for (size_t i = 0; i < this->restrictions.size(); i++)
+        {
+            if (this->restrictions[i].size() == 1)
+            {
+                int operator_id = this->restrictions[i][0];
+                int times_to_increment = (int)std::ceil((float)this->lower_bounds[i] / this->operator_cost[operator_id]);
+                this->operator_count[operator_id] = std::max(this->operator_count[operator_id], times_to_increment);
+            }
+        }
+
+        for (size_t i = 0; i < this->operators.size(); i++)
+        {
+            this->update_lower_bounds_with_selected_operator(this->operators[i], this->operator_count[i]);
+        }
     }
 
     bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
