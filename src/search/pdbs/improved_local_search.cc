@@ -48,7 +48,7 @@ namespace pdbs
 
         for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
         {
-            sum += std::min(1, this->lower_bounds[i] / operator_cost);
+            sum += std::min(1.0f, (float)this->lower_bounds[this->restriction_operator[operator_id][i]] / operator_cost);
         }
 
         return sum;
