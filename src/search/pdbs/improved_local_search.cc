@@ -24,13 +24,9 @@ namespace pdbs
     {
         while (is_any_restriction_lower_bound_greater_than_zero())
         {
-            int operator_id;
-            float operator_performance;
-            std::tuple<int, float> tuple = get_best_operator();
-            operator_id = std::get<0>(tuple);
-            operator_performance = std::get<1>(tuple);
+            int operator_id = get_best_operator();
 
-            int times_to_increment = compute_times_to_increment(operator_id, operator_performance);
+            int times_to_increment = compute_times_to_increment(operator_id);
             operator_count[operator_id] += times_to_increment;
 
             for (const int restriction_id : restriction_operator[operator_id])
@@ -45,13 +41,13 @@ namespace pdbs
 
         for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
         {
-            sum += this->lower_bounds[i];
+            sum += std::min(1, this->lower_bounds[i] / operator_cost);
         }
 
-        return sum / operator_cost;
+        return sum;
     }
 
-    std::tuple<int, float> ImprovedLocalSearch::get_best_operator()
+    int ImprovedLocalSearch::get_best_operator()
     {
         int best_operator_id = -1;
         float best_operator_performance = -1;
@@ -70,14 +66,23 @@ namespace pdbs
             }
         }
 
-        return std::tuple<int, float>(best_operator_id, best_operator_performance);
+        return best_operator_id;
     }
 
-    int ImprovedLocalSearch::compute_times_to_increment(const int operator_id, float performance)
+    int ImprovedLocalSearch::compute_times_to_increment(const int operator_id)
     {
-        float operator_cost = this->operator_cost[operator_id];
+        int minimum_lower_bound = -1;
+        int operator_cost = this->operator_cost[operator_id];
 
-        return std::max(1, static_cast<int>(performance / operator_cost));
+        for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
+        {
+            if (minimum_lower_bound < this->lower_bounds[i])
+            {
+                minimum_lower_bound = this->lower_bounds[i];
+            }
+        }
+
+        return std::max(1, minimum_lower_bound / operator_cost);
     }
 
     bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
