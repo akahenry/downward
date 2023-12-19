@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from experiments.heuristics.post_hoc_heuristic import PostHocHeuristic
+from post_hoc_heuristic import PostHocHeuristic
 
 
 class ImprovedLocalSearchHeuristic(PostHocHeuristic):
@@ -33,18 +33,23 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
                 )
                 continue
 
-        return best_operator, best_operator_performance
+        return best_operator
 
-    def __compute_times_to_increment(self, operator: str, performance: float) -> int:
-        return max(1, performance // self.operators_costs[operator])
+    def __compute_times_to_increment(self, operator: str) -> int:
+        return max(
+            1,
+            min(
+                self.constraints_values[constraint]
+                for constraint in self.operators_constraints[operator]
+            )
+            // self.operators_costs[operator],
+        )
 
     def _compute_post_hoc(self):
         while any([value > 0 for value in self.constraints_values.values()]):
-            best_operator, best_operator_performance = self.__get_best_operator()
+            best_operator = self.__get_best_operator()
 
-            times_to_increment = self.__compute_times_to_increment(
-                best_operator, best_operator_performance
-            )
+            times_to_increment = self.__compute_times_to_increment(best_operator)
 
             self.operators_count[best_operator] += times_to_increment
 
