@@ -18,7 +18,6 @@ namespace pdbs
 
     ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : PostHoc(opts)
     {
-        this->operator_pricings.resize(this->operators.size());
     }
 
     void ImprovedLocalSearch::compute_post_hoc()
@@ -33,35 +32,23 @@ namespace pdbs
 
             int times_to_increment = compute_times_to_increment(operator_id, operator_performance);
             operator_count[operator_id] += times_to_increment;
-            int amount_to_subtract = times_to_increment * operator_cost[operator_id];
 
             for (const int restriction_id : restriction_operator[operator_id])
-            {
-                lower_bounds[restriction_id] -= amount_to_subtract;
-                for (const int affected_operator_id : this->restrictions[restriction_id])
-                {
-                    this->operator_pricings[affected_operator_id] -= amount_to_subtract;
-                }
-            }
-        }
-    }
-
-    void ImprovedLocalSearch::initialize_operator_pricings()
-    {
-        for (int operator_id : this->operators)
-        {
-            int sum = 0;
-            for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
-            {
-                sum += this->lower_bounds[i];
-            }
-            this->operator_pricings[operator_id] = sum;
+                lower_bounds[restriction_id] -= operator_cost[operator_id];
         }
     }
 
     float ImprovedLocalSearch::compute_operator_performance(const int operator_id)
     {
-        return this->operator_pricings[operator_id] / this->operator_cost[operator_id];
+        float sum = 0;
+        const int operator_cost = this->operator_cost[operator_id];
+
+        for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
+        {
+            sum += this->lower_bounds[i];
+        }
+
+        return sum / operator_cost;
     }
 
     std::tuple<int, float> ImprovedLocalSearch::get_best_operator()

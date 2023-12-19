@@ -13,9 +13,6 @@ namespace pdbs
 {
     class ImprovedLocalSearch : public PostHoc
     {
-        std::vector<int> operator_pricings;
-
-        void initialize_operator_pricings();
         float compute_operator_performance(const int operator_id);
         std::tuple<int, float> get_best_operator();
         int compute_times_to_increment(const int operator_id, float performance);
