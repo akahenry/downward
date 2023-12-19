@@ -2,6 +2,8 @@ from typing import Tuple
 
 from post_hoc_heuristic import PostHocHeuristic
 
+from math import ceil
+
 
 class ImprovedLocalSearchHeuristic(PostHocHeuristic):
     def __compute_operator_performance(self, operator: str) -> float:
@@ -46,6 +48,8 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
         )
 
     def _compute_post_hoc(self):
+        self.__update_operators_with_simple_constraints()
+
         while any([value > 0 for value in self.constraints_values.values()]):
             best_operator = self.__get_best_operator()
 
@@ -55,4 +59,20 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
 
             self._update_constraints_with_selected_operator(
                 best_operator, times_to_increment
+            )
+
+    def __update_operators_with_simple_constraints(self):
+        for constraint in self.constraints:
+            if len(constraint) == 1:
+                operator = constraint
+                times_to_increment = ceil(
+                    self.constraints_values[constraint] / self.operators_costs[operator]
+                )
+                self.operators_count[operator] = max(
+                    self.operators_count[operator], times_to_increment
+                )
+
+        for operator in self.operators:
+            self._update_constraints_with_selected_operator(
+                operator, self.operators_costs[operator]
             )
