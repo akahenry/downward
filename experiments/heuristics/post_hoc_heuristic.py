@@ -17,7 +17,7 @@ class PostHocHeuristic:
         self.operators_constraints = self.__compute_operators_constraints()
 
     def __init_constraints(self, constraints_values: Dict[str, int]):
-        self.constraints = constraints_values.keys()
+        self.constraints = list(constraints_values.keys())
         self.constraints_values = constraints_values
 
     def __init_operators(self, operators_costs: Dict[str, int]):
@@ -45,10 +45,26 @@ class PostHocHeuristic:
         raise NotImplementedError()
 
     def _update_constraints_with_selected_operator(self, operator: str, times: int = 1):
+        constraints_to_delete = set()
         for constraint in self.operators_constraints[operator]:
             self.constraints_values[constraint] -= (
                 self.operators_costs[operator] * times
             )
+
+            if self.constraints_values[constraint] <= 0:
+                constraints_to_delete.add(constraint)
+
+        for constraint in constraints_to_delete:
+            self._delete_satisfied_constraint(constraint)
+
+    def _delete_satisfied_constraint(self, constraint: str):
+        del self.constraints_values[constraint]
+        self.constraints.remove(constraint)
+        for operator in self.operators:
+            if constraint in self.operators_constraints[operator]:
+                del self.operators_constraints[operator][
+                    self.operators_constraints[operator].index(constraint)
+                ]
 
     def compute(self) -> int:
         self._compute_post_hoc()
