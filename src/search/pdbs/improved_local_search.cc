@@ -16,8 +16,11 @@ using namespace std;
 namespace pdbs
 {
 
-    ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : PostHoc(opts)
+    ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : PostHoc(opts),
+                                                                             tie_breaking_operation(opts.get<TieBreakingOperation>("tie_breaking"))
+
     {
+        utils::g_log << "Tie breaking: " << this->tie_breaking_operation << endl;
     }
 
     void ImprovedLocalSearch::compute_post_hoc()
@@ -71,6 +74,11 @@ namespace pdbs
 
                 continue;
             }
+
+            if (best_operator_performance == operator_performance)
+            {
+                best_operator_id = this->compute_operator_tie_breaking(best_operator_id, operator_id);
+            }
         }
 
         return best_operator_id;
@@ -110,6 +118,69 @@ namespace pdbs
         }
     }
 
+    int ImprovedLocalSearch::compute_operator_tie_breaking(int operator_id_a, int operator_id_b)
+    {
+        switch (this->tie_breaking_operation)
+        {
+        case TieBreakingOperation::MAX_CONSTRAINT:
+            return this->compute_tie_breaking_max_constraint(operator_id_a, operator_id_b);
+        case TieBreakingOperation::SUM_CONSTRAINTS:
+            return this->compute_tie_breaking_sum_constraint(operator_id_a, operator_id_b);
+        case TieBreakingOperation::SUM_SQUARE_CONSTRAINTS:
+            return this->compute_tie_breaking_sum_square_constraint(operator_id_a, operator_id_b);
+        }
+
+        throw std::runtime_error("TieBreakingOperation not found");
+    }
+
+    int ImprovedLocalSearch::compute_tie_breaking_max_constraint(int operator_id_a, int operator_id_b)
+    {
+        return this->compute_tie_breaking_lambda_for_operators(operator_id_a, operator_id_b, [](std::vector<int> list)
+                                                               { 
+                                                                int max = 0;
+                                                                for (const int n : list) {
+                                                                    max = std::max(max, n);
+                                                                }
+                                                                return max; });
+    }
+
+    int ImprovedLocalSearch::compute_tie_breaking_sum_constraint(int operator_id_a, int operator_id_b)
+    {
+        return this->compute_tie_breaking_lambda_for_operators(operator_id_a, operator_id_b, [](std::vector<int> list)
+                                                               { return std::accumulate(list.begin(), list.end(), 0); });
+    }
+
+    int ImprovedLocalSearch::compute_tie_breaking_sum_square_constraint(int operator_id_a, int operator_id_b)
+    {
+        return this->compute_tie_breaking_lambda_for_operators(operator_id_a, operator_id_b, [](std::vector<int> list)
+                                                               { 
+                                                                int acc = 0;
+                                                                for (const int n : list) {
+                                                                    acc += (int)std::pow(n, 2);
+                                                                }
+                                                                return acc; });
+    }
+
+    int ImprovedLocalSearch::compute_tie_breaking_lambda_for_operators(int operator_id_a, int operator_id_b, std::function<int(std::vector<int>)> lambda)
+    {
+        int a_value = this->get_lambda_constraint_value_for_operator(operator_id_a, lambda);
+        int b_value = this->get_lambda_constraint_value_for_operator(operator_id_b, lambda);
+
+        return a_value < b_value ? operator_id_b : operator_id_a;
+    }
+
+    int ImprovedLocalSearch::get_lambda_constraint_value_for_operator(int operator_id, std::function<int(std::vector<int>)> lambda)
+    {
+        std::vector<int> restrictions_lower_bounds;
+
+        for (const int restriction : this->restriction_operator[operator_id])
+        {
+            restrictions_lower_bounds.push_back(this->lower_bounds[restriction]);
+        }
+
+        return lambda(restrictions_lower_bounds);
+    }
+
     bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
     {
         for (int lower_bound : lower_bounds)
@@ -126,6 +197,10 @@ namespace pdbs
     public:
         ImprovedLocalSearchFeature() : PostHocFeature<ImprovedLocalSearch>("ilsh", "ImprovedLocalSearch heuristic")
         {
+            Feature::add_option<TieBreakingOperation>("tie_breaking",
+                                                      "Operation to use for tie breaking when selecting best operator",
+                                                      "sum_square_constraints");
+
             document_language_support("action costs", "supported");
             document_language_support("conditional effects", "not supported");
             document_language_support("axioms", "not supported");
@@ -136,4 +211,5 @@ namespace pdbs
         }
     };
     static plugins::FeaturePlugin<ImprovedLocalSearchFeature> _plugin;
+    static plugins::TypedEnumPlugin<TieBreakingOperation> _enum_tie_breaking_plugin({{"max_constraint", "max_constraint"}, {"sum_constraints", "sum_constraints"}, {"sum_square_constraints", "sum_square_constraints"}});
 }
