@@ -23,8 +23,64 @@ CONFIGS = [
                 "lsh(patterns=systematic(2), transform=adapt_costs(cost_type=NORMAL))",
             ),
             (
+                "lsh-sys2-one",
+                "lsh(patterns=systematic(2), transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "lsh-sys4-normal",
+                "lsh(patterns=systematic(4), transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "lsh-sys4-one",
+                "lsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
                 "ilsh-sys2-normal",
                 "ilsh(patterns=systematic(2), transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "ilsh-sys2-one",
+                "ilsh(patterns=systematic(2), transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "ilsh-sys4-normal",
+                "ilsh(patterns=systematic(4), transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "ilsh-sys4-one",
+                "ilsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "pho-lp-sys2-normal",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "pho-lp-sys2-one",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "pho-lp-sys4-normal",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "pho-lp-sys4-one",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "pho-ip-sys2-normal",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "pho-ip-sys2-one",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))",
+            ),
+            (
+                "pho-ip-sys4-normal",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "pho-ip-sys4-one",
+                "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))",
             ),
         ],
         start=1,
