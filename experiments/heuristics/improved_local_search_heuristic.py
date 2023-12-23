@@ -48,37 +48,23 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
         raise Exception("TieBreakingOperation not found")
 
     def __compute_tie_breaking_max_constraint(self, a: str, b: str) -> str:
-        a_max_constraint_value = self.__get_max_constraint_value_for_operator(a)
-        b_max_constraint_value = self.__get_max_constraint_value_for_operator(b)
-
-        return b if a_max_constraint_value < b_max_constraint_value else a
+        return self.__compute_tie_breaking_lambda_for_operators(a, b, max)
 
     def __compute_tie_breaking_sum_constraints(self, a: str, b: str) -> str:
-        a_sum_constraints_values = self.__get_sum_constraint_value_for_operator(a)
-        b_sum_constraints_values = self.__get_sum_constraint_value_for_operator(b)
-
-        return b if a_sum_constraints_values < b_sum_constraints_values else a
+        return self.__compute_tie_breaking_lambda_for_operators(a, b, sum)
 
     def __compute_tie_breaking_sum_square_constraints(self, a: str, b: str) -> str:
-        a_sum_constraints_values = self.__get_sum_square_constraint_value_for_operator(
-            a
-        )
-        b_sum_constraints_values = self.__get_sum_square_constraint_value_for_operator(
-            b
+        return self.__compute_tie_breaking_lambda_for_operators(
+            a, b, lambda it: sum(x**2 for x in it)
         )
 
-        return b if a_sum_constraints_values < b_sum_constraints_values else a
+    def __compute_tie_breaking_lambda_for_operators(
+        self, a: str, b: str, aggregator: Callable[[Iterable], int]
+    ) -> int:
+        a_value = self.__get_lambda_constraint_value_for_operator(a, aggregator)
+        b_value = self.__get_lambda_constraint_value_for_operator(b, aggregator)
 
-    def __get_max_constraint_value_for_operator(self, a: str) -> int:
-        return self.__get_lambda_constraint_value_for_operator(a, max)
-
-    def __get_sum_constraint_value_for_operator(self, a: str) -> int:
-        return self.__get_lambda_constraint_value_for_operator(a, sum)
-
-    def __get_sum_square_constraint_value_for_operator(self, a: str) -> int:
-        return self.__get_lambda_constraint_value_for_operator(
-            a, lambda it: sum(x**2 for x in it)
-        )
+        return b if a_value < b_value else a
 
     def __get_lambda_constraint_value_for_operator(
         self, a: str, aggregator: Callable[[Iterable], int]
