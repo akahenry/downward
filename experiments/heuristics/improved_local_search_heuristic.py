@@ -69,12 +69,12 @@ class ImprovedLocalSearchHeuristic(PostHocHeuristic):
     def __get_lambda_constraint_value_for_operator(
         self, a: str, aggregator: Callable[[Iterable], int]
     ) -> int:
-        max_constraint_value = aggregator(
+        value = aggregator(
             self.constraints_values[constraint]
             for constraint in self.operators_constraints[a]
         )
 
-        return max_constraint_value
+        return value
 
     def __get_best_operator(self) -> str:
         best_operator: str = None
