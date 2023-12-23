@@ -82,6 +82,14 @@ CONFIGS = [
                 "pho-ip-sys4-one",
                 "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))",
             ),
+            (
+                "ff-normal",
+                "ff(transform=adapt_costs(cost_type=NORMAL))",
+            ),
+            (
+                "ff-one",
+                "ff(transform=adapt_costs(cost_type=ONE))",
+            ),
         ],
         start=1,
     )
