@@ -88,7 +88,7 @@ CONFIGS = [
 ]
 
 BUILD_OPTIONS = []
-DRIVER_OPTIONS = ["--overall-time-limit", "5m", "--overall-memory-limit", "2048M"]
+DRIVER_OPTIONS = ["--overall-time-limit", "30m", "--overall-memory-limit", "2048M"]
 REVS = [
     ("tcc", "tcc"),
 ]
