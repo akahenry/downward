@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/tetris-sat14-strips/p026.pddl

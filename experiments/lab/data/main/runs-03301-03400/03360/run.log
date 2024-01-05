@@ -1,0 +1,262 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.010s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Trivial rules: Converted to facts.
+Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 32 rules.
+Computing model... [0.120s CPU, 0.126s wall-clock]
+16327 relevant atoms
+1117 auxiliary atoms
+17444 final queue length
+81853 total queue pushes
+Completing instantiation... [0.770s CPU, 0.771s wall-clock]
+Instantiating: [0.900s CPU, 0.901s wall-clock]
+Computing fact groups...
+Finding invariants...
+13 initial candidates
+Finding invariants: [0.000s CPU, 0.004s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+179 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.006s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.050s CPU, 0.043s wall-clock]
+Translating task: [0.960s CPU, 0.964s wall-clock]
+29648 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+3 propositions removed
+Detecting unreachable propositions: [0.430s CPU, 0.434s wall-clock]
+Reordering and filtering variables...
+182 of 182 variables necessary.
+0 of 3 mutex groups necessary.
+15844 of 15844 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.220s CPU, 0.212s wall-clock]
+Translator variables: 182
+Translator derived variables: 0
+Translator facts: 449
+Translator goal facts: 23
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 15844
+Translator axioms: 0
+Translator task size: 183130
+Translator peak memory: 135752 KB
+Writing output... [0.120s CPU, 0.119s wall-clock]
+Done! [2.680s CPU, 2.676s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1797s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([ff(transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 10544 KB] reading input...
+[t=0.0799662s, 17576 KB] done reading input!
+[t=0.0879594s, 24312 KB] Simplifying 94136 unary operators... done! [94136 unary operators]
+[t=0.299781s, 32392 KB] time to simplify: 0.211821s
+[t=0.299781s, 32392 KB] Initializing additive heuristic...
+[t=0.299781s, 32392 KB] Initializing FF heuristic...
+[t=0.299781s, 32392 KB] Building successor generator...done!
+[t=0.307769s, 32392 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.307769s, 32392 KB] time for successor generation creation: 0.00798799s
+[t=0.307769s, 32392 KB] Variables: 182
+[t=0.307769s, 32392 KB] FactPairs: 449
+[t=0.307769s, 32392 KB] Bytes per state: 28
+[t=0.307769s, 32392 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.307769s, 32392 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 10
+[t=0.307769s, 32392 KB] g=0, 1 evaluated, 0 expanded
+[t=0.307769s, 32392 KB] Initial heuristic value for ff(transform=adapt_costs(cost_type=one)): 10
+[t=0.307769s, 32392 KB] pruning method: none
+[t=0.323758s, 32392 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 9
+[t=0.323758s, 32392 KB] g=3, 15 evaluated, 5 expanded
+[t=0.4357s, 32392 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 8
+[t=0.4357s, 32392 KB] g=9, 119 evaluated, 47 expanded
+[t=1.34716s, 32392 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 7
+[t=1.34716s, 32392 KB] g=10, 931 evaluated, 425 expanded
+[t=2.23074s, 32392 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 5
+[t=2.23074s, 32392 KB] g=40, 1726 evaluated, 815 expanded
+[t=70.3093s, 33468 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 4
+[t=70.3093s, 33468 KB] g=119, 73314 evaluated, 38456 expanded
+[t=70.3093s, 33468 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 2
+[t=70.3093s, 33468 KB] g=120, 73316 evaluated, 38457 expanded
+[t=70.3133s, 33468 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 1
+[t=70.3133s, 33468 KB] g=121, 73317 evaluated, 38458 expanded
+[t=70.3133s, 33468 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=one)): 0
+[t=70.3133s, 33468 KB] g=122, 73319 evaluated, 38459 expanded
+[t=70.3133s, 33468 KB] Solution found!
+[t=70.3133s, 33468 KB] Actual search time: 70.0056s
+move pos1-2 pos1-3 pos0-2 pos1-2 (1)
+move pos1-3 pos2-3 pos1-2 pos1-3 (1)
+move pos2-3 pos3-3 pos1-3 pos2-3 (1)
+move pos3-3 pos4-3 pos2-3 pos3-3 (1)
+move pos4-3 pos5-3 pos3-3 pos4-3 (1)
+move-and-eat-spawn pos5-3 pos5-4 pos1-3 pos5-2 (1)
+move pos5-4 pos4-4 pos4-3 pos5-3 (1)
+move pos4-4 pos4-3 pos5-3 pos5-4 (1)
+move pos4-3 pos3-3 pos5-4 pos4-4 (1)
+move pos3-3 pos3-2 pos4-4 pos4-3 (1)
+move pos3-2 pos3-1 pos4-3 pos3-3 (1)
+move pos3-1 pos2-1 pos3-3 pos3-2 (1)
+move pos2-1 pos1-1 pos3-2 pos3-1 (1)
+move pos1-1 pos1-2 pos3-1 pos2-1 (1)
+move-and-eat-spawn pos1-2 pos2-2 pos5-2 pos5-5 (1)
+move pos2-2 pos3-2 pos2-1 pos1-1 (1)
+move pos3-2 pos3-3 pos1-1 pos1-2 (1)
+move pos3-3 pos3-4 pos1-2 pos2-2 (1)
+move pos3-4 pos2-4 pos2-2 pos3-2 (1)
+move pos2-4 pos2-5 pos3-2 pos3-3 (1)
+move pos2-5 pos1-5 pos3-3 pos3-4 (1)
+move-and-eat-spawn pos1-5 pos0-5 pos5-5 pos3-3 (1)
+move-and-eat-spawn pos0-5 pos0-4 pos3-3 pos2-1 (1)
+move pos0-4 pos0-3 pos3-4 pos2-4 (1)
+move-and-eat-spawn pos0-3 pos1-3 pos2-1 pos5-3 (1)
+move pos1-3 pos2-3 pos2-4 pos2-5 (1)
+move pos2-3 pos2-4 pos2-5 pos1-5 (1)
+move pos2-4 pos3-4 pos1-5 pos0-5 (1)
+move pos3-4 pos3-5 pos0-5 pos0-4 (1)
+move pos3-5 pos4-5 pos0-4 pos0-3 (1)
+move-and-eat-spawn pos4-5 pos5-5 pos5-3 pos4-0 (1)
+move pos5-5 pos5-4 pos0-3 pos1-3 (1)
+move-and-eat-spawn pos5-4 pos5-3 pos4-0 pos3-1 (1)
+move-and-eat-spawn pos5-3 pos5-2 pos3-1 pos1-1 (1)
+move pos5-2 pos5-1 pos1-3 pos2-3 (1)
+move pos5-1 pos5-0 pos2-3 pos2-4 (1)
+move-and-eat-spawn pos5-0 pos4-0 pos1-1 pos2-5 (1)
+move pos4-0 pos3-0 pos2-4 pos3-4 (1)
+move pos3-0 pos2-0 pos3-4 pos3-5 (1)
+move pos2-0 pos1-0 pos3-5 pos4-5 (1)
+move pos1-0 pos0-0 pos4-5 pos5-5 (1)
+move pos0-0 pos0-1 pos5-5 pos5-4 (1)
+move pos0-1 pos0-2 pos5-4 pos5-3 (1)
+move pos0-2 pos1-2 pos5-3 pos5-2 (1)
+move pos1-2 pos2-2 pos5-2 pos5-1 (1)
+move pos2-2 pos3-2 pos5-1 pos5-0 (1)
+move-and-eat-spawn pos3-2 pos3-3 pos2-5 pos5-0 (1)
+move pos3-3 pos2-3 pos5-0 pos4-0 (1)
+move pos2-3 pos2-4 pos4-0 pos3-0 (1)
+move-and-eat-spawn pos2-4 pos2-5 pos5-0 pos3-0 (1)
+move pos2-5 pos3-5 pos3-0 pos2-0 (1)
+move pos3-5 pos4-5 pos2-0 pos1-0 (1)
+move pos4-5 pos4-4 pos1-0 pos0-0 (1)
+move pos4-4 pos5-4 pos0-0 pos0-1 (1)
+move pos5-4 pos5-3 pos0-1 pos0-2 (1)
+move pos5-3 pos5-2 pos0-2 pos1-2 (1)
+move pos5-2 pos5-1 pos1-2 pos2-2 (1)
+move-and-eat-spawn pos5-1 pos5-0 pos3-0 pos2-3 (1)
+move pos5-0 pos4-0 pos2-2 pos3-2 (1)
+move pos4-0 pos4-1 pos3-2 pos3-3 (1)
+move-and-eat-spawn pos4-1 pos4-2 pos2-3 pos4-5 (1)
+move pos4-2 pos3-2 pos3-3 pos2-3 (1)
+move pos3-2 pos3-3 pos2-3 pos2-4 (1)
+move pos3-3 pos3-4 pos2-4 pos2-5 (1)
+move pos3-4 pos2-4 pos2-5 pos3-5 (1)
+move pos2-4 pos1-4 pos3-5 pos4-5 (1)
+move pos1-4 pos0-4 pos4-5 pos4-4 (1)
+move pos0-4 pos0-3 pos4-4 pos5-4 (1)
+move pos0-3 pos1-3 pos5-4 pos5-3 (1)
+move pos1-3 pos1-2 pos5-3 pos5-2 (1)
+move pos1-2 pos0-2 pos5-2 pos5-1 (1)
+move pos0-2 pos0-1 pos5-1 pos5-0 (1)
+move pos0-1 pos0-0 pos5-0 pos4-0 (1)
+move pos0-0 pos1-0 pos4-0 pos4-1 (1)
+move pos1-0 pos2-0 pos4-1 pos4-2 (1)
+move-and-eat-spawn pos2-0 pos3-0 pos4-5 pos0-1 (1)
+move pos3-0 pos4-0 pos4-2 pos3-2 (1)
+move pos4-0 pos4-1 pos3-2 pos3-3 (1)
+move pos4-1 pos4-2 pos3-3 pos3-4 (1)
+move pos4-2 pos5-2 pos3-4 pos2-4 (1)
+move pos5-2 pos5-3 pos2-4 pos1-4 (1)
+move pos5-3 pos4-3 pos1-4 pos0-4 (1)
+move pos4-3 pos3-3 pos0-4 pos0-3 (1)
+move pos3-3 pos3-4 pos0-3 pos1-3 (1)
+move pos3-4 pos4-4 pos1-3 pos1-2 (1)
+move pos4-4 pos5-4 pos1-2 pos0-2 (1)
+move pos5-4 pos5-5 pos0-2 pos0-1 (1)
+move-and-eat-spawn pos5-5 pos4-5 pos0-1 pos3-2 (1)
+move pos4-5 pos3-5 pos0-1 pos0-0 (1)
+move pos3-5 pos2-5 pos0-0 pos1-0 (1)
+move pos2-5 pos2-4 pos1-0 pos2-0 (1)
+move-and-eat-spawn pos2-4 pos2-3 pos3-2 pos5-1 (1)
+move pos2-3 pos2-2 pos2-0 pos3-0 (1)
+move pos2-2 pos1-2 pos3-0 pos4-0 (1)
+move pos1-2 pos1-3 pos4-0 pos4-1 (1)
+move pos1-3 pos1-4 pos4-1 pos4-2 (1)
+move pos1-4 pos1-5 pos4-2 pos5-2 (1)
+move pos1-5 pos0-5 pos5-2 pos5-3 (1)
+move pos0-5 pos0-4 pos5-3 pos4-3 (1)
+move pos0-4 pos0-3 pos4-3 pos3-3 (1)
+move pos0-3 pos0-2 pos3-3 pos3-4 (1)
+move-and-eat-spawn pos0-2 pos0-1 pos5-1 pos3-4 (1)
+move-and-eat-spawn pos0-1 pos1-1 pos3-4 dummypoint (1)
+move-and-eat-no-spawn pos1-1 pos2-1 (1)
+move-and-eat-no-spawn pos2-1 pos3-1 (1)
+move pos3-1 pos4-1 pos3-4 pos4-4 (1)
+move-and-eat-no-spawn pos4-1 pos5-1 (1)
+move pos5-1 pos5-2 pos4-4 pos5-4 (1)
+move pos5-2 pos4-2 pos5-4 pos5-5 (1)
+move-and-eat-no-spawn pos4-2 pos3-2 (1)
+move pos3-2 pos3-3 pos5-5 pos4-5 (1)
+move-and-eat-no-spawn pos3-3 pos3-4 (1)
+[t=70.3133s, 33468 KB] Plan length: 112 step(s).
+[t=70.3133s, 33468 KB] Plan cost: 112
+[t=70.3133s, 33468 KB] Expanded 38460 state(s).
+[t=70.3133s, 33468 KB] Reopened 0 state(s).
+[t=70.3133s, 33468 KB] Evaluated 73319 state(s).
+[t=70.3133s, 33468 KB] Evaluations: 73319
+[t=70.3133s, 33468 KB] Generated 82387 state(s).
+[t=70.3133s, 33468 KB] Dead ends: 2180 state(s).
+[t=70.3133s, 33468 KB] Number of registered states: 73319
+[t=70.3133s, 33468 KB] Int hash set load factor: 73319/131072 = 0.55938
+[t=70.3133s, 33468 KB] Int hash set resizes: 17
+[t=70.3133s, 33468 KB] Search time: 70.0056s
+[t=70.3133s, 33468 KB] Total time: 70.3133s
+Solution found.
+Peak memory: 33468 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 112 
+
+Successful plans:
+Value: 112
+ sas_plan 112 
+
+validate exit code: 0
+
+INFO     Planner time: 73.07s

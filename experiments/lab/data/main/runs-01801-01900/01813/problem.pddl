@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/agricola-sat18-strips/p07.pddl

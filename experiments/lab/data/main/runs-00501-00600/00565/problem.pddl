@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/elevators-sat11-strips/p11.pddl

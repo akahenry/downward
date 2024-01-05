@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/openstacks-sat11-strips/p20-domain.pddl

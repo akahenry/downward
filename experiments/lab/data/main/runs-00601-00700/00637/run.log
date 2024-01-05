@@ -1,0 +1,296 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.010s CPU, 0.003s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 115 rules.
+Computing model... [0.020s CPU, 0.024s wall-clock]
+2300 relevant atoms
+2393 auxiliary atoms
+4693 final queue length
+8087 total queue pushes
+Completing instantiation... [0.050s CPU, 0.048s wall-clock]
+Instantiating: [0.070s CPU, 0.078s wall-clock]
+Computing fact groups...
+Finding invariants...
+24 initial candidates
+Finding invariants: [0.010s CPU, 0.007s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+238 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.010s CPU, 0.009s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.002s wall-clock]
+Translating task: [0.060s CPU, 0.061s wall-clock]
+2672 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+3 propositions removed
+Detecting unreachable propositions: [0.030s CPU, 0.027s wall-clock]
+Reordering and filtering variables...
+241 of 241 variables necessary.
+12 of 15 mutex groups necessary.
+1596 of 1596 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.020s CPU, 0.015s wall-clock]
+Translator variables: 241
+Translator derived variables: 0
+Translator facts: 505
+Translator goal facts: 10
+Translator mutex groups: 12
+Translator total mutex groups size: 36
+Translator operators: 1596
+Translator axioms: 0
+Translator task size: 15302
+Translator peak memory: 41584 KB
+Writing output... [0.010s CPU, 0.011s wall-clock]
+Done! [0.210s CPU, 0.208s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1799s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([lsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 10544 KB] reading input...
+[t=0.00399947s, 11224 KB] done reading input!
+[t=0.00800409s, 11488 KB] Generating patterns using: systematic pattern collection generator
+[t=0.00800409s, 11488 KB] building causal graph...done! [t=0s]
+[t=0.0439758s, 25624 KB] Found 56102 SGA patterns.
+[t=0.503825s, 26416 KB] Found 63244 interesting patterns.
+[t=0.523802s, 26468 KB] systematic pattern collection generator number of patterns: 63244
+[t=0.523802s, 26468 KB] systematic pattern collection generator total PDB size: 2259360
+[t=0.523802s, 26468 KB] systematic pattern collection generator computation time: 0.515798s
+[t=0.523802s, 26468 KB] Computing PDBs for pattern collection...
+[t=25.6939s, 41036 KB] Done computing PDBs for pattern collection: 25.1701s
+[t=28.4765s, 504312 KB] Building successor generator...done!
+[t=28.4765s, 504312 KB] peak memory difference for successor generator creation: 0 KB
+[t=28.4765s, 504312 KB] time for successor generation creation: 0s
+[t=28.4765s, 504312 KB] Variables: 241
+[t=28.4765s, 504312 KB] FactPairs: 505
+[t=28.4765s, 504312 KB] Bytes per state: 32
+[t=28.4765s, 504312 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=28.4805s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 39
+[t=28.4805s, 504312 KB] g=0, 1 evaluated, 0 expanded
+[t=28.4805s, 504312 KB] Initial heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 39
+[t=28.4805s, 504312 KB] pruning method: none
+[t=28.4845s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 38
+[t=28.4845s, 504312 KB] g=1, 2 evaluated, 1 expanded
+[t=30.1111s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 37
+[t=30.1111s, 504312 KB] g=13, 402 evaluated, 61 expanded
+[t=30.1351s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 33
+[t=30.1351s, 504312 KB] g=14, 408 evaluated, 62 expanded
+[t=35.5428s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 32
+[t=35.5428s, 504312 KB] g=25, 1828 evaluated, 284 expanded
+[t=43.9316s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 27
+[t=43.9316s, 504312 KB] g=26, 4017 evaluated, 784 expanded
+[t=72.0261s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 24
+[t=72.0261s, 504312 KB] g=58, 11195 evaluated, 1514 expanded
+[t=116.293s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 22
+[t=116.293s, 504312 KB] g=89, 22509 evaluated, 2754 expanded
+[t=133.945s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 21
+[t=133.945s, 504312 KB] g=109, 27047 evaluated, 3279 expanded
+[t=140.161s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 18
+[t=140.161s, 504312 KB] g=120, 28702 evaluated, 3445 expanded
+[t=175.023s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 16
+[t=175.023s, 504312 KB] g=151, 38026 evaluated, 4592 expanded
+[t=189.649s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 15
+[t=189.649s, 504312 KB] g=171, 41978 evaluated, 5115 expanded
+[t=197.818s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 14
+[t=197.818s, 504312 KB] g=182, 44141 evaluated, 5336 expanded
+[t=197.838s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 11
+[t=197.838s, 504312 KB] g=183, 44147 evaluated, 5337 expanded
+[t=220.672s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 9
+[t=220.672s, 504312 KB] g=214, 50319 evaluated, 6158 expanded
+[t=220.924s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 8
+[t=220.924s, 504312 KB] g=217, 50390 evaluated, 6162 expanded
+[t=272.827s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 7
+[t=272.827s, 504312 KB] g=245, 64813 evaluated, 8723 expanded
+[t=272.931s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 6
+[t=272.931s, 504312 KB] g=246, 64843 evaluated, 8724 expanded
+[t=272.983s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 4
+[t=272.983s, 504312 KB] g=247, 64857 evaluated, 8725 expanded
+[t=329.126s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 3
+[t=329.126s, 504312 KB] g=276, 80352 evaluated, 13109 expanded
+[t=329.162s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 1
+[t=329.162s, 504312 KB] g=277, 80361 evaluated, 13110 expanded
+[t=329.21s, 504312 KB] New best heuristic value for lsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 0
+[t=329.21s, 504312 KB] g=278, 80374 evaluated, 13111 expanded
+[t=329.222s, 504312 KB] Solution found!
+[t=329.222s, 504312 KB] Actual search time: 300.741s
+grasp left shot11 (1)
+fill-shot shot11 ingredient1 left right dispenser1 (10)
+pour-shot-to-clean-shaker shot11 ingredient1 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient1 left right (1)
+fill-shot shot11 ingredient2 left right dispenser2 (10)
+grasp right shaker1 (1)
+pour-shot-to-used-shaker shot11 ingredient2 shaker1 left l1 l2 (1)
+leave left shot11 (1)
+shake cocktail8 ingredient1 ingredient2 shaker1 right left (1)
+pour-shaker-to-shot cocktail8 shot10 right shaker1 l2 l1 (1)
+pour-shaker-to-shot cocktail8 shot8 right shaker1 l1 l0 (1)
+empty-shaker right shaker1 cocktail8 l0 l0 (1)
+clean-shaker right left shaker1 (1)
+grasp left shot11 (1)
+leave right shaker1 (1)
+refill-shot shot11 ingredient2 left right dispenser2 (10)
+pour-shot-to-clean-shaker shot11 ingredient2 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient2 left right (1)
+fill-shot shot11 ingredient3 left right dispenser3 (10)
+pour-shot-to-used-shaker shot11 ingredient3 shaker1 left l1 l2 (1)
+grasp right shaker1 (1)
+leave left shot11 (1)
+shake cocktail4 ingredient2 ingredient3 shaker1 right left (1)
+pour-shaker-to-shot cocktail4 shot6 right shaker1 l2 l1 (1)
+empty-shaker right shaker1 cocktail4 l1 l0 (1)
+clean-shaker right left shaker1 (1)
+grasp left shot11 (1)
+leave right shaker1 (1)
+refill-shot shot11 ingredient3 left right dispenser3 (10)
+pour-shot-to-clean-shaker shot11 ingredient3 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient3 left right (1)
+fill-shot shot11 ingredient2 left right dispenser2 (10)
+pour-shot-to-used-shaker shot11 ingredient2 shaker1 left l1 l2 (1)
+grasp right shaker1 (1)
+leave left shot11 (1)
+shake cocktail5 ingredient2 ingredient3 shaker1 right left (1)
+pour-shaker-to-shot cocktail5 shot5 right shaker1 l2 l1 (1)
+empty-shaker right shaker1 cocktail5 l1 l0 (1)
+clean-shaker right left shaker1 (1)
+grasp left shot11 (1)
+leave right shaker1 (1)
+refill-shot shot11 ingredient2 left right dispenser2 (10)
+pour-shot-to-clean-shaker shot11 ingredient2 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient2 left right (1)
+fill-shot shot11 ingredient1 left right dispenser1 (10)
+pour-shot-to-used-shaker shot11 ingredient1 shaker1 left l1 l2 (1)
+grasp right shaker1 (1)
+leave left shot11 (1)
+shake cocktail2 ingredient2 ingredient1 shaker1 right left (1)
+pour-shaker-to-shot cocktail2 shot7 right shaker1 l2 l1 (1)
+empty-shaker right shaker1 cocktail2 l1 l0 (1)
+clean-shaker right left shaker1 (1)
+grasp left shot11 (1)
+leave right shaker1 (1)
+refill-shot shot11 ingredient1 left right dispenser1 (10)
+pour-shot-to-clean-shaker shot11 ingredient1 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient1 left right (1)
+fill-shot shot11 ingredient2 left right dispenser2 (10)
+pour-shot-to-used-shaker shot11 ingredient2 shaker1 left l1 l2 (1)
+grasp right shaker1 (1)
+leave left shot11 (1)
+shake cocktail3 ingredient1 ingredient2 shaker1 right left (1)
+pour-shaker-to-shot cocktail3 shot9 right shaker1 l2 l1 (1)
+empty-shaker right shaker1 cocktail3 l1 l0 (1)
+clean-shaker right left shaker1 (1)
+grasp left shot11 (1)
+leave right shaker1 (1)
+clean-shot shot11 ingredient2 left right (1)
+fill-shot shot11 ingredient1 left right dispenser1 (10)
+pour-shot-to-clean-shaker shot11 ingredient1 shaker1 left l0 l1 (1)
+clean-shot shot11 ingredient1 left right (1)
+fill-shot shot11 ingredient3 left right dispenser3 (10)
+pour-shot-to-used-shaker shot11 ingredient3 shaker1 left l1 l2 (1)
+leave left shot11 (1)
+grasp left shaker1 (1)
+shake cocktail6 ingredient3 ingredient1 shaker1 left right (1)
+pour-shaker-to-shot cocktail6 shot3 left shaker1 l2 l1 (1)
+empty-shaker left shaker1 cocktail6 l1 l0 (1)
+clean-shaker left right shaker1 (1)
+grasp right shot11 (1)
+leave left shaker1 (1)
+refill-shot shot11 ingredient3 right left dispenser3 (10)
+pour-shot-to-clean-shaker shot11 ingredient3 shaker1 right l0 l1 (1)
+clean-shot shot11 ingredient3 right left (1)
+fill-shot shot11 ingredient1 right left dispenser1 (10)
+pour-shot-to-used-shaker shot11 ingredient1 shaker1 right l1 l2 (1)
+leave right shot11 (1)
+grasp left shaker1 (1)
+shake cocktail1 ingredient3 ingredient1 shaker1 left right (1)
+pour-shaker-to-shot cocktail1 shot4 left shaker1 l2 l1 (1)
+empty-shaker left shaker1 cocktail1 l1 l0 (1)
+clean-shaker left right shaker1 (1)
+grasp right shot11 (1)
+leave left shaker1 (1)
+refill-shot shot11 ingredient1 right left dispenser1 (10)
+pour-shot-to-clean-shaker shot11 ingredient1 shaker1 right l0 l1 (1)
+clean-shot shot11 ingredient1 right left (1)
+fill-shot shot11 ingredient4 right left dispenser4 (10)
+pour-shot-to-used-shaker shot11 ingredient4 shaker1 right l1 l2 (1)
+leave right shot11 (1)
+grasp left shaker1 (1)
+shake cocktail9 ingredient1 ingredient4 shaker1 left right (1)
+pour-shaker-to-shot cocktail9 shot2 left shaker1 l2 l1 (1)
+empty-shaker left shaker1 cocktail9 l1 l0 (1)
+clean-shaker left right shaker1 (1)
+grasp right shot11 (1)
+leave left shaker1 (1)
+refill-shot shot11 ingredient4 right left dispenser4 (10)
+pour-shot-to-clean-shaker shot11 ingredient4 shaker1 right l0 l1 (1)
+clean-shot shot11 ingredient4 right left (1)
+fill-shot shot11 ingredient3 right left dispenser3 (10)
+grasp left shaker1 (1)
+pour-shot-to-used-shaker shot11 ingredient3 shaker1 right l1 l2 (1)
+leave right shot11 (1)
+shake cocktail7 ingredient3 ingredient4 shaker1 left right (1)
+pour-shaker-to-shot cocktail7 shot1 left shaker1 l2 l1 (1)
+[t=329.222s, 504312 KB] Plan length: 116 step(s).
+[t=329.222s, 504312 KB] Plan cost: 278
+[t=329.222s, 504312 KB] Expanded 13112 state(s).
+[t=329.222s, 504312 KB] Reopened 0 state(s).
+[t=329.222s, 504312 KB] Evaluated 80377 state(s).
+[t=329.222s, 504312 KB] Evaluations: 80377
+[t=329.222s, 504312 KB] Generated 129507 state(s).
+[t=329.222s, 504312 KB] Dead ends: 0 state(s).
+[t=329.222s, 504312 KB] Number of registered states: 80377
+[t=329.222s, 504312 KB] Int hash set load factor: 80377/131072 = 0.613228
+[t=329.222s, 504312 KB] Int hash set resizes: 17
+[t=329.222s, 504312 KB] Search time: 300.745s
+[t=329.222s, 504312 KB] Total time: 329.222s
+Solution found.
+Peak memory: 504312 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 278 
+
+Successful plans:
+Value: 278
+ sas_plan 278 
+
+validate exit code: 0
+
+INFO     Planner time: 329.53s

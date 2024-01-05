@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/openstacks-sat14-strips/p210_3.pddl

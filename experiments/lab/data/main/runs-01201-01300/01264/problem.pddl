@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/floortile-sat11-strips/seq-p06-011.pddl

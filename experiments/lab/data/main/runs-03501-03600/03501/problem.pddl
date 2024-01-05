@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/data-network-sat18-strips/p03.pddl

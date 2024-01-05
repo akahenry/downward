@@ -1,0 +1,278 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.005s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.005s wall-clock]
+Preparing model... [0.000s CPU, 0.004s wall-clock]
+Generated 258 rules.
+Computing model... [0.380s CPU, 0.382s wall-clock]
+59140 relevant atoms
+1704 auxiliary atoms
+60844 final queue length
+221347 total queue pushes
+Completing instantiation... [2.760s CPU, 2.759s wall-clock]
+Instantiating: [3.160s CPU, 3.163s wall-clock]
+Computing fact groups...
+Finding invariants...
+44 initial candidates
+Finding invariants: [0.060s CPU, 0.061s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.010s CPU, 0.001s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+126 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.070s CPU, 0.062s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.090s CPU, 0.095s wall-clock]
+Translating task: [2.640s CPU, 2.648s wall-clock]
+63383 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+33 propositions removed
+Detecting unreachable propositions: [1.460s CPU, 1.460s wall-clock]
+Reordering and filtering variables...
+115 of 120 variables necessary.
+0 of 7 mutex groups necessary.
+58457 of 58457 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.450s CPU, 0.445s wall-clock]
+Translator variables: 115
+Translator derived variables: 0
+Translator facts: 261
+Translator goal facts: 2
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 58457
+Translator axioms: 0
+Translator task size: 615672
+Translator peak memory: 382000 KB
+Writing output... [0.370s CPU, 0.373s wall-clock]
+Done! [8.270s CPU, 8.279s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1791s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([lsh(patterns=systematic(2), transform=adapt_costs(cost_type=NORMAL))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 10544 KB] reading input...
+[t=0.254532s, 34508 KB] done reading input!
+[t=0.258541s, 34904 KB] Generating patterns using: systematic pattern collection generator
+[t=0.258541s, 34904 KB] building causal graph...done! [t=0.0279735s]
+[t=0.286515s, 35168 KB] Found 25 SGA patterns.
+[t=0.286515s, 35168 KB] Found 25 interesting patterns.
+[t=0.286515s, 35168 KB] systematic pattern collection generator number of patterns: 25
+[t=0.286515s, 35168 KB] systematic pattern collection generator total PDB size: 178
+[t=0.29052s, 35168 KB] systematic pattern collection generator computation time: 0.0279735s
+[t=0.29052s, 35168 KB] Computing PDBs for pattern collection...
+[t=0.538322s, 39612 KB] Done computing PDBs for pattern collection: 0.247802s
+[t=0.590282s, 39612 KB] Building successor generator...done!
+[t=0.610265s, 46604 KB] peak memory difference for successor generator creation: 6992 KB
+[t=0.610265s, 46604 KB] time for successor generation creation: 0.019983s
+[t=0.610265s, 46604 KB] Variables: 115
+[t=0.610265s, 46604 KB] FactPairs: 261
+[t=0.610265s, 46604 KB] Bytes per state: 16
+[t=0.610265s, 46604 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.610265s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 385
+[t=0.610265s, 46604 KB] g=0, 1 evaluated, 0 expanded
+[t=0.610265s, 46604 KB] Initial heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 385
+[t=0.610265s, 46604 KB] pruning method: none
+[t=0.610265s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 325
+[t=0.610265s, 46604 KB] g=60, 2 evaluated, 1 expanded
+[t=0.614266s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 265
+[t=0.614266s, 46604 KB] g=120, 13 evaluated, 2 expanded
+[t=0.63826s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 166
+[t=0.63826s, 46604 KB] g=243, 1453 evaluated, 852 expanded
+[t=0.63826s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 165
+[t=0.63826s, 46604 KB] g=244, 1462 evaluated, 853 expanded
+[t=0.63826s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 105
+[t=0.63826s, 46604 KB] g=306, 1476 evaluated, 857 expanded
+[t=0.658253s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 94
+[t=0.658253s, 46604 KB] g=399, 2744 evaluated, 1447 expanded
+[t=0.658253s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 75
+[t=0.658253s, 46604 KB] g=429, 2755 evaluated, 1448 expanded
+[t=0.658253s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 74
+[t=0.658253s, 46604 KB] g=430, 2765 evaluated, 1449 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 63
+[t=1.72998s, 46604 KB] g=544, 65532 evaluated, 63413 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 48
+[t=1.72998s, 46604 KB] g=559, 65542 evaluated, 63414 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 33
+[t=1.72998s, 46604 KB] g=574, 65551 evaluated, 63415 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 18
+[t=1.72998s, 46604 KB] g=589, 65559 evaluated, 63416 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 3
+[t=1.72998s, 46604 KB] g=589, 65729 evaluated, 63512 expanded
+[t=1.72998s, 46604 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 2
+[t=1.72998s, 46604 KB] g=590, 65737 evaluated, 63513 expanded
+[t=344.492s, 1014592 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 1
+[t=344.492s, 1014592 KB] g=897, 19688073 evaluated, 19504590 expanded
+[t=344.492s, 1014592 KB] New best heuristic value for lsh(patterns=systematic(2),transform=adapt_costs(cost_type=normal)): 0
+[t=344.492s, 1014592 KB] g=898, 19688074 evaluated, 19504591 expanded
+[t=344.492s, 1014592 KB] Solution found!
+[t=344.492s, 1014592 KB] Actual search time: 343.882s
+collect_resource worker2 worker1 worker2 round1 act_reed reed (60)
+collect_resource worker1 noworker worker2 round1 act_wood wood (60)
+ag__finish_round_backhome round1 worker2 (1)
+ag__finish_round_renew round1 noworker (1)
+ag__advance_round_normal round1 round2 act_family (1)
+build_room worker2 worker1 worker2 worker3 round2 room3 (60)
+family_growth worker1 noworker worker2 worker3 round2 clay room3 (60)
+ag__finish_round_backhome_withchild round2 worker2 worker3 (1)
+ag__finish_round_renew round2 noworker (1)
+ag__advance_round_normal round2 round3 act_sheep (1)
+collect_resource worker3 worker2 worker3 round3 act_reed reed (30)
+collect_resource worker2 worker1 worker3 round3 act_wood wood (30)
+plow_field worker1 noworker worker3 round3 (30)
+ag__finish_round_backhome round3 worker3 (1)
+ag__finish_round_renew round3 noworker (1)
+ag__advance_round_normal round3 round4 act_sow (1)
+build_room worker3 worker2 worker3 worker4 round4 room4 (30)
+take_grain worker2 worker1 worker3 round4 carrot (30)
+sow worker1 noworker worker3 round4 carrot (30)
+ag__finish_round_backhome round4 worker3 (1)
+ag__finish_round_renew round4 noworker (1)
+ag__harvest_collecting_veg round4 stage1 carrot num3 num5 num6 (1)
+ag__harvest_collect_end round4 stage1 (1)
+ag__harvest_feed round4 stage1 worker3 num6 num6 num0 (1)
+ag__harvest_breed_end round4 stage1 (1)
+ag__finish_stage stage1 stage2 round4 round5 act_improve (1)
+family_growth worker3 worker2 worker3 worker4 round5 clay room4 (30)
+collect_resource worker2 worker1 worker3 round5 act_clay clay (30)
+collect_resource worker1 noworker worker3 round5 act_reed reed (30)
+ag__finish_round_backhome_withchild round5 worker3 worker4 (1)
+ag__finish_round_renew round5 noworker (1)
+ag__advance_round_normal round5 round6 act_boar (1)
+collect_resource worker4 worker3 worker4 round6 act_clay clay (15)
+collect_resource worker3 worker2 worker4 round6 act_stone stone (15)
+improve_home worker2 worker1 worker4 round6 fireplace (15)
+collect_cook_animal boar act_sheep worker1 noworker worker4 round6 num0 num2 (15)
+ag__finish_round_backhome round6 worker4 (1)
+ag__finish_round_renew round6 noworker (1)
+ag__advance_round_normal round6 round7 act_cattle (1)
+collect_cook_animal boar act_sheep worker4 worker3 worker4 round7 num2 num4 (15)
+collect_cook_animal boar act_cattle worker3 worker2 worker4 round7 num4 num6 (15)
+collect_cook_animal boar act_boar worker2 worker1 worker4 round7 num6 num8 (15)
+collect_resource worker1 noworker worker4 round7 act_wood wood (15)
+ag__finish_round_backhome round7 worker4 (1)
+ag__finish_round_renew round7 noworker (1)
+ag__harvest_collect_end round7 stage2 (1)
+ag__harvest_feed round7 stage2 worker4 num8 num8 num0 (1)
+ag__harvest_breed_end round7 stage2 (1)
+ag__finish_stage stage2 stage3 round7 round8 act_carrot (1)
+collect_cook_animal boar act_sheep worker4 worker3 worker4 round8 num0 num2 (15)
+build_room worker3 worker2 worker4 worker5 round8 room5 (15)
+family_growth worker2 worker1 worker4 worker5 round8 clay room5 (15)
+take_grain worker1 noworker worker4 round8 carrot (15)
+ag__finish_round_backhome_withchild round8 worker4 worker5 (1)
+ag__finish_round_renew round8 noworker (1)
+ag__advance_round_normal round8 round9 void (1)
+sow worker5 worker4 worker5 round9 carrot (6)
+collect_cook_animal boar act_sheep worker4 worker3 worker5 round9 num2 num4 (6)
+collect_resource worker3 worker2 worker5 round9 act_clay clay (6)
+take_grain worker2 worker1 worker5 round9 grain (6)
+sow worker1 noworker worker5 round9 grain (6)
+ag__finish_round_backhome round9 worker5 (1)
+ag__finish_round_renew round9 noworker (1)
+ag__harvest_collecting_veg round9 stage3 carrot num4 num6 num7 (1)
+ag__harvest_collecting_veg round9 stage3 grain num7 num9 num10 (1)
+ag__harvest_collect_end round9 stage3 (1)
+ag__harvest_feed round9 stage3 worker5 num10 num10 num0 (1)
+ag__harvest_breed_end round9 stage3 (1)
+ag__finish_stage stage3 stage4 round9 round10 void (1)
+collect_cook_animal boar act_sheep worker5 worker4 worker5 round10 num0 num2 (6)
+collect_resource worker4 worker3 worker5 round10 act_clay clay (6)
+collect_resource worker3 worker2 worker5 round10 act_reed reed (6)
+collect_resource worker2 worker1 worker5 round10 act_stone stone (6)
+take_food worker1 noworker worker5 round10 num2 num3 (6)
+ag__finish_round_backhome round10 worker5 (1)
+ag__finish_round_renew round10 noworker (1)
+ag__advance_round_normal round10 round11 void (1)
+collect_cook_animal boar act_sheep worker5 worker4 worker5 round11 num3 num5 (6)
+improve_home worker4 worker3 worker5 round11 oven (6)
+take_grain worker3 worker2 worker5 round11 carrot (6)
+sow worker2 worker1 worker5 round11 carrot (6)
+take_food worker1 noworker worker5 round11 num5 num6 (6)
+ag__finish_round_backhome round11 worker5 (1)
+ag__finish_round_renew round11 noworker (1)
+ag__harvest_collecting_fromoven round11 stage4 carrot num6 num8 num10 (1)
+ag__harvest_collect_end round11 stage4 (1)
+ag__harvest_feed round11 stage4 worker5 num10 num10 num0 (1)
+ag__harvest_breed_end round11 stage4 (1)
+ag__finish_stage stage4 stage5 round11 round12 void (1)
+collect_cook_animal boar act_sheep worker5 worker4 worker5 round12 num0 num2 (6)
+collect_resource worker4 worker3 worker5 round12 act_clay clay (6)
+collect_resource worker3 worker2 worker5 round12 act_reed reed (6)
+collect_resource worker2 worker1 worker5 round12 act_stone stone (6)
+take_food worker1 noworker worker5 round12 num2 num3 (6)
+ag__finish_round_backhome round12 worker5 (1)
+ag__finish_round_renew round12 noworker (1)
+ag__advance_round_normal round12 round13 void (1)
+collect_cook_animal boar act_sheep worker5 worker4 worker5 round13 num3 num5 (6)
+improve_home worker4 worker3 worker5 round13 fireplace (6)
+take_grain worker3 worker2 worker5 round13 carrot (6)
+sow worker2 worker1 worker5 round13 carrot (6)
+take_food worker1 noworker worker5 round13 num5 num6 (6)
+ag__finish_round_backhome round13 worker5 (1)
+ag__finish_round_renew round13 noworker (1)
+ag__harvest_collecting_fromoven round13 stage5 carrot num6 num8 num10 (1)
+ag__harvest_collect_end round13 stage5 (1)
+ag__harvest_feed round13 stage5 worker5 num10 num10 num0 (1)
+ag__harvest_breed_end round13 stage5 (1)
+[t=344.492s, 1014592 KB] Plan length: 108 step(s).
+[t=344.492s, 1014592 KB] Plan cost: 898
+[t=344.492s, 1014592 KB] Expanded 19504592 state(s).
+[t=344.492s, 1014592 KB] Reopened 0 state(s).
+[t=344.492s, 1014592 KB] Evaluated 19688074 state(s).
+[t=344.492s, 1014592 KB] Evaluations: 19688074
+[t=344.492s, 1014592 KB] Generated 123278617 state(s).
+[t=344.492s, 1014592 KB] Dead ends: 0 state(s).
+[t=344.492s, 1014592 KB] Number of registered states: 19688074
+[t=344.492s, 1014592 KB] Int hash set load factor: 19688074/33554432 = 0.58675
+[t=344.492s, 1014592 KB] Int hash set resizes: 25
+[t=344.492s, 1014592 KB] Search time: 343.882s
+[t=344.492s, 1014592 KB] Total time: 344.492s
+Solution found.
+Peak memory: 1014592 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 898 
+
+Successful plans:
+Value: 898
+ sas_plan 898 
+
+validate exit code: 0
+
+INFO     Planner time: 352.94s

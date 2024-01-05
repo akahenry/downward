@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/woodworking-sat11-strips/p11.pddl

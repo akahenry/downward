@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/spider-sat18-strips/p17.pddl

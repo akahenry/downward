@@ -1,0 +1,204 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.010s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 32 rules.
+Computing model... [0.880s CPU, 0.881s wall-clock]
+151565 relevant atoms
+10122 auxiliary atoms
+161687 final queue length
+490508 total queue pushes
+Completing instantiation... [5.120s CPU, 5.131s wall-clock]
+Instantiating: [6.040s CPU, 6.042s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.010s CPU, 0.011s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.010s CPU, 0.009s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.001s wall-clock]
+Choosing groups...
+101 uncovered facts
+Choosing groups: [0.000s CPU, 0.005s wall-clock]
+Building translation key... [0.000s CPU, 0.002s wall-clock]
+Computing fact groups: [0.040s CPU, 0.041s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.002s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.002s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.190s CPU, 0.184s wall-clock]
+Translating task: [5.530s CPU, 5.531s wall-clock]
+177600 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+40 propositions removed
+Detecting unreachable propositions: [3.960s CPU, 3.961s wall-clock]
+Reordering and filtering variables...
+141 of 141 variables necessary.
+61 of 101 mutex groups necessary.
+144000 of 144000 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.800s CPU, 0.796s wall-clock]
+Translator variables: 141
+Translator derived variables: 0
+Translator facts: 2642
+Translator goal facts: 40
+Translator mutex groups: 61
+Translator total mutex groups size: 2501
+Translator operators: 144000
+Translator axioms: 0
+Translator task size: 1171724
+Translator peak memory: 718612 KB
+Writing output... [0.840s CPU, 0.854s wall-clock]
+Done! [17.460s CPU, 17.478s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1782s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([ff(transform=adapt_costs(cost_type=NORMAL))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 10544 KB] reading input...
+[t=0.579679s, 64968 KB] done reading input!
+[t=0.627644s, 91304 KB] Simplifying 498360 unary operators... done! [498360 unary operators]
+[t=1.70664s, 137724 KB] time to simplify: 1.07899s
+[t=1.71463s, 137724 KB] Initializing additive heuristic...
+[t=1.71463s, 137724 KB] Initializing FF heuristic...
+[t=1.71463s, 137724 KB] Building successor generator...done!
+[t=1.75059s, 137724 KB] peak memory difference for successor generator creation: 0 KB
+[t=1.75059s, 137724 KB] time for successor generation creation: 0.0359577s
+[t=1.75459s, 137724 KB] Variables: 141
+[t=1.75459s, 137724 KB] FactPairs: 2642
+[t=1.75459s, 137724 KB] Bytes per state: 44
+[t=1.75459s, 137724 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=1.76656s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 88
+[t=1.76656s, 137724 KB] g=0, 1 evaluated, 0 expanded
+[t=1.76656s, 137724 KB] Initial heuristic value for ff(transform=adapt_costs(cost_type=normal)): 88
+[t=1.76656s, 137724 KB] pruning method: none
+[t=1.81453s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 87
+[t=1.81453s, 137724 KB] g=1, 5 evaluated, 1 expanded
+[t=1.91838s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 79
+[t=1.91838s, 137724 KB] g=1, 14 evaluated, 1 expanded
+[t=2.70547s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 78
+[t=2.70547s, 137724 KB] g=3, 87 evaluated, 4 expanded
+[t=5.73488s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 77
+[t=5.73488s, 137724 KB] g=5, 377 evaluated, 14 expanded
+[t=6.80996s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 76
+[t=6.80996s, 137724 KB] g=8, 480 evaluated, 18 expanded
+[t=9.25978s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 75
+[t=9.25978s, 137724 KB] g=9, 714 evaluated, 27 expanded
+[t=10.9903s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 74
+[t=10.9903s, 137724 KB] g=9, 880 evaluated, 33 expanded
+[t=11.7935s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 72
+[t=11.7935s, 137724 KB] g=11, 957 evaluated, 36 expanded
+[t=12.369s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 70
+[t=12.369s, 137724 KB] g=13, 1011 evaluated, 38 expanded
+[t=13.9637s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 68
+[t=13.9637s, 137724 KB] g=15, 1165 evaluated, 43 expanded
+[t=18.2435s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 67
+[t=18.2435s, 137724 KB] g=18, 1576 evaluated, 59 expanded
+[t=18.8828s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 66
+[t=18.8828s, 137724 KB] g=19, 1635 evaluated, 61 expanded
+[t=20.5369s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 65
+[t=20.5369s, 137724 KB] g=19, 1791 evaluated, 67 expanded
+[t=21.372s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 64
+[t=21.372s, 137724 KB] g=20, 1872 evaluated, 70 expanded
+[t=22.7665s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 63
+[t=22.7665s, 137724 KB] g=22, 2003 evaluated, 75 expanded
+[t=27.0338s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 62
+[t=27.0338s, 137724 KB] g=23, 2403 evaluated, 91 expanded
+[t=30.5619s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 61
+[t=30.5619s, 137724 KB] g=26, 2739 evaluated, 102 expanded
+[t=33.2151s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 60
+[t=33.2151s, 137724 KB] g=30, 2992 evaluated, 112 expanded
+[t=34.9092s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 56
+[t=34.9092s, 137724 KB] g=30, 3153 evaluated, 118 expanded
+[t=36.3554s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 55
+[t=36.3554s, 137724 KB] g=33, 3284 evaluated, 122 expanded
+[t=42.0852s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 54
+[t=42.0852s, 137724 KB] g=35, 3821 evaluated, 142 expanded
+[t=42.5367s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 52
+[t=42.5367s, 137724 KB] g=36, 3864 evaluated, 144 expanded
+[t=44.1352s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 51
+[t=44.1352s, 137724 KB] g=39, 4019 evaluated, 149 expanded
+[t=53.3013s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 50
+[t=53.3013s, 137724 KB] g=41, 4899 evaluated, 179 expanded
+[t=71.6496s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 49
+[t=71.6496s, 137724 KB] g=44, 6658 evaluated, 247 expanded
+[t=72.7843s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 48
+[t=72.7843s, 137724 KB] g=46, 6767 evaluated, 249 expanded
+[t=77.0558s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 47
+[t=77.0558s, 137724 KB] g=49, 7180 evaluated, 262 expanded
+[t=77.8948s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 46
+[t=77.8948s, 137724 KB] g=50, 7260 evaluated, 264 expanded
+[t=81.1832s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 45
+[t=81.1832s, 137724 KB] g=51, 7577 evaluated, 272 expanded
+[t=81.1912s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 44
+[t=81.1912s, 137724 KB] g=51, 7578 evaluated, 272 expanded
+[t=83.2932s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 43
+[t=83.2932s, 137724 KB] g=52, 7784 evaluated, 278 expanded
+[t=83.6288s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 42
+[t=83.6288s, 137724 KB] g=53, 7816 evaluated, 279 expanded
+[t=86.0624s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 41
+[t=86.0624s, 137724 KB] g=54, 8053 evaluated, 285 expanded
+[t=86.0744s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 40
+[t=86.0744s, 137724 KB] g=54, 8054 evaluated, 285 expanded
+[t=90.6653s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 39
+[t=90.6653s, 137724 KB] g=56, 8493 evaluated, 299 expanded
+[t=90.925s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 38
+[t=90.925s, 137724 KB] g=57, 8519 evaluated, 300 expanded
+[t=91.0888s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 36
+[t=91.0888s, 137724 KB] g=57, 8534 evaluated, 300 expanded
+[t=91.7082s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 35
+[t=91.7082s, 137724 KB] g=59, 8595 evaluated, 302 expanded
+[t=91.7402s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 34
+[t=91.7402s, 137724 KB] g=59, 8598 evaluated, 302 expanded
+[t=127.859s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 33
+[t=127.859s, 137724 KB] g=66, 12006 evaluated, 393 expanded
+[t=127.931s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 32
+[t=127.931s, 137724 KB] g=66, 12013 evaluated, 393 expanded
+[t=129.286s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 31
+[t=129.286s, 137724 KB] g=69, 12145 evaluated, 397 expanded
+[t=302.178s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 30
+[t=302.178s, 137724 KB] g=74, 29276 evaluated, 846 expanded
+[t=660.721s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 29
+[t=660.721s, 137724 KB] g=77, 63890 evaluated, 1885 expanded
+[t=660.857s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 28
+[t=660.857s, 137724 KB] g=77, 63902 evaluated, 1885 expanded
+[t=661.708s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 27
+[t=661.708s, 137724 KB] g=80, 63976 evaluated, 1888 expanded
+[t=662.099s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 26
+[t=662.099s, 137724 KB] g=81, 64010 evaluated, 1889 expanded
+[t=662.207s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 25
+[t=662.207s, 137724 KB] g=81, 64019 evaluated, 1889 expanded
+[t=662.894s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 24
+[t=662.894s, 137724 KB] g=83, 64078 evaluated, 1891 expanded
+[t=1146.88s, 137724 KB] New best heuristic value for ff(transform=adapt_costs(cost_type=normal)): 23
+[t=1146.88s, 137724 KB] g=88, 110235 evaluated, 3341 expanded
+Peak memory: 137724 KB
+caught signal 24 -- exiting
+Time limit has been reached.
+Remove intermediate file output.sas
+search exit code: 23
+
+Driver aborting after search
+INFO     Planner time: 1797.74s
