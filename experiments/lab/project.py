@@ -183,6 +183,7 @@ class CommonExperiment(FastDownwardExperiment):
 
         self.add_step("build", self.build)
         self.add_step("start", self.start_runs)
+        self.add_step("parse", self.parse)
         self.add_fetcher(name="fetch")
 
         # if not REMOTE:
