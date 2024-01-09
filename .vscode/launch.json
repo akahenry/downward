@@ -73,18 +73,16 @@
         },
         {
             "name": "(lldb) C++: Launch",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/builds/debug/bin/downward",
             "args": [
                 "--search",
-                "${input:search-algorithm}([${input:search-heuristic}(${input:search-heuristic-parameters})])",
+                "'${input:search-algorithm}([${input:search-heuristic}(${input:search-heuristic-parameters})])'",
                 "<",
                 "${config:downward.translateOutputFile}"
             ],
             "cwd": "${workspaceFolder}",
-            "MIMode": "lldb",
-            "miDebuggerPath": "/Users/i574829/.vscode/extensions/ms-vscode.cpptools-1.18.5-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi",
             "preLaunchTask": "C++: build debug",
         },
         {
