@@ -23,8 +23,9 @@ namespace pdbs
         std::vector<int> operator_cost;
         std::vector<int> operator_count;
 
-        std::vector<std::vector<int>> restrictions;
-        std::vector<std::vector<int>> restriction_operator;
+        std::vector<std::vector<int>> relevant_operators_by_restriction;
+        std::vector<int> simple_restrictions_ids;
+        std::vector<std::vector<int>> relevant_restrictions_by_operator;
 
         std::vector<int> value_pdbs;
         std::vector<int> lower_bounds;

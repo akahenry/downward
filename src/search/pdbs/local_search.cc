@@ -37,8 +37,8 @@ namespace pdbs
     void LocalSearch::setup_restriction_ordering()
     {
         // restriction ordering index
-        restriction_order.resize(restrictions.size());
-        for (size_t i = 0; i < restrictions.size(); i++)
+        restriction_order.resize(relevant_operators_by_restriction.size());
+        for (size_t i = 0; i < relevant_operators_by_restriction.size(); i++)
             restriction_order[i] = i;
 
         // sort restrictions by size
@@ -47,7 +47,7 @@ namespace pdbs
             std::stable_sort(restriction_order.begin(), restriction_order.end(),
                              [this](const int &a, const int &b)
                              {
-                                 return restrictions[a].size() < restrictions[b].size();
+                                 return relevant_operators_by_restriction[a].size() < relevant_operators_by_restriction[b].size();
                              });
         }
 
@@ -56,10 +56,10 @@ namespace pdbs
         {
             for (int id_res : restriction_order)
             {
-                std::stable_sort(restrictions[id_res].begin(), restrictions[id_res].end(),
+                std::stable_sort(relevant_operators_by_restriction[id_res].begin(), relevant_operators_by_restriction[id_res].end(),
                                  [this](const int &a, const int &b)
                                  {
-                                     return restriction_operator[a].size() > restriction_operator[b].size();
+                                     return relevant_restrictions_by_operator[a].size() > relevant_restrictions_by_operator[b].size();
                                  });
             }
         }
@@ -88,9 +88,9 @@ namespace pdbs
             for (const int id_op : hff->get_preferred_operators(*state))
             {
                 operator_count[id_op]++;
-                for (size_t i = 0; i < restriction_operator[id_op].size(); i++)
+                for (size_t i = 0; i < relevant_restrictions_by_operator[id_op].size(); i++)
                 {
-                    lower_bounds[restriction_operator[id_op][i]] -= operator_cost[id_op];
+                    lower_bounds[relevant_restrictions_by_operator[id_op][i]] -= operator_cost[id_op];
                 }
             }
         }
@@ -100,9 +100,9 @@ namespace pdbs
 
             if (decrement_mode == Decrement::BEFORE)
             {
-                for (size_t i = 0; i < restrictions[id_res].size() && lower_bounds[id_res] > 0; i++)
-                    lower_bounds[id_res] -= operator_cost[restrictions[id_res][i]] *
-                                            operator_count[restrictions[id_res][i]];
+                for (size_t i = 0; i < relevant_operators_by_restriction[id_res].size() && lower_bounds[id_res] > 0; i++)
+                    lower_bounds[id_res] -= operator_cost[relevant_operators_by_restriction[id_res][i]] *
+                                            operator_count[relevant_operators_by_restriction[id_res][i]];
             }
 
             if (op_order == Order::RANDOM)
@@ -113,13 +113,13 @@ namespace pdbs
             int var = 0;
             while (lower_bounds[id_res] > 0)
             {
-                const int id_op = restrictions[id_res][var];
+                const int id_op = relevant_operators_by_restriction[id_res][var];
                 operator_count[id_op]++;
 
                 if (decrement_mode == Decrement::ITERATIVE)
                 {
-                    for (size_t i = 0; i < restriction_operator[id_op].size(); i++)
-                        lower_bounds[restriction_operator[id_op][i]] -= operator_cost[id_op];
+                    for (size_t i = 0; i < relevant_restrictions_by_operator[id_op].size(); i++)
+                        lower_bounds[relevant_restrictions_by_operator[id_op][i]] -= operator_cost[id_op];
                 }
 
                 if (decrement_mode == Decrement::BEFORE)
@@ -127,7 +127,7 @@ namespace pdbs
                     lower_bounds[id_res] -= operator_cost[id_op];
                 }
 
-                var = (var + 1) % restrictions[id_res].size();
+                var = (var + 1) % relevant_operators_by_restriction[id_res].size();
             }
         }
 
