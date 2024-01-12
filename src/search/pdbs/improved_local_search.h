@@ -37,10 +37,18 @@ namespace pdbs
         int compute_tie_breaking_sum_square_constraint(int operator_id_a, int operator_id_b);
         int compute_tie_breaking_lambda_for_operators(int operator_id_a, int operator_id_b, std::function<int(std::vector<int>)> lambda);
         int get_lambda_constraint_value_for_operator(int operator_id, std::function<int(std::vector<int>)> lambda);
+        void delete_restriction(int restriction_id);
+        bool is_restriction_deleted(int restriction_id);
 
     protected:
         void compute_post_hoc() override;
+        void init_internal_attributes();
         TieBreakingOperation tie_breaking_operation;
+        std::vector<int> restrictions_set;
+        std::vector<bool> restrictions_valid;
+        std::vector<std::vector<int>> relevant_operators_by_restriction;
+        std::vector<std::vector<int>> relevant_restrictions_by_operator;
+        int restrictions_with_lower_bound_greater_than_zero;
     };
 }
 

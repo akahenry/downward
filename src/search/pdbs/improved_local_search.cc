@@ -25,6 +25,7 @@ namespace pdbs
 
     void ImprovedLocalSearch::compute_post_hoc()
     {
+        this->init_internal_attributes();
         this->update_operators_with_simple_restrictions();
 
         while (is_any_restriction_lower_bound_greater_than_zero())
@@ -40,21 +41,37 @@ namespace pdbs
 
     void ImprovedLocalSearch::update_lower_bounds_with_selected_operator(int operator_id, int times_to_increment)
     {
-        for (const int restriction_id : restriction_operator[operator_id])
+        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        {
+            if (this->is_restriction_deleted(restriction_id))
+            {
+                continue;
+            }
+
             lower_bounds[restriction_id] -= times_to_increment * operator_cost[operator_id];
+            if (lower_bounds[restriction_id] <= 0)
+            {
+                this->delete_restriction(restriction_id);
+            }
+        }
     }
 
     float ImprovedLocalSearch::compute_operator_performance(const int operator_id)
     {
-        float sum = 0;
+        int sum = 0;
         const int operator_cost = this->operator_cost[operator_id];
 
-        for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
+        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
         {
-            sum += std::min(1.0f, (float)this->lower_bounds[this->restriction_operator[operator_id][i]] / operator_cost);
+            if (this->is_restriction_deleted(restriction_id))
+            {
+                continue;
+            }
+
+            sum += std::min(operator_cost, this->lower_bounds[restriction_id]);
         }
 
-        return sum;
+        return (float)sum / operator_cost;
     }
 
     int ImprovedLocalSearch::get_best_operator()
@@ -62,9 +79,8 @@ namespace pdbs
         int best_operator_id = -1;
         float best_operator_performance = -1;
 
-        for (size_t i = 0; i < this->operators.size(); i++)
+        for (const int &operator_id : this->operators)
         {
-            int operator_id = this->operators[i];
             float operator_performance = this->compute_operator_performance(operator_id);
 
             if (best_operator_id == -1 || best_operator_performance < operator_performance)
@@ -89,11 +105,16 @@ namespace pdbs
         int minimum_lower_bound = -1;
         int operator_cost = this->operator_cost[operator_id];
 
-        for (size_t i = 0; i < this->restriction_operator[operator_id].size(); i++)
+        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
         {
-            if (minimum_lower_bound < this->lower_bounds[i])
+            if (this->is_restriction_deleted(restriction_id))
             {
-                minimum_lower_bound = this->lower_bounds[i];
+                continue;
+            }
+
+            if (minimum_lower_bound < this->lower_bounds[restriction_id])
+            {
+                minimum_lower_bound = this->lower_bounds[restriction_id];
             }
         }
 
@@ -102,19 +123,19 @@ namespace pdbs
 
     void ImprovedLocalSearch::update_operators_with_simple_restrictions()
     {
-        for (size_t i = 0; i < this->restrictions.size(); i++)
+        for (size_t restriction_id = 0; restriction_id <= this->restrictions.size(); restriction_id++)
         {
-            if (this->restrictions[i].size() == 1)
+            if (this->relevant_operators_by_restriction[restriction_id].size() == 1)
             {
-                int operator_id = this->restrictions[i][0];
-                int times_to_increment = (int)std::ceil((float)this->lower_bounds[i] / this->operator_cost[operator_id]);
+                int operator_id = *this->relevant_operators_by_restriction[restriction_id].begin();
+                int times_to_increment = (int)std::ceil((float)this->lower_bounds[restriction_id] / this->operator_cost[operator_id]);
                 this->operator_count[operator_id] = std::max(this->operator_count[operator_id], times_to_increment);
             }
         }
 
-        for (size_t i = 0; i < this->operators.size(); i++)
+        for (const int &operator_id : this->operators)
         {
-            this->update_lower_bounds_with_selected_operator(this->operators[i], this->operator_count[i]);
+            this->update_lower_bounds_with_selected_operator(operator_id, this->operator_count[operator_id]);
         }
     }
 
@@ -173,23 +194,54 @@ namespace pdbs
     {
         std::vector<int> restrictions_lower_bounds;
 
-        for (const int restriction : this->restriction_operator[operator_id])
+        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
         {
-            restrictions_lower_bounds.push_back(this->lower_bounds[restriction]);
+            if (this->is_restriction_deleted(restriction_id))
+            {
+                continue;
+            }
+
+            restrictions_lower_bounds.push_back(this->lower_bounds[restriction_id]);
         }
 
         return lambda(restrictions_lower_bounds);
     }
 
-    bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
+    void ImprovedLocalSearch::delete_restriction(int restriction_id)
     {
-        for (int lower_bound : lower_bounds)
+        this->restrictions_valid[restriction_id] = false;
+        restrictions_with_lower_bound_greater_than_zero--;
+    }
+
+    bool ImprovedLocalSearch::is_restriction_deleted(int restriction_id)
+    {
+        return !this->restrictions_valid[restriction_id];
+    }
+
+    void ImprovedLocalSearch::init_internal_attributes()
+    {
+        this->relevant_operators_by_restriction.resize(this->restrictions.size());
+        this->restrictions_valid.assign(this->restrictions.size(), true);
+        this->restrictions_with_lower_bound_greater_than_zero = this->restrictions.size();
+        for (size_t restriction_id = 0; restriction_id < this->restrictions.size(); restriction_id++)
         {
-            if (lower_bound > 0)
-                return true;
+            this->relevant_operators_by_restriction[restriction_id].assign(this->restrictions[restriction_id].begin(), this->restrictions[restriction_id].end());
+            if (this->value_pdbs[restriction_id] <= 0)
+            {
+                this->delete_restriction(restriction_id);
+            }
         }
 
-        return false;
+        this->relevant_restrictions_by_operator.resize(this->operators.size());
+        for (const int &operator_id : this->operators)
+        {
+            this->relevant_restrictions_by_operator[operator_id].assign(this->restriction_operator[operator_id].begin(), this->restriction_operator[operator_id].end());
+        }
+    }
+
+    bool ImprovedLocalSearch::is_any_restriction_lower_bound_greater_than_zero()
+    {
+        return this->restrictions_with_lower_bound_greater_than_zero > 0;
     }
 
     class ImprovedLocalSearchFeature : public PostHocFeature<ImprovedLocalSearch>
