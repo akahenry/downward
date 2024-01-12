@@ -47,10 +47,11 @@ namespace pdbs
         }
 
         // restrictions from pdbs
-        for (const shared_ptr<pdbs::PatternDatabase> &pdb : *pdbs)
+        for (size_t i = 0; i < pdbs->size(); i++)
         {
-            restrictions.emplace_back();
-            vector<int> &curr = restrictions.back();
+            const shared_ptr<pdbs::PatternDatabase> &pdb = (*pdbs)[i];
+            relevant_operators_by_restriction.emplace_back();
+            vector<int> &curr = relevant_operators_by_restriction.back();
             for (OperatorProxy op : task_proxy.get_operators())
             {
                 if (is_operator_relevant(pdb->get_pattern(), op))
@@ -58,15 +59,20 @@ namespace pdbs
                     curr.push_back(op.get_id());
                 }
             }
+
+            if (curr.size() == 1)
+            {
+                this->simple_restrictions_ids.push_back(i);
+            }
         }
 
         // relevant restrictions for each operator
-        restriction_operator.resize(operators.size());
-        for (size_t i = 0; i < restrictions.size(); i++)
+        relevant_restrictions_by_operator.resize(operators.size());
+        for (size_t i = 0; i < relevant_operators_by_restriction.size(); i++)
         {
-            for (size_t j = 0; j < restrictions[i].size(); j++)
+            for (size_t j = 0; j < relevant_operators_by_restriction[i].size(); j++)
             {
-                restriction_operator[restrictions[i][j]].push_back(i);
+                relevant_restrictions_by_operator[relevant_operators_by_restriction[i][j]].push_back(i);
             }
         }
 
@@ -122,22 +128,22 @@ namespace pdbs
     void PostHoc::print_info()
     {
         utils::g_log << "Operators: " << operators.size() << endl;
-        utils::g_log << "Restrictions: " << restrictions.size() << endl;
+        utils::g_log << "Restrictions: " << relevant_operators_by_restriction.size() << endl;
 
-        if (restriction_operator.size() > 0)
+        if (relevant_restrictions_by_operator.size() > 0)
         {
             int mean_mentions = 0;
-            for (size_t i = 0; i < restriction_operator.size(); i++)
-                mean_mentions += restriction_operator[i].size();
-            utils::g_log << "Mean mentions: " << (mean_mentions / restriction_operator.size()) << endl;
+            for (size_t i = 0; i < relevant_restrictions_by_operator.size(); i++)
+                mean_mentions += relevant_restrictions_by_operator[i].size();
+            utils::g_log << "Mean mentions: " << (mean_mentions / relevant_restrictions_by_operator.size()) << endl;
         }
 
-        if (restrictions.size() > 0)
+        if (relevant_operators_by_restriction.size() > 0)
         {
             int mean_operators = 0;
-            for (size_t i = 0; i < restrictions.size(); i++)
-                mean_operators += restrictions[i].size();
-            utils::g_log << "Mean operators: " << (mean_operators / restrictions.size()) << endl;
+            for (size_t i = 0; i < relevant_operators_by_restriction.size(); i++)
+                mean_operators += relevant_operators_by_restriction[i].size();
+            utils::g_log << "Mean operators: " << (mean_operators / relevant_operators_by_restriction.size()) << endl;
         }
     }
 }
