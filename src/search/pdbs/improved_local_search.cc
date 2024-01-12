@@ -102,7 +102,7 @@ namespace pdbs
 
     int ImprovedLocalSearch::compute_times_to_increment(const int operator_id)
     {
-        int minimum_lower_bound = -1;
+        int minimum_lower_bound = INT_MAX;
         int operator_cost = this->operator_cost[operator_id];
 
         for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
@@ -112,7 +112,7 @@ namespace pdbs
                 continue;
             }
 
-            if (minimum_lower_bound < this->lower_bounds[restriction_id])
+            if (minimum_lower_bound > this->lower_bounds[restriction_id])
             {
                 minimum_lower_bound = this->lower_bounds[restriction_id];
             }
