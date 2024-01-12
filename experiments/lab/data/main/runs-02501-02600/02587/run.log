@@ -14,27 +14,27 @@ Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
 Normalizing Datalog program...
 Trivial rules: Converted to facts.
 Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
-Preparing model... [0.000s CPU, 0.003s wall-clock]
+Preparing model... [0.010s CPU, 0.003s wall-clock]
 Generated 129 rules.
-Computing model... [0.580s CPU, 0.574s wall-clock]
+Computing model... [0.640s CPU, 0.645s wall-clock]
 46053 relevant atoms
 40447 auxiliary atoms
 86500 final queue length
 289530 total queue pushes
-Completing instantiation... [2.480s CPU, 2.492s wall-clock]
-Instantiating: [3.080s CPU, 3.090s wall-clock]
+Completing instantiation... [2.770s CPU, 2.771s wall-clock]
+Instantiating: [3.440s CPU, 3.444s wall-clock]
 Computing fact groups...
 Finding invariants...
 28 initial candidates
-Finding invariants: [0.010s CPU, 0.011s wall-clock]
+Finding invariants: [0.010s CPU, 0.016s wall-clock]
 Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
 Instantiating groups... [0.000s CPU, 0.002s wall-clock]
-Collecting mutex groups... [0.000s CPU, 0.001s wall-clock]
+Collecting mutex groups... [0.010s CPU, 0.001s wall-clock]
 Choosing groups...
 675 uncovered facts
 Choosing groups: [0.000s CPU, 0.001s wall-clock]
 Building translation key... [0.000s CPU, 0.002s wall-clock]
-Computing fact groups: [0.020s CPU, 0.024s wall-clock]
+Computing fact groups: [0.020s CPU, 0.027s wall-clock]
 Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
 Building dictionary for full mutex groups... [0.000s CPU, 0.001s wall-clock]
 Building mutex information...
@@ -44,21 +44,21 @@ Processing axioms...
 Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Translator axioms removed by simplifying: 0
 Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
-Processing axioms: [0.160s CPU, 0.149s wall-clock]
-Translating task: [3.090s CPU, 3.082s wall-clock]
+Processing axioms: [0.170s CPU, 0.167s wall-clock]
+Translating task: [3.290s CPU, 3.292s wall-clock]
 65938 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 0 operators removed
 0 axioms removed
 49 propositions removed
-Detecting unreachable propositions: [1.970s CPU, 1.977s wall-clock]
+Detecting unreachable propositions: [2.160s CPU, 2.162s wall-clock]
 Reordering and filtering variables...
 704 of 706 variables necessary.
 0 of 37 mutex groups necessary.
 44015 of 44015 operators necessary.
 0 of 0 axiom rules necessary.
-Reordering and filtering variables: [0.840s CPU, 0.838s wall-clock]
+Reordering and filtering variables: [0.870s CPU, 0.866s wall-clock]
 Translator variables: 704
 Translator derived variables: 0
 Translator facts: 2121
@@ -69,20 +69,98 @@ Translator operators: 44015
 Translator axioms: 0
 Translator task size: 634078
 Translator peak memory: 338440 KB
-Writing output... [0.430s CPU, 0.438s wall-clock]
-Done! [9.560s CPU, 9.572s wall-clock]
+Writing output... [0.420s CPU, 0.422s wall-clock]
+Done! [10.340s CPU, 10.352s wall-clock]
 translate exit code: 0
 
 INFO     Running search (release).
 INFO     search stdin: output.sas
-INFO     search time limit: 1790s
+INFO     search time limit: 1789s
 INFO     search memory limit: 2048 MB
 INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
-[t=0s, 10544 KB] reading input...
-[t=0.278793s, 32756 KB] done reading input!
-Peak memory: 33152 KB
+[t=0s, 45596 KB] reading input...
+[t=0.275734s, 67808 KB] done reading input!
+[t=0.279586s, 71304 KB] Generating patterns using: systematic pattern collection generator
+[t=0.279586s, 71304 KB] building causal graph...done! [t=0.223757s]
+[t=0.567271s, 93540 KB] Found 4547 SGA patterns.
+[t=0.675152s, 93540 KB] Found 4547 interesting patterns.
+[t=0.675152s, 93540 KB] systematic pattern collection generator number of patterns: 4547
+[t=0.675152s, 93540 KB] systematic pattern collection generator total PDB size: 152086
+[t=0.675152s, 93540 KB] systematic pattern collection generator computation time: 0.395565s
+[t=0.675152s, 93540 KB] Computing PDBs for pattern collection...
+[t=45.8245s, 93540 KB] Done computing PDBs for pattern collection: 45.1493s
+[t=59.4608s, 429884 KB] Building successor generator...done!
+[t=59.4808s, 429884 KB] peak memory difference for successor generator creation: 0 KB
+[t=59.4808s, 429884 KB] time for successor generation creation: 0.0199724s
+[t=59.4808s, 429884 KB] Variables: 704
+[t=59.4808s, 429884 KB] FactPairs: 2121
+[t=59.4808s, 429884 KB] Bytes per state: 108
+[t=59.4808s, 429884 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=60.283s, 565784 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 82
+[t=60.283s, 565784 KB] g=0, 1 evaluated, 0 expanded
+[t=60.283s, 565784 KB] Initial heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 82
+[t=60.283s, 565784 KB] pruning method: none
+[t=61.3457s, 565816 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 81
+[t=61.3457s, 565816 KB] g=1, 2 evaluated, 1 expanded
+[t=70.9929s, 842776 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 80
+[t=70.9929s, 842776 KB] g=1, 15 evaluated, 10 expanded
+[t=72.0232s, 842776 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 79
+[t=72.0232s, 842776 KB] g=2, 16 evaluated, 11 expanded
+[t=80.4476s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 78
+[t=80.4476s, 845276 KB] g=2, 23 evaluated, 13 expanded
+[t=81.4332s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 77
+[t=81.4332s, 845276 KB] g=2, 24 evaluated, 14 expanded
+[t=108.879s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 76
+[t=108.879s, 845276 KB] g=3, 47 evaluated, 25 expanded
+[t=109.901s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 75
+[t=109.901s, 845276 KB] g=3, 48 evaluated, 26 expanded
+[t=110.899s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 74
+[t=110.899s, 845276 KB] g=3, 49 evaluated, 27 expanded
+[t=141.017s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 73
+[t=141.017s, 845276 KB] g=4, 75 evaluated, 48 expanded
+[t=158.756s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 72
+[t=158.756s, 845276 KB] g=5, 90 evaluated, 58 expanded
+[t=159.771s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 71
+[t=159.771s, 845276 KB] g=5, 91 evaluated, 59 expanded
+[t=199.945s, 845276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 70
+[t=199.945s, 845276 KB] g=6, 132 evaluated, 95 expanded
+[t=301.345s, 845884 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 69
+[t=301.345s, 845884 KB] g=7, 230 evaluated, 170 expanded
+[t=901.548s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 68
+[t=901.548s, 846184 KB] g=10, 757 evaluated, 600 expanded
+[t=997.734s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 67
+[t=997.734s, 846184 KB] g=14, 848 evaluated, 664 expanded
+[t=1005.33s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 66
+[t=1005.33s, 846184 KB] g=14, 859 evaluated, 671 expanded
+[t=1019.23s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 65
+[t=1019.23s, 846184 KB] g=15, 871 evaluated, 672 expanded
+[t=1032.88s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 64
+[t=1032.88s, 846184 KB] g=15, 882 evaluated, 673 expanded
+[t=1033.81s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 63
+[t=1033.81s, 846184 KB] g=15, 883 evaluated, 674 expanded
+[t=1034.78s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 62
+[t=1034.78s, 846184 KB] g=15, 884 evaluated, 675 expanded
+[t=1035.96s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 61
+[t=1035.96s, 846184 KB] g=15, 885 evaluated, 676 expanded
+[t=1082.08s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 60
+[t=1082.08s, 846184 KB] g=17, 931 evaluated, 709 expanded
+[t=1083.04s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 59
+[t=1083.04s, 846184 KB] g=17, 932 evaluated, 710 expanded
+[t=1117.95s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 58
+[t=1117.95s, 846184 KB] g=18, 963 evaluated, 720 expanded
+[t=1221.5s, 846184 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 57
+[t=1221.5s, 846184 KB] g=19, 1051 evaluated, 767 expanded
+[t=1460.3s, 846488 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 56
+[t=1460.3s, 846488 KB] g=20, 1244 evaluated, 860 expanded
+[t=1461.31s, 846488 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 55
+[t=1461.31s, 846488 KB] g=20, 1245 evaluated, 861 expanded
+[t=1552.41s, 846488 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 54
+[t=1552.41s, 846488 KB] g=21, 1320 evaluated, 909 expanded
+Peak memory: 848724 KB
+caught signal 24 -- exiting
+Time limit has been reached.
 Remove intermediate file output.sas
-search exit code: 32
+search exit code: 23
 
 Driver aborting after search
-INFO     Planner time: 9.94s
+INFO     Planner time: 1795.46s

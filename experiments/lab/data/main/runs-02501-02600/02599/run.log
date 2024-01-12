@@ -7,25 +7,25 @@ INFO     translator time limit: 1799s
 INFO     translator memory limit: 2048 MB
 INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
 Parsing...
-Parsing: [0.000s CPU, 0.002s wall-clock]
+Parsing: [0.010s CPU, 0.002s wall-clock]
 Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
 Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
 Normalizing Datalog program...
-Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
+Normalizing Datalog program: [0.010s CPU, 0.003s wall-clock]
 Preparing model... [0.000s CPU, 0.002s wall-clock]
 Generated 115 rules.
-Computing model... [0.040s CPU, 0.035s wall-clock]
+Computing model... [0.030s CPU, 0.034s wall-clock]
 3296 relevant atoms
 3425 auxiliary atoms
 6721 final queue length
 11595 total queue pushes
-Completing instantiation... [0.070s CPU, 0.069s wall-clock]
+Completing instantiation... [0.070s CPU, 0.070s wall-clock]
 Instantiating: [0.110s CPU, 0.111s wall-clock]
 Computing fact groups...
 Finding invariants...
 24 initial candidates
-Finding invariants: [0.000s CPU, 0.007s wall-clock]
+Finding invariants: [0.010s CPU, 0.008s wall-clock]
 Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
 Instantiating groups... [0.000s CPU, 0.001s wall-clock]
 Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
@@ -43,21 +43,21 @@ Processing axioms...
 Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Translator axioms removed by simplifying: 0
 Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
-Processing axioms: [0.000s CPU, 0.004s wall-clock]
-Translating task: [0.080s CPU, 0.081s wall-clock]
+Processing axioms: [0.010s CPU, 0.007s wall-clock]
+Translating task: [0.090s CPU, 0.092s wall-clock]
 3920 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 0 operators removed
 0 axioms removed
 3 propositions removed
-Detecting unreachable propositions: [0.050s CPU, 0.057s wall-clock]
+Detecting unreachable propositions: [0.060s CPU, 0.056s wall-clock]
 Reordering and filtering variables...
 353 of 353 variables necessary.
 16 of 19 mutex groups necessary.
 2344 of 2344 operators necessary.
 0 of 0 axiom rules necessary.
-Reordering and filtering variables: [0.030s CPU, 0.024s wall-clock]
+Reordering and filtering variables: [0.020s CPU, 0.024s wall-clock]
 Translator variables: 353
 Translator derived variables: 0
 Translator facts: 737
@@ -67,9 +67,9 @@ Translator total mutex groups size: 48
 Translator operators: 2344
 Translator axioms: 0
 Translator task size: 22454
-Translator peak memory: 45200 KB
-Writing output... [0.020s CPU, 0.021s wall-clock]
-Done! [0.300s CPU, 0.312s wall-clock]
+Translator peak memory: 45712 KB
+Writing output... [0.020s CPU, 0.016s wall-clock]
+Done! [0.330s CPU, 0.318s wall-clock]
 translate exit code: 0
 
 INFO     Running search (release).
@@ -77,11 +77,39 @@ INFO     search stdin: output.sas
 INFO     search time limit: 1799s
 INFO     search memory limit: 2048 MB
 INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
-[t=0s, 10544 KB] reading input...
-[t=0.0119865s, 11556 KB] done reading input!
-Peak memory: 11820 KB
+[t=0s, 45596 KB] reading input...
+[t=0.0119862s, 46608 KB] done reading input!
+[t=0.0136846s, 47152 KB] Generating patterns using: systematic pattern collection generator
+[t=0.0136846s, 47152 KB] building causal graph...done! [t=0.00399217s]
+[t=0.0176768s, 47896 KB] Found 112 SGA patterns.
+[t=0.0216748s, 47896 KB] Found 112 interesting patterns.
+[t=0.0216748s, 47896 KB] systematic pattern collection generator number of patterns: 112
+[t=0.0216748s, 47896 KB] systematic pattern collection generator total PDB size: 1288
+[t=0.0216748s, 47896 KB] systematic pattern collection generator computation time: 0.00799015s
+[t=0.0216748s, 47896 KB] Computing PDBs for pattern collection...
+[t=0.0616351s, 47896 KB] Done computing PDBs for pattern collection: 0.0399603s
+[t=0.0696223s, 48468 KB] Building successor generator...done!
+[t=0.0696223s, 48468 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.0696223s, 48468 KB] time for successor generation creation: 0s
+[t=0.0696223s, 48468 KB] Variables: 353
+[t=0.0696223s, 48468 KB] FactPairs: 737
+[t=0.0696223s, 48468 KB] Bytes per state: 48
+[t=0.0696223s, 48468 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.077619s, 50208 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 25
+[t=0.077619s, 50208 KB] g=0, 1 evaluated, 0 expanded
+[t=0.077619s, 50208 KB] Initial heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 25
+[t=0.077619s, 50208 KB] pruning method: none
+[t=1175.58s, 126276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 24
+[t=1175.58s, 126276 KB] g=27, 841963 evaluated, 286913 expanded
+[t=1175.59s, 126276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 23
+[t=1175.59s, 126276 KB] g=28, 841983 evaluated, 286914 expanded
+[t=1175.66s, 126276 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 22
+[t=1175.66s, 126276 KB] g=29, 842017 evaluated, 286915 expanded
+Peak memory: 175452 KB
+caught signal 24 -- exiting
+Time limit has been reached.
 Remove intermediate file output.sas
-search exit code: 32
+search exit code: 23
 
 Driver aborting after search
-INFO     Planner time: 0.38s
+INFO     Planner time: 1797.34s

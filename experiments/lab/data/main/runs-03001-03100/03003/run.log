@@ -7,7 +7,7 @@ INFO     translator time limit: 1799s
 INFO     translator memory limit: 2048 MB
 INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
 Parsing...
-Parsing: [0.000s CPU, 0.001s wall-clock]
+Parsing: [0.000s CPU, 0.002s wall-clock]
 Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
 Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
@@ -15,7 +15,7 @@ Normalizing Datalog program...
 Normalizing Datalog program: [0.000s CPU, 0.002s wall-clock]
 Preparing model... [0.000s CPU, 0.001s wall-clock]
 Generated 50 rules.
-Computing model... [0.010s CPU, 0.005s wall-clock]
+Computing model... [0.010s CPU, 0.006s wall-clock]
 453 relevant atoms
 548 auxiliary atoms
 1001 final queue length
@@ -44,14 +44,14 @@ Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Translator axioms removed by simplifying: 0
 Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
 Processing axioms: [0.000s CPU, 0.000s wall-clock]
-Translating task: [0.000s CPU, 0.005s wall-clock]
+Translating task: [0.010s CPU, 0.006s wall-clock]
 0 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 0 operators removed
 0 axioms removed
 4 propositions removed
-Detecting unreachable propositions: [0.010s CPU, 0.003s wall-clock]
+Detecting unreachable propositions: [0.000s CPU, 0.003s wall-clock]
 Reordering and filtering variables...
 22 of 22 variables necessary.
 36 of 40 mutex groups necessary.
@@ -69,7 +69,7 @@ Translator axioms: 0
 Translator task size: 1553
 Translator peak memory: 32884 KB
 Writing output... [0.000s CPU, 0.001s wall-clock]
-Done! [0.030s CPU, 0.030s wall-clock]
+Done! [0.030s CPU, 0.032s wall-clock]
 translate exit code: 0
 
 INFO     Running search (release).
@@ -77,11 +77,49 @@ INFO     search stdin: output.sas
 INFO     search time limit: 1799s
 INFO     search memory limit: 2048 MB
 INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
-[t=0s, 10544 KB] reading input...
-[t=0s, 10544 KB] done reading input!
-Peak memory: 10940 KB
+[t=0s, 45596 KB] reading input...
+[t=0.00310627s, 45596 KB] done reading input!
+[t=0.00484982s, 45992 KB] Generating patterns using: systematic pattern collection generator
+[t=0.00484982s, 45992 KB] building causal graph...done! [t=0s]
+[t=0.00886758s, 46700 KB] Found 3299 SGA patterns.
+[t=0.012829s, 46896 KB] Found 4436 interesting patterns.
+[t=0.0168279s, 47092 KB] systematic pattern collection generator number of patterns: 4436
+[t=0.0168279s, 47092 KB] systematic pattern collection generator total PDB size: 3382156
+[t=0.0168279s, 47092 KB] systematic pattern collection generator computation time: 0.0119781s
+[t=0.0168279s, 47092 KB] Computing PDBs for pattern collection...
+[t=0.880065s, 60900 KB] Done computing PDBs for pattern collection: 0.863237s
+[t=0.916036s, 75284 KB] Building successor generator...done!
+[t=0.916036s, 75284 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.916036s, 75284 KB] time for successor generation creation: 0s
+[t=0.916036s, 75284 KB] Variables: 22
+[t=0.916036s, 75284 KB] FactPairs: 112
+[t=0.916036s, 75284 KB] Bytes per state: 8
+[t=0.916036s, 75284 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=1.19167s, 105572 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 13
+[t=1.19167s, 105572 KB] g=0, 1 evaluated, 0 expanded
+[t=1.19167s, 105572 KB] Initial heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 13
+[t=1.19167s, 105572 KB] pruning method: none
+[t=3.58417s, 106920 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 12
+[t=3.58417s, 106920 KB] g=1, 8 evaluated, 1 expanded
+[t=29.165s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 11
+[t=29.165s, 108744 KB] g=7, 43 evaluated, 7 expanded
+[t=49.3313s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 10
+[t=49.3353s, 108744 KB] g=20, 91 evaluated, 18 expanded
+[t=59.7829s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 9
+[t=59.7829s, 108744 KB] g=26, 142 evaluated, 44 expanded
+[t=94.6169s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 8
+[t=94.6169s, 108744 KB] g=35, 487 evaluated, 132 expanded
+[t=104.962s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 7
+[t=104.962s, 108744 KB] g=46, 628 evaluated, 169 expanded
+[t=109.459s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 6
+[t=109.459s, 108744 KB] g=52, 687 evaluated, 193 expanded
+[t=135.095s, 108744 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=one)): 5
+[t=135.095s, 108744 KB] g=78, 1109 evaluated, 451 expanded
+Peak memory: 108744 KB
+caught signal 24 -- exiting
+Time limit has been reached.
 Remove intermediate file output.sas
-search exit code: 32
+search exit code: 23
 
 Driver aborting after search
-INFO     Planner time: 0.08s
+INFO     Planner time: 1796.58s

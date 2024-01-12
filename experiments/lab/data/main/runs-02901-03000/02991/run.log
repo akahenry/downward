@@ -10,23 +10,23 @@ Parsing...
 Parsing: [0.000s CPU, 0.004s wall-clock]
 Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
-Generating Datalog program... [0.010s CPU, 0.001s wall-clock]
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
 Normalizing Datalog program...
 Trivial rules: Converted to facts.
-Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
-Preparing model... [0.000s CPU, 0.003s wall-clock]
+Normalizing Datalog program: [0.010s CPU, 0.003s wall-clock]
+Preparing model... [0.000s CPU, 0.005s wall-clock]
 Generated 129 rules.
-Computing model... [0.900s CPU, 0.904s wall-clock]
+Computing model... [0.960s CPU, 0.967s wall-clock]
 71586 relevant atoms
 61309 auxiliary atoms
 132895 final queue length
 438165 total queue pushes
-Completing instantiation... [3.920s CPU, 3.933s wall-clock]
-Instantiating: [4.860s CPU, 4.868s wall-clock]
+Completing instantiation... [5.060s CPU, 5.065s wall-clock]
+Instantiating: [6.070s CPU, 6.076s wall-clock]
 Computing fact groups...
 Finding invariants...
 28 initial candidates
-Finding invariants: [0.020s CPU, 0.016s wall-clock]
+Finding invariants: [0.030s CPU, 0.024s wall-clock]
 Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
 Instantiating groups... [0.000s CPU, 0.002s wall-clock]
 Collecting mutex groups... [0.000s CPU, 0.001s wall-clock]
@@ -34,7 +34,7 @@ Choosing groups...
 830 uncovered facts
 Choosing groups: [0.000s CPU, 0.001s wall-clock]
 Building translation key... [0.000s CPU, 0.002s wall-clock]
-Computing fact groups: [0.030s CPU, 0.029s wall-clock]
+Computing fact groups: [0.040s CPU, 0.039s wall-clock]
 Building STRIPS to SAS dictionary... [0.000s CPU, 0.001s wall-clock]
 Building dictionary for full mutex groups... [0.000s CPU, 0.001s wall-clock]
 Building mutex information...
@@ -44,21 +44,21 @@ Processing axioms...
 Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Translator axioms removed by simplifying: 0
 Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
-Processing axioms: [0.230s CPU, 0.229s wall-clock]
-Translating task: [4.780s CPU, 4.781s wall-clock]
+Processing axioms: [0.290s CPU, 0.290s wall-clock]
+Translating task: [5.490s CPU, 5.504s wall-clock]
 106752 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 0 operators removed
 0 axioms removed
 55 propositions removed
-Detecting unreachable propositions: [2.240s CPU, 2.240s wall-clock]
+Detecting unreachable propositions: [2.750s CPU, 2.749s wall-clock]
 Reordering and filtering variables...
 862 of 864 variables necessary.
 0 of 41 mutex groups necessary.
 69096 of 69096 operators necessary.
 0 of 0 axiom rules necessary.
-Reordering and filtering variables: [1.290s CPU, 1.299s wall-clock]
+Reordering and filtering variables: [1.430s CPU, 1.433s wall-clock]
 Translator variables: 862
 Translator derived variables: 0
 Translator facts: 2641
@@ -69,20 +69,24 @@ Translator operators: 69096
 Translator axioms: 0
 Translator task size: 972941
 Translator peak memory: 504280 KB
-Writing output... [0.650s CPU, 0.645s wall-clock]
-Done! [14.040s CPU, 14.053s wall-clock]
+Writing output... [0.670s CPU, 0.669s wall-clock]
+Done! [16.680s CPU, 16.708s wall-clock]
 translate exit code: 0
 
 INFO     Running search (release).
 INFO     search stdin: output.sas
-INFO     search time limit: 1785s
+INFO     search time limit: 1783s
 INFO     search memory limit: 2048 MB
 INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
-[t=0s, 10544 KB] reading input...
-[t=0.43161s, 45008 KB] done reading input!
-Peak memory: 45404 KB
+[t=0s, 45596 KB] reading input...
+[t=0.435427s, 80060 KB] done reading input!
+[t=0.441773s, 86628 KB] Generating patterns using: systematic pattern collection generator
+[t=0.441773s, 86628 KB] building causal graph...done! [t=0.395424s]
+Failed to allocate memory.
+Memory limit has been reached.
+Peak memory: 2097120 KB
 Remove intermediate file output.sas
-search exit code: 32
+search exit code: 22
 
 Driver aborting after search
-INFO     Planner time: 14.60s
+INFO     Planner time: 37.48s

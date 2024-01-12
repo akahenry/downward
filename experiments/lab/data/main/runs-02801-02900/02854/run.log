@@ -12,20 +12,20 @@ Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
 Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
 Normalizing Datalog program...
-Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
+Normalizing Datalog program: [0.010s CPU, 0.003s wall-clock]
 Preparing model... [0.000s CPU, 0.002s wall-clock]
 Generated 115 rules.
-Computing model... [0.040s CPU, 0.032s wall-clock]
+Computing model... [0.030s CPU, 0.030s wall-clock]
 2784 relevant atoms
 2893 auxiliary atoms
 5677 final queue length
 9793 total queue pushes
-Completing instantiation... [0.060s CPU, 0.059s wall-clock]
-Instantiating: [0.100s CPU, 0.097s wall-clock]
+Completing instantiation... [0.070s CPU, 0.069s wall-clock]
+Instantiating: [0.110s CPU, 0.105s wall-clock]
 Computing fact groups...
 Finding invariants...
 24 initial candidates
-Finding invariants: [0.000s CPU, 0.009s wall-clock]
+Finding invariants: [0.010s CPU, 0.009s wall-clock]
 Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
 Instantiating groups... [0.000s CPU, 0.000s wall-clock]
 Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
@@ -43,21 +43,21 @@ Processing axioms...
 Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Translator axioms removed by simplifying: 0
 Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
-Processing axioms: [0.000s CPU, 0.003s wall-clock]
-Translating task: [0.070s CPU, 0.067s wall-clock]
+Processing axioms: [0.010s CPU, 0.005s wall-clock]
+Translating task: [0.080s CPU, 0.072s wall-clock]
 3276 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 0 operators removed
 0 axioms removed
 3 propositions removed
-Detecting unreachable propositions: [0.030s CPU, 0.030s wall-clock]
+Detecting unreachable propositions: [0.030s CPU, 0.031s wall-clock]
 Reordering and filtering variables...
 295 of 295 variables necessary.
 14 of 17 mutex groups necessary.
 1958 of 1958 operators necessary.
 0 of 0 axiom rules necessary.
-Reordering and filtering variables: [0.020s CPU, 0.023s wall-clock]
+Reordering and filtering variables: [0.020s CPU, 0.020s wall-clock]
 Translator variables: 295
 Translator derived variables: 0
 Translator facts: 617
@@ -68,8 +68,8 @@ Translator operators: 1958
 Translator axioms: 0
 Translator task size: 18764
 Translator peak memory: 43512 KB
-Writing output... [0.020s CPU, 0.013s wall-clock]
-Done! [0.250s CPU, 0.251s wall-clock]
+Writing output... [0.010s CPU, 0.014s wall-clock]
+Done! [0.270s CPU, 0.264s wall-clock]
 translate exit code: 0
 
 INFO     Running search (release).
@@ -77,11 +77,22 @@ INFO     search stdin: output.sas
 INFO     search time limit: 1799s
 INFO     search memory limit: 2048 MB
 INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-5bb2ccb6957559b6969ffd7e29254c73f84d5e49_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))])' --internal-plan-file sas_plan < output.sas
-[t=0s, 10544 KB] reading input...
-[t=0.00798074s, 11388 KB] done reading input!
-Peak memory: 11652 KB
+[t=0s, 45596 KB] reading input...
+[t=0.0119937s, 46440 KB] done reading input!
+[t=0.0132795s, 46852 KB] Generating patterns using: systematic pattern collection generator
+[t=0.0132795s, 46852 KB] building causal graph...done! [t=0.00399246s]
+[t=0.113183s, 70528 KB] Found 85429 SGA patterns.
+[t=1.26863s, 71584 KB] Found 97269 interesting patterns.
+[t=1.34055s, 71584 KB] systematic pattern collection generator number of patterns: 97269
+[t=1.34055s, 71584 KB] systematic pattern collection generator total PDB size: 3694320
+[t=1.34453s, 71584 KB] systematic pattern collection generator computation time: 1.32727s
+[t=1.34453s, 71584 KB] Computing PDBs for pattern collection...
+[t=51.1605s, 95932 KB] Done computing PDBs for pattern collection: 49.816s
+Failed to allocate memory.
+Memory limit has been reached.
+Peak memory: 1832584 KB
 Remove intermediate file output.sas
-search exit code: 32
+search exit code: 22
 
 Driver aborting after search
-INFO     Planner time: 0.32s
+INFO     Planner time: 57.40s
