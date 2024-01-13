@@ -22,6 +22,13 @@ namespace pdbs
     {
         utils::g_log << "Tie breaking: " << this->tie_breaking_operation << endl;
         this->number_of_relevant_and_valid_restrictions_by_operator.resize(this->operators.size());
+        for (const int &operator_id : this->operators)
+        {
+            if (this->operator_cost[operator_id] > 0)
+            {
+                this->non_zero_cost_operators.push_back(operator_id);
+            }
+        }
     }
 
     void ImprovedLocalSearch::compute_post_hoc()
@@ -80,7 +87,7 @@ namespace pdbs
         float best_operator_performance = -1;
         int best_operator_tie_breaking = INT16_MIN;
 
-        for (const int &operator_id : this->operators)
+        for (const int &operator_id : this->non_zero_cost_operators)
         {
             float operator_performance = this->compute_operator_performance(operator_id);
 
