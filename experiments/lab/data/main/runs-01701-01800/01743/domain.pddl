@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/elevators-opt11-strips/domain.pddl

@@ -1,0 +1,409 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.002s wall-clock]
+Preparing model... [0.010s CPU, 0.001s wall-clock]
+Generated 52 rules.
+Computing model... [0.010s CPU, 0.013s wall-clock]
+694 relevant atoms
+2181 auxiliary atoms
+2875 final queue length
+3474 total queue pushes
+Completing instantiation... [0.010s CPU, 0.010s wall-clock]
+Instantiating: [0.030s CPU, 0.026s wall-clock]
+Computing fact groups...
+Finding invariants...
+6 initial candidates
+Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+1 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.002s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.011s wall-clock]
+97 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+46 operators removed
+0 axioms removed
+17 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.005s wall-clock]
+Reordering and filtering variables...
+13 of 13 variables necessary.
+0 of 12 mutex groups necessary.
+494 of 494 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.001s wall-clock]
+Translator variables: 13
+Translator derived variables: 0
+Translator facts: 58
+Translator goal facts: 12
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 494
+Translator axioms: 0
+Translator task size: 2907
+Translator peak memory: 34148 KB
+Writing output... [0.000s CPU, 0.002s wall-clock]
+Done! [0.050s CPU, 0.050s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1799s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/downward --search 'eager_greedy([ilsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 45596 KB] reading input...
+[t=0.00319475s, 45728 KB] done reading input!
+[t=0.00319475s, 45992 KB] Generating patterns using: systematic pattern collection generator
+[t=0.00319475s, 45992 KB] building causal graph...done! [t=0s]
+[t=0.00319475s, 46136 KB] Found 638 SGA patterns.
+[t=0.00319475s, 46136 KB] Found 638 interesting patterns.
+[t=0.00319475s, 46136 KB] systematic pattern collection generator number of patterns: 638
+[t=0.00319475s, 46136 KB] systematic pattern collection generator total PDB size: 198686
+[t=0.00319475s, 46136 KB] systematic pattern collection generator computation time: 0s
+[t=0.00319475s, 46136 KB] Computing PDBs for pattern collection...
+[t=0.111087s, 46860 KB] Done computing PDBs for pattern collection: 0.107892s
+[t=0.115092s, 50660 KB] Tie breaking: 2
+[t=0.115092s, 50660 KB] Building successor generator...done!
+[t=0.115092s, 50660 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.115092s, 50660 KB] time for successor generation creation: 0s
+[t=0.115092s, 50660 KB] Variables: 13
+[t=0.115092s, 50660 KB] FactPairs: 58
+[t=0.115092s, 50660 KB] Bytes per state: 4
+[t=0.115092s, 50660 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.119082s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 30
+[t=0.119082s, 50660 KB] g=0, 1 evaluated, 0 expanded
+[t=0.119082s, 50660 KB] Initial heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 30
+[t=0.119082s, 50660 KB] pruning method: none
+[t=0.123088s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 29
+[t=0.123088s, 50660 KB] g=1, 2 evaluated, 1 expanded
+[t=0.151059s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 28
+[t=0.151059s, 50660 KB] g=3, 16 evaluated, 7 expanded
+[t=0.159053s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 27
+[t=0.159053s, 50660 KB] g=4, 21 evaluated, 8 expanded
+[t=0.31088s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 26
+[t=0.31088s, 50660 KB] g=6, 78 evaluated, 37 expanded
+[t=0.530679s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 25
+[t=0.530679s, 50660 KB] g=12, 165 evaluated, 76 expanded
+[t=0.602583s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 24
+[t=0.602583s, 50660 KB] g=16, 193 evaluated, 87 expanded
+[t=0.710436s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 23
+[t=0.710436s, 50660 KB] g=22, 234 evaluated, 102 expanded
+[t=1.3616s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 22
+[t=1.3616s, 50660 KB] g=36, 450 evaluated, 182 expanded
+[t=1.72125s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 21
+[t=1.72125s, 50660 KB] g=44, 568 evaluated, 221 expanded
+[t=2.24469s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 20
+[t=2.24469s, 50660 KB] g=56, 741 evaluated, 285 expanded
+[t=2.38852s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 19
+[t=2.38852s, 50660 KB] g=64, 791 evaluated, 303 expanded
+[t=2.62427s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 18
+[t=2.62427s, 50660 KB] g=71, 879 evaluated, 336 expanded
+[t=2.63225s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 17
+[t=2.63225s, 50660 KB] g=72, 883 evaluated, 338 expanded
+[t=2.7002s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 16
+[t=2.7002s, 50660 KB] g=76, 907 evaluated, 347 expanded
+[t=4.17066s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 15
+[t=4.17066s, 50660 KB] g=84, 1458 evaluated, 610 expanded
+[t=5.72098s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 14
+[t=5.72098s, 50660 KB] g=97, 2101 evaluated, 915 expanded
+[t=6.18451s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 13
+[t=6.18451s, 50660 KB] g=105, 2279 evaluated, 997 expanded
+[t=6.61995s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 12
+[t=6.61995s, 50660 KB] g=114, 2444 evaluated, 1076 expanded
+[t=6.62395s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 11
+[t=6.62395s, 50660 KB] g=115, 2446 evaluated, 1077 expanded
+[t=6.63593s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 10
+[t=6.63593s, 50660 KB] g=117, 2452 evaluated, 1079 expanded
+[t=6.64394s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 9
+[t=6.64394s, 50660 KB] g=118, 2455 evaluated, 1080 expanded
+[t=6.64792s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 8
+[t=6.64792s, 50660 KB] g=119, 2457 evaluated, 1081 expanded
+[t=6.68789s, 50660 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 7
+[t=6.68789s, 50660 KB] g=122, 2477 evaluated, 1085 expanded
+[t=8.51778s, 50792 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 6
+[t=8.51778s, 50792 KB] g=147, 3247 evaluated, 1567 expanded
+[t=11.4465s, 50792 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 5
+[t=11.4465s, 50792 KB] g=154, 4607 evaluated, 2413 expanded
+[t=11.4505s, 50792 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 4
+[t=11.4505s, 50792 KB] g=155, 4608 evaluated, 2414 expanded
+[t=14.1276s, 50792 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 3
+[t=14.1276s, 50792 KB] g=182, 5962 evaluated, 3400 expanded
+[t=18.0958s, 50924 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 2
+[t=18.0958s, 50924 KB] g=208, 8047 evaluated, 4959 expanded
+[t=18.0958s, 50924 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 1
+[t=18.0958s, 50924 KB] g=209, 8048 evaluated, 4960 expanded
+[t=18.0998s, 50924 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 0
+[t=18.0998s, 50924 KB] g=210, 8051 evaluated, 4961 expanded
+[t=18.0998s, 50924 KB] Solution found!
+[t=18.0998s, 50924 KB] Actual search time: 17.9807s
+create-block pos-3-0 (1)
+place-block pos-3-0 pos-2-0 n0 n1 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+place-block pos-3-1 pos-3-2 n0 n1 (1)
+move pos-3-1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-0 n1 n0 (1)
+move pos-2-1 pos-2-0 n0 (1)
+place-block pos-2-0 pos-1-0 n0 n1 (1)
+move pos-2-0 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+place-block pos-3-0 pos-2-0 n0 n1 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-1-1 n0 n1 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+remove-block pos-2-1 pos-1-1 n1 n0 (1)
+move pos-2-1 pos-1-1 n0 (1)
+place-block pos-1-1 pos-0-1 n0 n1 (1)
+move pos-1-1 pos-1-2 n0 (1)
+remove-block pos-1-2 pos-2-2 n1 n0 (1)
+place-block pos-1-2 pos-1-1 n0 n1 (1)
+move-up pos-1-2 n0 pos-1-1 n1 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-0-1 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+remove-block pos-2-1 pos-1-1 n1 n0 (1)
+move pos-2-1 pos-1-1 n0 (1)
+place-block pos-1-1 pos-1-2 n0 n1 (1)
+move pos-1-1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-2 n1 n0 (1)
+place-block pos-2-1 pos-1-1 n0 n1 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-1-2 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move pos-2-0 pos-1-0 n1 (1)
+place-block pos-1-0 pos-2-0 n1 n2 (1)
+move pos-1-0 pos-1-1 n1 (1)
+move-up pos-1-1 n1 pos-1-2 n2 (1)
+move-down pos-1-2 n2 pos-2-2 n1 (1)
+remove-block pos-2-2 pos-1-2 n2 n1 (1)
+place-block pos-2-2 pos-3-2 n1 n2 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-2 n1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-1-0 n1 n2 (1)
+remove-block pos-1-1 pos-0-1 n2 n1 (1)
+move-up pos-1-1 n1 pos-1-0 n2 (1)
+place-block pos-1-0 pos-2-0 n2 n3 (1)
+move-down pos-1-0 n2 pos-1-1 n1 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-2 n1 (1)
+place-block pos-2-2 pos-1-2 n1 n2 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-0-1 n1 n2 (1)
+remove-block pos-1-1 pos-1-2 n2 n1 (1)
+move pos-1-1 pos-1-2 n1 (1)
+place-block pos-1-2 pos-2-2 n1 n2 (1)
+move pos-1-2 pos-1-1 n1 (1)
+remove-block pos-1-1 pos-0-1 n2 n1 (1)
+move pos-1-1 pos-1-2 n1 (1)
+move-up pos-1-2 n1 pos-2-2 n2 (1)
+place-block pos-2-2 pos-3-2 n2 n3 (1)
+move-down pos-2-2 n2 pos-1-2 n1 (1)
+remove-block pos-1-2 pos-2-2 n2 n1 (1)
+move pos-1-2 pos-2-2 n1 (1)
+place-block pos-2-2 pos-1-2 n1 n2 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-2 n1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-0-1 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+place-block pos-3-1 pos-2-1 n0 n1 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move-up pos-3-1 n0 pos-2-1 n1 (1)
+place-block pos-2-1 pos-1-1 n1 n2 (1)
+move-up pos-2-1 n1 pos-1-1 n2 (1)
+move pos-1-1 pos-1-0 n2 (1)
+remove-block pos-1-0 pos-2-0 n3 n2 (1)
+move pos-1-0 pos-1-1 n2 (1)
+place-block pos-1-1 pos-0-1 n2 n3 (1)
+move-down pos-1-1 n2 pos-2-1 n1 (1)
+remove-block pos-2-1 pos-1-1 n2 n1 (1)
+move-up pos-2-1 n1 pos-2-0 n2 (1)
+move pos-2-0 pos-1-0 n2 (1)
+place-block pos-1-0 pos-2-0 n2 n3 (1)
+move-down pos-1-0 n2 pos-1-1 n1 (1)
+remove-block pos-1-1 pos-1-2 n2 n1 (1)
+move pos-1-1 pos-1-2 n1 (1)
+place-block pos-1-2 pos-1-1 n1 n2 (1)
+move-down pos-1-2 n1 pos-2-2 n0 (1)
+remove-block pos-2-2 pos-2-1 n1 n0 (1)
+move-up pos-2-2 n0 pos-1-2 n1 (1)
+move-up pos-1-2 n1 pos-1-1 n2 (1)
+place-block pos-1-1 pos-1-0 n2 n3 (1)
+move-down pos-1-1 n2 pos-1-2 n1 (1)
+remove-block pos-1-2 pos-1-1 n2 n1 (1)
+move pos-1-2 pos-1-1 n1 (1)
+place-block pos-1-1 pos-1-2 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+place-block pos-3-1 pos-2-1 n0 n1 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move-up pos-3-1 n0 pos-2-1 n1 (1)
+place-block pos-2-1 pos-1-1 n1 n2 (1)
+move-up pos-2-1 n1 pos-1-1 n2 (1)
+remove-block pos-1-1 pos-1-0 n3 n2 (1)
+place-block pos-1-1 pos-1-2 n2 n3 (1)
+move-down pos-1-1 n2 pos-2-1 n1 (1)
+remove-block pos-2-1 pos-1-1 n2 n1 (1)
+move-down pos-2-1 n1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+destroy-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move-up pos-3-1 n0 pos-2-1 n1 (1)
+move pos-2-1 pos-1-1 n1 (1)
+move-up pos-1-1 n1 pos-1-0 n2 (1)
+remove-block pos-1-0 pos-2-0 n3 n2 (1)
+move pos-1-0 pos-2-0 n2 (1)
+place-block pos-2-0 pos-1-0 n2 n3 (1)
+move-down pos-2-0 n2 pos-2-1 n1 (1)
+move-down pos-2-1 n1 pos-3-1 n0 (1)
+remove-block pos-3-1 pos-2-1 n1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-3-1 n0 n1 (1)
+remove-block pos-2-1 pos-1-1 n1 n0 (1)
+move pos-2-1 pos-1-1 n0 (1)
+place-block pos-1-1 pos-2-1 n0 n1 (1)
+move-up pos-1-1 n0 pos-2-1 n1 (1)
+move pos-2-1 pos-3-1 n1 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-3-1 n1 (1)
+place-block pos-3-1 pos-2-1 n1 n2 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-3-1 n1 (1)
+move-up pos-3-1 n1 pos-2-1 n2 (1)
+place-block pos-2-1 pos-2-0 n2 n3 (1)
+move-down pos-2-1 n2 pos-3-1 n1 (1)
+remove-block pos-3-1 pos-2-1 n2 n1 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+destroy-block pos-3-0 (1)
+remove-block pos-3-0 pos-3-1 n1 n0 (1)
+destroy-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+remove-block pos-3-1 pos-2-1 n1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+destroy-block pos-3-0 (1)
+[t=18.0998s, 50924 KB] Plan length: 210 step(s).
+[t=18.0998s, 50924 KB] Plan cost: 210
+[t=18.0998s, 50924 KB] Expanded 4962 state(s).
+[t=18.0998s, 50924 KB] Reopened 0 state(s).
+[t=18.0998s, 50924 KB] Evaluated 8051 state(s).
+[t=18.0998s, 50924 KB] Evaluations: 8051
+[t=18.0998s, 50924 KB] Generated 14551 state(s).
+[t=18.0998s, 50924 KB] Dead ends: 0 state(s).
+[t=18.0998s, 50924 KB] Number of registered states: 8051
+[t=18.0998s, 50924 KB] Int hash set load factor: 8051/16384 = 0.491394
+[t=18.0998s, 50924 KB] Int hash set resizes: 14
+[t=18.0998s, 50924 KB] Search time: 17.9847s
+[t=18.0998s, 50924 KB] Total time: 18.0998s
+Solution found.
+Peak memory: 50924 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 210 
+
+Successful plans:
+Value: 210
+ sas_plan 210 
+
+validate exit code: 0
+
+INFO     Planner time: 18.22s

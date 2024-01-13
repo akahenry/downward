@@ -1,0 +1,372 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.002s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
+Preparing model... [0.010s CPU, 0.001s wall-clock]
+Generated 52 rules.
+Computing model... [0.020s CPU, 0.023s wall-clock]
+694 relevant atoms
+2181 auxiliary atoms
+2875 final queue length
+3474 total queue pushes
+Completing instantiation... [0.020s CPU, 0.017s wall-clock]
+Instantiating: [0.050s CPU, 0.045s wall-clock]
+Computing fact groups...
+Finding invariants...
+6 initial candidates
+Finding invariants: [0.000s CPU, 0.002s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+1 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.003s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.020s CPU, 0.019s wall-clock]
+97 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+46 operators removed
+0 axioms removed
+17 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.008s wall-clock]
+Reordering and filtering variables...
+13 of 13 variables necessary.
+0 of 12 mutex groups necessary.
+494 of 494 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.003s wall-clock]
+Translator variables: 13
+Translator derived variables: 0
+Translator facts: 58
+Translator goal facts: 12
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 494
+Translator axioms: 0
+Translator task size: 2907
+Translator peak memory: 34148 KB
+Writing output... [0.000s CPU, 0.004s wall-clock]
+Done! [0.080s CPU, 0.084s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1799s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=false, transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
+[t=0.00356535s, 45596 KB] reading input...
+[t=0.00356535s, 45728 KB] done reading input!
+[t=0.00356535s, 45992 KB] Generating patterns using: systematic pattern collection generator
+[t=0.00356535s, 45992 KB] building causal graph...done! [t=0s]
+[t=0.0075655s, 46140 KB] Found 638 SGA patterns.
+[t=0.0075655s, 46140 KB] Found 638 interesting patterns.
+[t=0.0075655s, 46140 KB] systematic pattern collection generator number of patterns: 638
+[t=0.0075655s, 46140 KB] systematic pattern collection generator total PDB size: 198686
+[t=0.0075655s, 46140 KB] systematic pattern collection generator computation time: 0.00400015s
+[t=0.0075655s, 46140 KB] Computing PDBs for pattern collection...
+[t=0.183466s, 47004 KB] Done computing PDBs for pattern collection: 0.175901s
+[t=0.19547s, 53484 KB] Building successor generator...done!
+[t=0.19547s, 53484 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.19547s, 53484 KB] time for successor generation creation: 0s
+[t=0.19547s, 53484 KB] Variables: 13
+[t=0.19547s, 53484 KB] FactPairs: 58
+[t=0.19547s, 53484 KB] Bytes per state: 4
+[t=0.19547s, 53484 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.207462s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 30
+[t=0.207462s, 56668 KB] g=0, 1 evaluated, 0 expanded
+[t=0.207462s, 56668 KB] Initial heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 30
+[t=0.207462s, 56668 KB] pruning method: none
+[t=0.207462s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 29
+[t=0.207462s, 56668 KB] g=1, 2 evaluated, 1 expanded
+[t=0.223434s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 28
+[t=0.223434s, 56668 KB] g=3, 16 evaluated, 7 expanded
+[t=0.231425s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 27
+[t=0.231425s, 56668 KB] g=4, 21 evaluated, 8 expanded
+[t=0.295381s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 26
+[t=0.295381s, 56668 KB] g=6, 78 evaluated, 37 expanded
+[t=0.395298s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 25
+[t=0.395298s, 56668 KB] g=12, 165 evaluated, 76 expanded
+[t=0.427278s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 24
+[t=0.427278s, 56668 KB] g=16, 193 evaluated, 87 expanded
+[t=0.479233s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 23
+[t=0.479233s, 56668 KB] g=22, 236 evaluated, 103 expanded
+[t=0.503194s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 22
+[t=0.503194s, 56668 KB] g=24, 261 evaluated, 111 expanded
+[t=0.523138s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 21
+[t=0.523138s, 56668 KB] g=27, 283 evaluated, 119 expanded
+[t=0.543118s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 20
+[t=0.543118s, 56668 KB] g=29, 301 evaluated, 125 expanded
+[t=0.942759s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 19
+[t=0.942759s, 56668 KB] g=33, 754 evaluated, 415 expanded
+[t=2.03379s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 18
+[t=2.03379s, 56668 KB] g=41, 1984 evaluated, 1145 expanded
+[t=2.7612s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 17
+[t=2.7612s, 56668 KB] g=48, 2811 evaluated, 1556 expanded
+[t=2.95708s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 16
+[t=2.95708s, 56668 KB] g=54, 3025 evaluated, 1673 expanded
+[t=3.20889s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 15
+[t=3.20889s, 56668 KB] g=64, 3313 evaluated, 1820 expanded
+[t=3.76054s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 14
+[t=3.76054s, 56668 KB] g=74, 3929 evaluated, 2130 expanded
+[t=4.11629s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 13
+[t=4.11629s, 56668 KB] g=84, 4334 evaluated, 2321 expanded
+[t=4.50386s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 12
+[t=4.50386s, 56668 KB] g=94, 4663 evaluated, 2475 expanded
+[t=4.74763s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 11
+[t=4.74763s, 56668 KB] g=101, 4869 evaluated, 2577 expanded
+[t=4.75561s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 10
+[t=4.75561s, 56668 KB] g=103, 4875 evaluated, 2579 expanded
+[t=4.75962s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 9
+[t=4.75962s, 56668 KB] g=104, 4878 evaluated, 2580 expanded
+[t=4.75962s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 8
+[t=4.75962s, 56668 KB] g=105, 4880 evaluated, 2581 expanded
+[t=4.79157s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 7
+[t=4.79157s, 56668 KB] g=108, 4903 evaluated, 2587 expanded
+[t=5.53461s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 6
+[t=5.53461s, 56668 KB] g=133, 5521 evaluated, 2989 expanded
+[t=7.29659s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 5
+[t=7.29659s, 56668 KB] g=151, 7009 evaluated, 3945 expanded
+[t=7.3685s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 4
+[t=7.3685s, 56668 KB] g=155, 7071 evaluated, 3991 expanded
+[t=7.3805s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 3
+[t=7.3805s, 56668 KB] g=156, 7079 evaluated, 3993 expanded
+[t=10.9444s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 2
+[t=10.9473s, 56668 KB] g=172, 10532 evaluated, 6502 expanded
+[t=10.9473s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 1
+[t=10.9473s, 56668 KB] g=173, 10533 evaluated, 6503 expanded
+[t=10.9483s, 56668 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))],use_integer_operator_counts=false,transform=adapt_costs(cost_type=one)): 0
+[t=10.9483s, 56668 KB] g=174, 10536 evaluated, 6504 expanded
+[t=10.9483s, 56668 KB] Solution found!
+[t=10.9483s, 56668 KB] Actual search time: 10.7408s
+create-block pos-3-0 (1)
+place-block pos-3-0 pos-2-0 n0 n1 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+place-block pos-3-1 pos-3-2 n0 n1 (1)
+move pos-3-1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-0 n1 n0 (1)
+move pos-2-1 pos-2-0 n0 (1)
+place-block pos-2-0 pos-1-0 n0 n1 (1)
+move pos-2-0 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+place-block pos-3-0 pos-2-0 n0 n1 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-1-1 n0 n1 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+place-block pos-3-0 pos-3-1 n0 n1 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-3-1 n1 (1)
+place-block pos-3-1 pos-3-2 n1 n2 (1)
+move-down pos-3-1 n1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-3-1 n1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+move-up pos-2-1 n0 pos-2-0 n1 (1)
+move-down pos-2-0 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-2-0 n1 (1)
+move pos-2-0 pos-1-0 n1 (1)
+place-block pos-1-0 pos-2-0 n1 n2 (1)
+move pos-1-0 pos-1-1 n1 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-1-0 n1 n2 (1)
+move-down pos-1-1 n1 pos-1-2 n0 (1)
+remove-block pos-1-2 pos-2-2 n1 n0 (1)
+move-up pos-1-2 n0 pos-1-1 n1 (1)
+move-up pos-1-1 n1 pos-1-0 n2 (1)
+place-block pos-1-0 pos-2-0 n2 n3 (1)
+move-down pos-1-0 n2 pos-1-1 n1 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-2-2 n0 n1 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-2 n1 (1)
+move-down pos-2-2 n1 pos-1-2 n0 (1)
+move pos-1-2 pos-0-2 n0 (1)
+place-block pos-0-2 pos-0-1 n0 n1 (1)
+move pos-0-2 pos-1-2 n0 (1)
+move-up pos-1-2 n0 pos-2-2 n1 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-0-1 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-2 n1 (1)
+move-down pos-2-2 n1 pos-1-2 n0 (1)
+move pos-1-2 pos-0-2 n0 (1)
+place-block pos-0-2 pos-1-2 n0 n1 (1)
+move-up pos-0-2 n0 pos-1-2 n1 (1)
+move pos-1-2 pos-2-2 n1 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+move-up pos-2-1 n0 pos-2-2 n1 (1)
+move pos-2-2 pos-1-2 n1 (1)
+place-block pos-1-2 pos-2-2 n1 n2 (1)
+move pos-1-2 pos-1-1 n1 (1)
+remove-block pos-1-1 pos-0-1 n2 n1 (1)
+move pos-1-1 pos-1-2 n1 (1)
+move-up pos-1-2 n1 pos-2-2 n2 (1)
+place-block pos-2-2 pos-3-2 n2 n3 (1)
+move-down pos-2-2 n2 pos-1-2 n1 (1)
+remove-block pos-1-2 pos-2-2 n2 n1 (1)
+move pos-1-2 pos-2-2 n1 (1)
+place-block pos-2-2 pos-1-2 n1 n2 (1)
+move-down pos-2-2 n1 pos-2-1 n0 (1)
+remove-block pos-2-1 pos-2-2 n1 n0 (1)
+move-up pos-2-1 n0 pos-1-1 n1 (1)
+place-block pos-1-1 pos-0-1 n1 n2 (1)
+move-down pos-1-1 n1 pos-2-1 n0 (1)
+move pos-2-1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+place-block pos-3-1 pos-2-1 n0 n1 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move-up pos-3-1 n0 pos-2-1 n1 (1)
+place-block pos-2-1 pos-1-1 n1 n2 (1)
+move-up pos-2-1 n1 pos-1-1 n2 (1)
+move pos-1-1 pos-1-0 n2 (1)
+remove-block pos-1-0 pos-2-0 n3 n2 (1)
+move pos-1-0 pos-1-1 n2 (1)
+place-block pos-1-1 pos-0-1 n2 n3 (1)
+move-down pos-1-1 n2 pos-2-1 n1 (1)
+remove-block pos-2-1 pos-1-1 n2 n1 (1)
+move-up pos-2-1 n1 pos-2-0 n2 (1)
+move pos-2-0 pos-1-0 n2 (1)
+place-block pos-1-0 pos-2-0 n2 n3 (1)
+move-down pos-1-0 n2 pos-1-1 n1 (1)
+move pos-1-1 pos-2-1 n1 (1)
+move-down pos-2-1 n1 pos-3-1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+move-up pos-3-1 n0 pos-2-1 n1 (1)
+place-block pos-2-1 pos-1-1 n1 n2 (1)
+move-up pos-2-1 n1 pos-1-1 n2 (1)
+move pos-1-1 pos-1-0 n2 (1)
+remove-block pos-1-0 pos-2-0 n3 n2 (1)
+move pos-1-0 pos-1-1 n2 (1)
+place-block pos-1-1 pos-1-2 n2 n3 (1)
+move-down pos-1-1 n2 pos-2-1 n1 (1)
+remove-block pos-2-1 pos-1-1 n2 n1 (1)
+move-up pos-2-1 n1 pos-2-0 n2 (1)
+place-block pos-2-0 pos-1-0 n2 n3 (1)
+move-down pos-2-0 n2 pos-2-1 n1 (1)
+move-down pos-2-1 n1 pos-3-1 n0 (1)
+remove-block pos-3-1 pos-2-1 n1 n0 (1)
+move pos-3-1 pos-2-1 n0 (1)
+place-block pos-2-1 pos-3-1 n0 n1 (1)
+remove-block pos-2-1 pos-1-1 n1 n0 (1)
+move pos-2-1 pos-1-1 n0 (1)
+place-block pos-1-1 pos-2-1 n0 n1 (1)
+move-up pos-1-1 n0 pos-2-1 n1 (1)
+move pos-2-1 pos-3-1 n1 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-3-1 n1 (1)
+place-block pos-3-1 pos-2-1 n1 n2 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+create-block pos-3-0 (1)
+move-up pos-3-0 n0 pos-3-1 n1 (1)
+move-up pos-3-1 n1 pos-2-1 n2 (1)
+place-block pos-2-1 pos-2-0 n2 n3 (1)
+move-down pos-2-1 n2 pos-3-1 n1 (1)
+remove-block pos-3-1 pos-2-1 n2 n1 (1)
+move-down pos-3-1 n1 pos-3-0 n0 (1)
+destroy-block pos-3-0 (1)
+remove-block pos-3-0 pos-3-1 n1 n0 (1)
+destroy-block pos-3-0 (1)
+move pos-3-0 pos-3-1 n0 (1)
+remove-block pos-3-1 pos-2-1 n1 n0 (1)
+move pos-3-1 pos-3-0 n0 (1)
+destroy-block pos-3-0 (1)
+[t=10.9483s, 56668 KB] Plan length: 174 step(s).
+[t=10.9483s, 56668 KB] Plan cost: 174
+[t=10.9483s, 56668 KB] Expanded 6505 state(s).
+[t=10.9483s, 56668 KB] Reopened 0 state(s).
+[t=10.9483s, 56668 KB] Evaluated 10536 state(s).
+[t=10.9483s, 56668 KB] Evaluations: 10536
+[t=10.9483s, 56668 KB] Generated 19727 state(s).
+[t=10.9483s, 56668 KB] Dead ends: 0 state(s).
+[t=10.9483s, 56668 KB] Number of registered states: 10536
+[t=10.9483s, 56668 KB] Int hash set load factor: 10536/16384 = 0.643066
+[t=10.9483s, 56668 KB] Int hash set resizes: 14
+[t=10.9483s, 56668 KB] Search time: 10.7528s
+[t=10.9483s, 56668 KB] Total time: 10.9483s
+Solution found.
+Peak memory: 56668 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 174 
+
+Successful plans:
+Value: 174
+ sas_plan 174 
+
+validate exit code: 0
+
+INFO     Planner time: 11.11s

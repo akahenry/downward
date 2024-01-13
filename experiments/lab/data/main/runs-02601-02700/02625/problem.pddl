@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/hiking-opt14-strips/ptesting-2-4-4.pddl

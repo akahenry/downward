@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/termes-opt18-strips/domain.pddl

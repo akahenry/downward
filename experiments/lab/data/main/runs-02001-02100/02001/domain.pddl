@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/visitall-opt14-strips/domain.pddl

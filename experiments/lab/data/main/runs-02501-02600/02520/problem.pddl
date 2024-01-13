@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/scanalyzer-08-strips/p01.pddl

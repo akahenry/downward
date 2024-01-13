@@ -82,6 +82,14 @@ CONFIGS = [
                 "pho-ip-sys4-one",
                 "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))",
             ),
+            (
+                "hstar-normal",
+                "pdb(manual_pattern([]), transform=adapt_costs(cost_type=NORMAL)))",
+            ),
+            (
+                "hstar-one",
+                "pdb(manual_pattern([]), transform=adapt_costs(cost_type=ONE)))",
+            ),
         ],
         start=1,
     )

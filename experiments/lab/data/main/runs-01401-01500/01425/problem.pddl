@@ -1,0 +1,1 @@
+../../../../../../../benchmarks/visitall-opt11-strips/problem06-half.pddl

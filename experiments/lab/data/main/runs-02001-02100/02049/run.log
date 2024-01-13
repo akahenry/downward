@@ -1,0 +1,192 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.002s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 74 rules.
+Computing model... [0.050s CPU, 0.042s wall-clock]
+4710 relevant atoms
+1648 auxiliary atoms
+6358 final queue length
+22040 total queue pushes
+Completing instantiation... [0.120s CPU, 0.123s wall-clock]
+Instantiating: [0.170s CPU, 0.169s wall-clock]
+Computing fact groups...
+Finding invariants...
+16 initial candidates
+Finding invariants: [0.010s CPU, 0.005s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.010s CPU, 0.006s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.009s wall-clock]
+Translating task: [0.130s CPU, 0.132s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+13 propositions removed
+Detecting unreachable propositions: [0.040s CPU, 0.040s wall-clock]
+Reordering and filtering variables...
+13 of 13 variables necessary.
+0 of 13 mutex groups necessary.
+2976 of 2976 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.010s CPU, 0.016s wall-clock]
+Translator variables: 13
+Translator derived variables: 0
+Translator facts: 59
+Translator goal facts: 2
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 2976
+Translator axioms: 0
+Translator task size: 25098
+Translator peak memory: 50260 KB
+Writing output... [0.020s CPU, 0.021s wall-clock]
+Done! [0.390s CPU, 0.393s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1799s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/downward --search 'eager_greedy([ilsh(patterns=systematic(4), transform=adapt_costs(cost_type=ONE))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 45596 KB] reading input...
+[t=0.0119845s, 46536 KB] done reading input!
+[t=0.0119845s, 46932 KB] Generating patterns using: systematic pattern collection generator
+[t=0.0119845s, 46932 KB] building causal graph...done! [t=0.00400946s]
+[t=0.015994s, 46932 KB] Found 404 SGA patterns.
+[t=0.015994s, 46932 KB] Found 420 interesting patterns.
+[t=0.015994s, 46932 KB] systematic pattern collection generator number of patterns: 420
+[t=0.015994s, 46932 KB] systematic pattern collection generator total PDB size: 150015
+[t=0.015994s, 46932 KB] systematic pattern collection generator computation time: 0.00400946s
+[t=0.015994s, 46932 KB] Computing PDBs for pattern collection...
+[t=0.463542s, 47900 KB] Done computing PDBs for pattern collection: 0.447548s
+[t=0.507504s, 64700 KB] Tie breaking: 2
+[t=0.507504s, 64700 KB] Building successor generator...done!
+[t=0.507504s, 64836 KB] peak memory difference for successor generator creation: 136 KB
+[t=0.507504s, 64836 KB] time for successor generation creation: 0s
+[t=0.507504s, 64836 KB] Variables: 13
+[t=0.507504s, 64836 KB] FactPairs: 59
+[t=0.507504s, 64836 KB] Bytes per state: 8
+[t=0.507504s, 64836 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.531496s, 64836 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 12
+[t=0.531496s, 64836 KB] g=0, 1 evaluated, 0 expanded
+[t=0.531496s, 64836 KB] Initial heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 12
+[t=0.531496s, 64836 KB] pruning method: none
+[t=193.49s, 65168 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 11
+[t=193.49s, 65168 KB] g=4, 9917 evaluated, 244 expanded
+[t=198.453s, 65168 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 10
+[t=198.453s, 65168 KB] g=6, 10159 evaluated, 248 expanded
+[t=199.041s, 65168 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 9
+[t=199.041s, 65168 KB] g=7, 10191 evaluated, 249 expanded
+[t=304.238s, 65304 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 8
+[t=304.238s, 65304 KB] g=14, 14823 evaluated, 659 expanded
+[t=304.594s, 65304 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 7
+[t=304.594s, 65304 KB] g=15, 14845 evaluated, 660 expanded
+[t=305.089s, 65304 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 6
+[t=305.089s, 65304 KB] g=16, 14874 evaluated, 661 expanded
+[t=311.646s, 65304 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 5
+[t=311.646s, 65304 KB] g=20, 15235 evaluated, 684 expanded
+[t=316.353s, 65564 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 3
+[t=316.353s, 65564 KB] g=22, 15438 evaluated, 691 expanded
+[t=349.174s, 65564 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 2
+[t=349.174s, 65564 KB] g=29, 18106 evaluated, 1216 expanded
+[t=377.965s, 65564 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 1
+[t=377.965s, 65564 KB] g=30, 21055 evaluated, 1811 expanded
+[t=378.089s, 65564 KB] New best heuristic value for ilsh(patterns=systematic(4),transform=adapt_costs(cost_type=one)): 0
+[t=378.089s, 65564 KB] g=31, 21066 evaluated, 1812 expanded
+[t=378.105s, 65564 KB] Solution found!
+[t=378.105s, 65564 KB] Actual search time: 377.573s
+put_down girl0 place0 tent0 (1)
+drive_tent girl0 place0 place1 car0 tent0 (1)
+put_up girl0 place1 tent0 (1)
+walk_together tent0 place1 guy1 place0 girl1 couple1 (1)
+put_down guy0 place0 tent1 (1)
+drive girl0 place1 place0 car0 (1)
+drive_tent girl0 place0 place2 car0 tent1 (1)
+put_up girl0 place2 tent1 (1)
+put_down girl1 place1 tent0 (1)
+walk_together tent1 place2 guy1 place1 girl1 couple1 (1)
+drive_passenger girl0 place2 place0 car0 girl1 (1)
+drive girl1 place0 place1 car0 (1)
+put_up girl1 place1 tent0 (1)
+walk_together tent0 place1 guy0 place0 girl0 couple0 (1)
+walk_together tent1 place2 guy0 place1 girl0 couple0 (1)
+drive girl1 place1 place2 car0 (1)
+put_down girl0 place2 tent1 (1)
+drive_tent_passenger girl0 place2 place3 car0 tent1 guy0 (1)
+put_up girl0 place3 tent1 (1)
+walk_together tent1 place3 guy1 place2 girl1 couple1 (1)
+put_down girl0 place3 tent1 (1)
+drive_tent_passenger girl0 place3 place4 car0 tent1 guy0 (1)
+put_up girl0 place4 tent1 (1)
+walk_together tent1 place4 guy1 place3 girl1 couple1 (1)
+drive_passenger girl0 place4 place1 car0 guy0 (1)
+put_down girl0 place1 tent0 (1)
+drive_tent_passenger girl0 place1 place3 car0 tent0 guy0 (1)
+put_up girl0 place3 tent0 (1)
+drive_passenger girl0 place3 place2 car0 guy0 (1)
+walk_together tent0 place3 guy0 place2 girl0 couple0 (1)
+walk_together tent1 place4 guy0 place3 girl0 couple0 (1)
+[t=378.105s, 65564 KB] Plan length: 31 step(s).
+[t=378.105s, 65564 KB] Plan cost: 31
+[t=378.105s, 65564 KB] Expanded 1813 state(s).
+[t=378.105s, 65564 KB] Reopened 0 state(s).
+[t=378.105s, 65564 KB] Evaluated 21067 state(s).
+[t=378.105s, 65564 KB] Evaluations: 21067
+[t=378.105s, 65564 KB] Generated 53836 state(s).
+[t=378.105s, 65564 KB] Dead ends: 0 state(s).
+[t=378.105s, 65564 KB] Number of registered states: 21067
+[t=378.105s, 65564 KB] Int hash set load factor: 21067/32768 = 0.642914
+[t=378.105s, 65564 KB] Int hash set resizes: 15
+[t=378.105s, 65564 KB] Search time: 377.597s
+[t=378.105s, 65564 KB] Total time: 378.105s
+Solution found.
+Peak memory: 65564 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 31 
+
+Successful plans:
+Value: 31
+ sas_plan 31 
+
+validate exit code: 0
+
+INFO     Planner time: 378.56s

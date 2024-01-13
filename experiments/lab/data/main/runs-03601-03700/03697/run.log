@@ -1,0 +1,173 @@
+INFO     planner time limit: 1800s
+INFO     planner memory limit: 2048 MB
+
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: 1799s
+INFO     translator memory limit: 2048 MB
+INFO     translator command line string: /home/henry/Documents/UFRGS/TCC/downward/.venv/bin/python /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/translate/translate.py domain.pddl problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.001s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.020s CPU, 0.001s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 26 rules.
+Computing model... [0.000s CPU, 0.008s wall-clock]
+797 relevant atoms
+806 auxiliary atoms
+1603 final queue length
+2743 total queue pushes
+Completing instantiation... [0.010s CPU, 0.014s wall-clock]
+Instantiating: [0.030s CPU, 0.023s wall-clock]
+Computing fact groups...
+Finding invariants...
+9 initial candidates
+Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.002s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Translator axioms removed by simplifying: 0
+Computing negative axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.013s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+8 propositions removed
+Detecting unreachable propositions: [0.010s CPU, 0.006s wall-clock]
+Reordering and filtering variables...
+8 of 8 variables necessary.
+0 of 8 mutex groups necessary.
+628 of 628 operators necessary.
+0 of 0 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 8
+Translator derived variables: 0
+Translator facts: 72
+Translator goal facts: 4
+Translator mutex groups: 0
+Translator total mutex groups size: 0
+Translator operators: 628
+Translator axioms: 0
+Translator task size: 3696
+Translator peak memory: 34628 KB
+Writing output... [0.010s CPU, 0.003s wall-clock]
+Done! [0.060s CPU, 0.052s wall-clock]
+translate exit code: 0
+
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: 1799s
+INFO     search memory limit: 2048 MB
+INFO     search command line string: /home/henry/Documents/UFRGS/TCC/downward/experiments/lab/data/main/code-fa850d1cb8d716322f299a4f9b64478019793ada_e5e41175/builds/release/bin/downward --search 'eager_greedy([operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=NORMAL))])' --internal-plan-file sas_plan < output.sas
+[t=0s, 45596 KB] reading input...
+[t=0.0037394s, 45728 KB] done reading input!
+[t=0.0037394s, 46140 KB] Generating patterns using: systematic pattern collection generator
+[t=0.0037394s, 46140 KB] building causal graph...done! [t=0s]
+[t=0.0037394s, 46140 KB] Found 20 SGA patterns.
+[t=0.0037394s, 46140 KB] Found 20 interesting patterns.
+[t=0.0037394s, 46140 KB] systematic pattern collection generator number of patterns: 20
+[t=0.0037394s, 46140 KB] systematic pattern collection generator total PDB size: 1276
+[t=0.0037394s, 46140 KB] systematic pattern collection generator computation time: 0s
+[t=0.0037394s, 46140 KB] Computing PDBs for pattern collection...
+[t=0.00774962s, 46140 KB] Done computing PDBs for pattern collection: 0.00401022s
+[t=0.00774962s, 46272 KB] Building successor generator...done!
+[t=0.00774962s, 46272 KB] peak memory difference for successor generator creation: 0 KB
+[t=0.00774962s, 46272 KB] time for successor generation creation: 0s
+[t=0.00774962s, 46272 KB] Variables: 8
+[t=0.00774962s, 46272 KB] FactPairs: 72
+[t=0.00774962s, 46272 KB] Bytes per state: 4
+[t=0.00774962s, 46272 KB] Conducting best first search without reopening closed nodes, (real) bound = 2147483647
+[t=0.00774962s, 46784 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 8
+[t=0.00774962s, 46784 KB] g=0, 1 evaluated, 0 expanded
+[t=0.00774962s, 46784 KB] Initial heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 8
+[t=0.00774962s, 46784 KB] pruning method: none
+[t=0.119557s, 48064 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 7
+[t=0.123566s, 48064 KB] g=29, 156 evaluated, 82 expanded
+[t=0.127543s, 48064 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 6
+[t=0.127543s, 48064 KB] g=30, 161 evaluated, 83 expanded
+[t=0.427114s, 49100 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 5
+[t=0.427114s, 49100 KB] g=115, 638 evaluated, 318 expanded
+[t=0.435103s, 49100 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 4
+[t=0.435103s, 49100 KB] g=116, 644 evaluated, 319 expanded
+[t=0.606978s, 49204 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 3
+[t=0.606978s, 49204 KB] g=213, 985 evaluated, 472 expanded
+[t=0.61496s, 49204 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 2
+[t=0.61496s, 49204 KB] g=214, 991 evaluated, 473 expanded
+[t=1.15043s, 49204 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 1
+[t=1.15043s, 49204 KB] g=329, 2153 evaluated, 1059 expanded
+[t=1.15442s, 49204 KB] New best heuristic value for operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(2))],use_integer_operator_counts=true,transform=adapt_costs(cost_type=normal)): 0
+[t=1.15442s, 49204 KB] g=330, 2156 evaluated, 1060 expanded
+[t=1.15442s, 49204 KB] Solution found!
+[t=1.15442s, 49204 KB] Actual search time: 1.14667s
+pick-up truck-1 city-loc-6 package-1 capacity-1 capacity-2 (1)
+drive truck-1 city-loc-6 city-loc-9 (28)
+drop truck-1 city-loc-9 package-1 capacity-1 capacity-2 (1)
+drive truck-2 city-loc-9 city-loc-6 (28)
+pick-up truck-2 city-loc-6 package-3 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-6 city-loc-3 (34)
+drive truck-2 city-loc-3 city-loc-1 (22)
+drop truck-2 city-loc-1 package-3 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-1 city-loc-5 (37)
+pick-up truck-2 city-loc-5 package-2 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-5 city-loc-1 (37)
+drive truck-2 city-loc-1 city-loc-3 (22)
+drop truck-2 city-loc-3 package-2 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-3 city-loc-6 (34)
+pick-up truck-2 city-loc-6 package-4 capacity-3 capacity-4 (1)
+drive truck-2 city-loc-6 city-loc-3 (34)
+drive truck-2 city-loc-3 city-loc-7 (16)
+drive truck-2 city-loc-7 city-loc-8 (30)
+drop truck-2 city-loc-8 package-4 capacity-3 capacity-4 (1)
+[t=1.15442s, 49204 KB] Plan length: 19 step(s).
+[t=1.15442s, 49204 KB] Plan cost: 330
+[t=1.15442s, 49204 KB] Expanded 1061 state(s).
+[t=1.15442s, 49204 KB] Reopened 0 state(s).
+[t=1.15442s, 49204 KB] Evaluated 2159 state(s).
+[t=1.15442s, 49204 KB] Evaluations: 2159
+[t=1.15442s, 49204 KB] Generated 7235 state(s).
+[t=1.15442s, 49204 KB] Dead ends: 0 state(s).
+[t=1.15442s, 49204 KB] Number of registered states: 2159
+[t=1.15442s, 49204 KB] Int hash set load factor: 2159/4096 = 0.5271
+[t=1.15442s, 49204 KB] Int hash set resizes: 12
+[t=1.15442s, 49204 KB] Search time: 1.14667s
+[t=1.15442s, 49204 KB] Total time: 1.15442s
+Solution found.
+Peak memory: 49204 KB
+Remove intermediate file output.sas
+search exit code: 0
+
+INFO     Running validate.
+INFO     validate stdin: None
+INFO     validate time limit: None
+INFO     validate memory limit: None
+INFO     validate command line string: /home/henry/bin/validate domain.pddl problem.pddl sas_plan
+Checking plan: sas_plan
+Plan executed successfully - checking goal
+Plan valid
+Final value: 330 
+
+Successful plans:
+Value: 330
+ sas_plan 330 
+
+validate exit code: 0
+
+INFO     Planner time: 1.28s
