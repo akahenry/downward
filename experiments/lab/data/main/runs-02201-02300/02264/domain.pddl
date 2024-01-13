@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/floortile-sat11-strips/domain.pddl

@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/parking-sat14-strips/p_38_2.pddl

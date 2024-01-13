@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/scanalyzer-sat11-strips/domain.pddl

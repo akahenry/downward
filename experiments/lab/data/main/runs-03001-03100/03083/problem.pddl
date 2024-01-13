@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/openstacks-sat14-strips/p290_3.pddl

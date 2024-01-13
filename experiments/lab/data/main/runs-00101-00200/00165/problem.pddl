@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/data-network-sat18-strips/p14.pddl

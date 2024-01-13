@@ -10,7 +10,7 @@ from qualityfiters import QualityFilters
 REPO = project.get_repo_base()
 BENCHMARKS_DIR = os.environ["DOWNWARD_BENCHMARKS"]
 
-SUITE = suites.suite_ff_or_rb_can_solve_and_lsh_not_or_the_opposite()
+SUITE = suites.hstar_instances()
 
 ENV = project.LocalEnvironment(processes=6)
 
@@ -81,14 +81,6 @@ CONFIGS = [
             (
                 "pho-ip-sys4-one",
                 "operatorcounting(constraint_generators=[pho_constraints(patterns=systematic(4))], use_integer_operator_counts=true, transform=adapt_costs(cost_type=ONE))",
-            ),
-            (
-                "ff-normal",
-                "ff(transform=adapt_costs(cost_type=NORMAL))",
-            ),
-            (
-                "ff-one",
-                "ff(transform=adapt_costs(cost_type=ONE))",
             ),
         ],
         start=1,

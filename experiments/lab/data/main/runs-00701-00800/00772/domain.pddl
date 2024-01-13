@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/agricola-sat18-strips/domain.pddl

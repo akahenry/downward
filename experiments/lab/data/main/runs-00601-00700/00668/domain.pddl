@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/sokoban-sat11-strips/domain.pddl
