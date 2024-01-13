@@ -68,11 +68,17 @@ namespace pdbs
 
         // relevant restrictions for each operator
         relevant_restrictions_by_operator.resize(operators.size());
+        restriction_position_on_relevant_restrictions_by_operator.resize(operators.size());
         for (size_t i = 0; i < relevant_operators_by_restriction.size(); i++)
         {
             for (size_t j = 0; j < relevant_operators_by_restriction[i].size(); j++)
             {
-                relevant_restrictions_by_operator[relevant_operators_by_restriction[i][j]].push_back(i);
+                int restriction_id = i;
+                int operator_id = relevant_operators_by_restriction[restriction_id][j];
+
+                relevant_restrictions_by_operator[operator_id].push_back(restriction_id);
+                restriction_position_on_relevant_restrictions_by_operator[operator_id].resize(restriction_id + 1);
+                restriction_position_on_relevant_restrictions_by_operator[operator_id][restriction_id] = relevant_restrictions_by_operator[operator_id].size() - 1;
             }
         }
 

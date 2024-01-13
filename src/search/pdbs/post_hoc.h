@@ -24,6 +24,7 @@ namespace pdbs
         std::vector<int> operator_count;
 
         std::vector<std::vector<int>> relevant_operators_by_restriction;
+        std::vector<std::vector<int>> restriction_position_on_relevant_restrictions_by_operator;
         std::vector<int> simple_restrictions_ids;
         std::vector<std::vector<int>> relevant_restrictions_by_operator;
 

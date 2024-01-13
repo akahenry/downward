@@ -43,6 +43,7 @@ namespace pdbs
         void init_internal_attributes();
         TieBreakingOperation tie_breaking_operation;
         std::vector<bool> restrictions_valid;
+        std::vector<int> number_of_relevant_and_valid_restrictions_by_operator;
         int restrictions_with_lower_bound_greater_than_zero;
         std::vector<int> lower_bounds_squared;
     };

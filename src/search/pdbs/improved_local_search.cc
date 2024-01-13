@@ -21,6 +21,7 @@ namespace pdbs
 
     {
         utils::g_log << "Tie breaking: " << this->tie_breaking_operation << endl;
+        this->number_of_relevant_and_valid_restrictions_by_operator.resize(this->operators.size());
     }
 
     void ImprovedLocalSearch::compute_post_hoc()
@@ -41,19 +42,21 @@ namespace pdbs
 
     void ImprovedLocalSearch::update_lower_bounds_with_selected_operator(int operator_id, int times_to_increment)
     {
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        std::vector<int> restrictions_to_delete;
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
-
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
             this->lower_bounds[restriction_id] -= times_to_increment * operator_cost[operator_id];
             this->lower_bounds_squared[restriction_id] = this->lower_bounds[restriction_id] * this->lower_bounds[restriction_id];
             if (this->lower_bounds[restriction_id] <= 0)
             {
-                this->delete_restriction(restriction_id);
+                restrictions_to_delete.push_back(restriction_id);
             }
+        }
+
+        for (const int &restriction_id : restrictions_to_delete)
+        {
+            this->delete_restriction(restriction_id);
         }
     }
 
@@ -62,15 +65,9 @@ namespace pdbs
         int sum = 0;
         const int operator_cost = this->operator_cost[operator_id];
 
-        // TODO: we may want to change `relevante_restrictions_by_operator` to std::vector<std::unordered_set<int>> to consider only valid restrictions
-        // or use a different logic to iterate only over valid restrictions (e.g. swap satisfied restriction on the delete method)
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
-
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
             sum += std::min(operator_cost, this->lower_bounds[restriction_id]);
         }
 
@@ -81,7 +78,7 @@ namespace pdbs
     {
         int best_operator_id = -1;
         float best_operator_performance = -1;
-        int best_operator_tie_breaking = INT_MIN;
+        int best_operator_tie_breaking = INT16_MIN;
 
         for (const int &operator_id : this->operators)
         {
@@ -91,14 +88,14 @@ namespace pdbs
             {
                 best_operator_id = operator_id;
                 best_operator_performance = operator_performance;
-                best_operator_tie_breaking = INT_MIN;
+                best_operator_tie_breaking = INT16_MIN;
 
                 continue;
             }
 
             if (best_operator_performance == operator_performance)
             {
-                if (best_operator_tie_breaking == INT_MIN)
+                if (best_operator_tie_breaking == INT16_MIN)
                 {
                     best_operator_tie_breaking = this->compute_operator_tie_breaking(best_operator_id);
                 }
@@ -117,16 +114,12 @@ namespace pdbs
 
     int ImprovedLocalSearch::compute_times_to_increment(const int operator_id)
     {
-        int minimum_lower_bound = INT_MAX;
+        int minimum_lower_bound = INT16_MAX;
         int operator_cost = this->operator_cost[operator_id];
 
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
-
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
             if (minimum_lower_bound > this->lower_bounds[restriction_id])
             {
                 minimum_lower_bound = this->lower_bounds[restriction_id];
@@ -182,13 +175,9 @@ namespace pdbs
     int ImprovedLocalSearch::compute_tie_breaking_max_constraint(const int operator_id)
     {
         int acc = 0;
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
-
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
             acc = std::max(acc, this->lower_bounds[restriction_id]);
         }
         return acc;
@@ -197,12 +186,9 @@ namespace pdbs
     int ImprovedLocalSearch::compute_tie_breaking_sum_constraint(const int operator_id)
     {
         int acc = 0;
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
 
             acc += this->lower_bounds[restriction_id];
         }
@@ -212,13 +198,9 @@ namespace pdbs
     int ImprovedLocalSearch::compute_tie_breaking_sum_square_constraint(const int operator_id)
     {
         int acc = 0;
-        for (const int &restriction_id : this->relevant_restrictions_by_operator[operator_id])
+        for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
-            if (this->is_restriction_deleted(restriction_id))
-            {
-                continue;
-            }
-
+            int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
             acc += this->lower_bounds_squared[restriction_id];
         }
         return acc;
@@ -228,6 +210,20 @@ namespace pdbs
     {
         this->restrictions_valid[restriction_id] = false;
         restrictions_with_lower_bound_greater_than_zero--;
+
+        for (const int &operator_id : this->relevant_operators_by_restriction[restriction_id])
+        {
+            this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]--;
+            int i = this->restriction_position_on_relevant_restrictions_by_operator[operator_id][restriction_id];
+            int j = this->number_of_relevant_and_valid_restrictions_by_operator[operator_id];
+            if (i == j)
+            {
+                continue;
+            }
+            int other_restriction_id = this->relevant_restrictions_by_operator[operator_id][j];
+            std::swap(this->relevant_restrictions_by_operator[operator_id][i], this->relevant_restrictions_by_operator[operator_id][j]);
+            std::swap(this->restriction_position_on_relevant_restrictions_by_operator[operator_id][restriction_id], this->restriction_position_on_relevant_restrictions_by_operator[operator_id][other_restriction_id]);
+        }
     }
 
     inline bool ImprovedLocalSearch::is_restriction_deleted(int restriction_id)
@@ -237,6 +233,11 @@ namespace pdbs
 
     void ImprovedLocalSearch::init_internal_attributes()
     {
+        for (const int &operator_id : this->operators)
+        {
+            this->number_of_relevant_and_valid_restrictions_by_operator[operator_id] = this->relevant_restrictions_by_operator[operator_id].size();
+        }
+
         this->restrictions_valid.assign(this->relevant_operators_by_restriction.size(), true);
         this->restrictions_with_lower_bound_greater_than_zero = this->relevant_operators_by_restriction.size();
         this->lower_bounds_squared.resize(this->restrictions_valid.size(), 0);
