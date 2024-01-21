@@ -1,6 +1,9 @@
 from itertools import permutations
 
-from local_search_heuristic import LocalSearchHeuristic
+# from local_search_heuristic import LocalSearchHeuristic
+from greedy_local_search_heuristic import GreedyLocalSearchHeuristic
+
+# from improved_local_search_heuristic import ImprovedLocalSearchHeuristic
 
 operators = ["a", "b", "c"]
 
@@ -24,7 +27,7 @@ results = dict()
 for perm in constraint_permutations:
     constraints = dict(zip([k[0] for k in perm], [v[1] for v in perm]))
 
-    heuristic = LocalSearchHeuristic(operators_costs, constraints)
+    heuristic = GreedyLocalSearchHeuristic(operators_costs, constraints)
     results[perm] = heuristic.compute()
 
 
