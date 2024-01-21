@@ -22,6 +22,14 @@ string PatternGeneratorManual::name() const {
 
 PatternInformation PatternGeneratorManual::compute_pattern(
     const shared_ptr<AbstractTask> &task) {
+    // Compute complete pattern if empty pattern is sent
+    if (pattern.size() == 0)
+    {
+        for (int i = 0; i < task->get_num_variables(); i++)
+        {
+            pattern.push_back(i);
+        }
+    }
     PatternInformation pattern_info(TaskProxy(*task), move(pattern), log);
     if (log.is_at_least_normal()) {
         log << "Manual pattern: " << pattern_info.get_pattern() << endl;
