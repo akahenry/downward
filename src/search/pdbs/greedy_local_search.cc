@@ -218,7 +218,7 @@ namespace pdbs
 
     void GreedyLocalSearch::init_internal_attributes()
     {
-        for (const int &operator_id : this->operators)
+        for (const int &operator_id : this->non_zero_cost_operators)
         {
             this->number_of_relevant_and_valid_restrictions_by_operator[operator_id] = this->relevant_restrictions_by_operator[operator_id].size();
             this->max_value_pdb_by_operator[operator_id] = 0;
@@ -230,7 +230,7 @@ namespace pdbs
                 }
             }
             this->pre_computed_times_to_increment_by_operator[operator_id] = (int)std::ceil((float)this->max_value_pdb_by_operator[operator_id] / this->operator_cost[operator_id]);
-            this->pre_computed_performance_denominator_by_operator[operator_id] = this->operator_cost[operator_id] * (int)std::ceil((float)this->max_value_pdb_by_operator[operator_id] / this->operator_cost[operator_id]);
+            this->pre_computed_performance_denominator_by_operator[operator_id] = this->operator_cost[operator_id] * this->pre_computed_times_to_increment_by_operator[operator_id];
         }
 
         this->restrictions_valid.assign(this->relevant_operators_by_restriction.size(), true);
