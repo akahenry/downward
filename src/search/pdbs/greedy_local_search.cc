@@ -72,6 +72,11 @@ namespace pdbs
 
     float GreedyLocalSearch::compute_operator_performance(const int operator_id)
     {
+        if (this->number_of_relevant_and_valid_restrictions_by_operator[operator_id] == 0)
+        {
+            return 0;
+        }
+
         return this->number_of_relevant_and_valid_restrictions_by_operator[operator_id] / this->pre_computed_performance_denominator_by_operator[operator_id];
     }
 
