@@ -17,10 +17,12 @@ namespace pdbs
 {
 
     ImprovedLocalSearch::ImprovedLocalSearch(const plugins::Options &opts) : PostHoc(opts),
-                                                                             tie_breaking_operation(opts.get<TieBreakingOperation>("tie_breaking"))
+                                                                             tie_breaking_operation(opts.get<TieBreakingOperation>("tie_breaking")),
+                                                                             times_to_increment_operation(opts.get<TimesToIncrementOperation>("times_to_increment"))
 
     {
         utils::g_log << "Tie breaking: " << this->tie_breaking_operation << endl;
+        utils::g_log << "Times to increment: " << this->times_to_increment_operation << endl;
         this->number_of_relevant_and_valid_restrictions_by_operator.resize(this->operators.size());
         for (const int &operator_id : this->operators)
         {
@@ -93,6 +95,7 @@ namespace pdbs
 
             if (best_operator_performance < operator_performance || best_operator_id == -1)
             {
+                this->tie_breaking_happened = false;
                 best_operator_id = operator_id;
                 best_operator_performance = operator_performance;
                 best_operator_tie_breaking = INT16_MIN;
@@ -102,6 +105,7 @@ namespace pdbs
 
             if (best_operator_performance == operator_performance)
             {
+                this->tie_breaking_happened = true;
                 if (best_operator_tie_breaking == INT16_MIN)
                 {
                     best_operator_tie_breaking = this->compute_operator_tie_breaking(best_operator_id);
@@ -121,23 +125,53 @@ namespace pdbs
 
     int ImprovedLocalSearch::compute_times_to_increment(const int operator_id)
     {
-        int minimum_lower_bound = INT16_MAX;
+        switch (this->times_to_increment_operation)
+        {
+        case TimesToIncrementOperation::SINGLE_INCREMENT:
+            return 1;
+        case TimesToIncrementOperation::MAX_CONSTRAINT_INCREMENT:
+            return this->compute_times_to_increment_max_constraint(operator_id);
+        case TimesToIncrementOperation::TIE_BREAKING_INFLUENCED_INCREMENT:
+            if (this->tie_breaking_happened)
+            {
+                return 1;
+            }
+        default:
+            int minimum_lower_bound = INT16_MAX;
+            int operator_cost = this->operator_cost[operator_id];
+
+            for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
+            {
+                int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
+                if (minimum_lower_bound > this->lower_bounds[restriction_id])
+                {
+                    minimum_lower_bound = this->lower_bounds[restriction_id];
+                    if (minimum_lower_bound <= operator_cost)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return std::max(1, minimum_lower_bound / operator_cost);
+        }
+    }
+
+    int ImprovedLocalSearch::compute_times_to_increment_max_constraint(const int operator_id)
+    {
+        int maximum_lower_bound = INT16_MIN;
         int operator_cost = this->operator_cost[operator_id];
 
         for (int i = 0; i < this->number_of_relevant_and_valid_restrictions_by_operator[operator_id]; i++)
         {
             int restriction_id = this->relevant_restrictions_by_operator[operator_id][i];
-            if (minimum_lower_bound > this->lower_bounds[restriction_id])
+            if (maximum_lower_bound < this->lower_bounds[restriction_id])
             {
-                minimum_lower_bound = this->lower_bounds[restriction_id];
-                if (minimum_lower_bound <= operator_cost)
-                {
-                    break;
-                }
+                maximum_lower_bound = this->lower_bounds[restriction_id];
             }
         }
 
-        return std::max(1, minimum_lower_bound / operator_cost);
+        return (int)std::ceil((float)maximum_lower_bound / operator_cost);
     }
 
     void ImprovedLocalSearch::update_operators_with_simple_restrictions()
@@ -272,6 +306,10 @@ namespace pdbs
                                                       "Operation to use for tie breaking when selecting best operator",
                                                       "sum_square_constraints");
 
+            Feature::add_option<TimesToIncrementOperation>("times_to_increment",
+                                                           "Defines the times to increment calculation to be used (default_increment, singe_increment, max_constraint_increment, tie_breaking_influenced_increment)",
+                                                           "default_increment");
+
             document_language_support("action costs", "supported");
             document_language_support("conditional effects", "not supported");
             document_language_support("axioms", "not supported");
@@ -283,4 +321,5 @@ namespace pdbs
     };
     static plugins::FeaturePlugin<ImprovedLocalSearchFeature> _plugin;
     static plugins::TypedEnumPlugin<TieBreakingOperation> _enum_tie_breaking_plugin({{"max_constraint", "max_constraint"}, {"sum_constraints", "sum_constraints"}, {"sum_square_constraints", "sum_square_constraints"}});
+    static plugins::TypedEnumPlugin<TimesToIncrementOperation> _enum_times_to_increment_plugin({{"default_increment", "default_increment"}, {"single_increment", "single_increment"}, {"max_constraint_increment", "max_constraint_increment"}, {"tie_breaking_influenced_increment", "tie_breaking_influenced_increment"}});
 }
