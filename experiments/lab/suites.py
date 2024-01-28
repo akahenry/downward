@@ -844,8 +844,6 @@ def hstar_instances():
     'logistics00:probLOGISTICS-6-1.pddl',
     'logistics00:probLOGISTICS-6-2.pddl',
     'logistics00:probLOGISTICS-6-9.pddl',
-    'logistics00:probLOGISTICS-7-0.pddl',
-    'logistics00:probLOGISTICS-7-1.pddl',
 
     'logistics98:prob31.pddl',
     'logistics98:prob32.pddl',
@@ -972,8 +970,6 @@ def hstar_instances():
     'parcprinter-08-strips:p11.pddl',
     'parcprinter-08-strips:p21.pddl',
 
-    'pathways:p01.pddl',
-
     'pegsol-08-strips:p01.pddl',
     'pegsol-08-strips:p05.pddl',
 
@@ -1009,7 +1005,6 @@ def hstar_instances():
     'psr-small:p32-s50-n4-l2-f50.pddl',
     'psr-small:p33-s51-n4-l2-f70.pddl',
     'psr-small:p34-s55-n4-l3-f70.pddl',
-    'psr-small:p37-s67-n6-l2-f70.pddl',
     'psr-small:p38-s78-n3-l3-f50.pddl',
     'psr-small:p39-s79-n3-l3-f70.pddl',
     'psr-small:p41-s81-n3-l4-f30.pddl',
@@ -1061,7 +1056,6 @@ def hstar_instances():
     'tpp:p02.pddl',
     'tpp:p03.pddl',
     'tpp:p04.pddl',
-    'tpp:p05.pddl',
 
     'transport-opt08-strips:p01.pddl',
     'transport-opt08-strips:p02.pddl',
