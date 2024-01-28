@@ -804,8 +804,6 @@ def hstar_instances():
     'driverlog:p04.pddl',
     'driverlog:p05.pddl',
 
-    'elevators-opt08-strips:p01.pddl',
-    'elevators-opt08-strips:p02.pddl',
     'elevators-opt08-strips:p03.pddl',
     'elevators-opt08-strips:p11.pddl',
 
@@ -1069,19 +1067,14 @@ def hstar_instances():
     'transport-opt08-strips:p02.pddl',
     'transport-opt08-strips:p03.pddl',
     'transport-opt08-strips:p11.pddl',
-    'transport-opt08-strips:p12.pddl',
     'transport-opt08-strips:p13.pddl',
     'transport-opt08-strips:p21.pddl',
-    'transport-opt08-strips:p22.pddl',
     'transport-opt08-strips:p23.pddl',
 
     'transport-opt11-strips:p01.pddl',
     'transport-opt11-strips:p02.pddl',
-    'transport-opt11-strips:p03.pddl',
     'transport-opt11-strips:p04.pddl',
 
-    'transport-opt14-strips:p01.pddl',
-    'transport-opt14-strips:p02.pddl',
     'transport-opt14-strips:p07.pddl',
 
     'trucks-strips:p01.pddl',
