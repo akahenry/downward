@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/scanalyzer-08-strips/p22.pddl

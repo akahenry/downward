@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/transport-opt11-strips/domain.pddl

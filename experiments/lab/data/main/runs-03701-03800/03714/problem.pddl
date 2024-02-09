@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/visitall-opt11-strips/problem02-full.pddl

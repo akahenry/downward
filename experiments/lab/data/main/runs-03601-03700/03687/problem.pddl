@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/termes-opt18-strips/p12.pddl

@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/visitall-opt14-strips/p-05-5.pddl

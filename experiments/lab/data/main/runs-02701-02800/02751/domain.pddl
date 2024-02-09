@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/parcprinter-08-strips/p11-domain.pddl

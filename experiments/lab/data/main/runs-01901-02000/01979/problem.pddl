@@ -1,1 +1,0 @@
-../../../../../../../benchmarks/transport-opt08-strips/p21.pddl
